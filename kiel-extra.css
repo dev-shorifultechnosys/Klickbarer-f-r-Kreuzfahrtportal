@@ -1,0 +1,148 @@
+/* ============================================================================
+   KREUZFAHRTPARKPLATZ.DE  |  KIEL / SECTION 05–07
+   Page-specific parking types, FAQ and customer reviews.
+   Reference: "Kiel Auswahl 01 von 02.png" (customer-supplied).
+   IMPORTANT: no changes to Homepage V11 or approved Kiel header, search and map.
+   Fonts and photos remain local. All descriptions/headings are actual HTML text.
+   ============================================================================ */
+.kiel-extras {
+  --extra-navy:#07338d;
+  --extra-blue:#0058ec;
+  --extra-line:#d6e7fb;
+  --extra-muted:#4569a9;
+  color:var(--extra-navy);
+  font-family:'Roboto Condensed','Arial Narrow',Arial,sans-serif;
+  background:linear-gradient(180deg,#f0faff 0%,#f7fcff 35%,#ffffff 100%);
+  padding:8px clamp(18px,4.8vw,58px) 16px;
+}
+.kiel-extras__inner{width:100%;max-width:1290px;margin-inline:auto}
+.kiel-extra-section + .kiel-extra-section{margin-top:10px}
+.kiel-extra-section__head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:7px}
+.kiel-extra-section h2{font-size:clamp(19px,2.02vw,27px);line-height:1.12;letter-spacing:-.37px;font-weight:800;margin:0;color:#082d85}
+.kiel-extra-section__description{margin:2px 0 0;font-size:clamp(10px,1.14vw,14px);line-height:1.23;color:#143b89}
+.kiel-extra-section__link{color:#0058e7;text-decoration:none;font-size:clamp(10px,.95vw,13px);font-weight:600;white-space:nowrap;line-height:1.4}
+.kiel-extra-section__link:hover,.kiel-extra-section__link:focus-visible{text-decoration:underline}
+.kiel-extra-section__link:focus-visible,.kiel-extra-section button:focus-visible,.kiel-extra-section a:focus-visible{outline:2px solid #0e67f5;outline-offset:3px}
+/* 05 — Four illustrated parking-type cards. Aspect ratio is matched to the
+   supplied artwork; width/height attributes avoid CLS on fast mobile scroll. */
+.kiel-types__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.8vw,19px)}
+.kiel-type-card{background:#fff;border:1px solid #d5e8fa;border-radius:5px;overflow:hidden;min-width:0;box-shadow:0 1px 2px #07357b0c;display:flex;flex-direction:column}
+.kiel-type-card__photo{display:block;aspect-ratio:3.3 / .93;overflow:hidden;background:#e7f2fc}
+.kiel-type-card__photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.kiel-type-card__body{display:grid;grid-template-columns:clamp(27px,3vw,38px) minmax(0,1fr);gap:4px;padding:8px 9px 9px;flex:1}
+.kiel-type-card__icon{color:#055cef;width:clamp(22px,2.7vw,33px);height:clamp(22px,2.7vw,33px);margin-top:3px}
+.kiel-type-card__icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.kiel-type-card__copy{min-width:0}
+.kiel-type-card h3{font-weight:800;font-size:clamp(11px,1.1vw,16px);line-height:1.13;margin:0 0 3px;color:#092e85}
+.kiel-type-card p{font-size:clamp(10px,.96vw,13px);line-height:1.27;margin:0 0 7px;color:#153c8b}
+.kiel-type-card__cta{font-size:clamp(10px,1.02vw,14px);font-weight:700;color:#005cea;text-decoration:underline;text-underline-offset:2px;display:inline-block;margin-top:auto}
+.kiel-type-card__cta:hover{color:#08328f}
+/* 06 — FAQ: native <details> gives real click, keyboard, and expanded states.
+   The reference provides questions only. Expanded answers are labelled
+   PROVISIONAL in HTML so that the client can supply approved body copy later. */
+.kiel-faq__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px clamp(10px,1.8vw,17px)}
+.kiel-faq__item{border:1px solid #d6e9fa;background:#fff;border-radius:5px;min-width:0;overflow:hidden}
+.kiel-faq__item summary{min-height:32px;display:flex;align-items:center;gap:7px;padding:7px 11px;cursor:pointer;list-style:none;color:#082e85;font-size:clamp(10px,1.04vw,14px);line-height:1.18;font-weight:800}
+.kiel-faq__item summary::-webkit-details-marker{display:none}
+.kiel-faq__leading{flex:none;width:17px;height:17px;display:grid;place-items:center;color:#0560ff;font-size:22px;line-height:1;font-weight:500}
+.kiel-faq__question{flex:1}
+.kiel-faq__plus{color:#005bed;font-family:Arial,sans-serif;font-size:17px;font-weight:600;flex:none;line-height:1}
+.kiel-faq__item[open] .kiel-faq__plus{transform:rotate(45deg)}
+.kiel-faq__answer{border-top:1px solid #e1eefb;color:#284d90;padding:8px 12px 12px 34px;font-size:clamp(11px,.95vw,13px);line-height:1.46}
+.kiel-faq__answer p{margin:0}
+/* 07 — Customer review cards, interactive circular arrows. Image portraits
+   are separate 112px local assets (not text baked into a screenshot). */
+.kiel-reviews{margin-top:14px!important}
+.kiel-reviews__viewport{position:relative;padding:0 13px}
+.kiel-reviews__track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(9px,1.8vw,20px);align-items:stretch}
+.kiel-review{min-width:0;border:1px solid var(--extra-line);background:#fff;border-radius:5px;padding:8px 16px 8px;box-shadow:0 1px 3px #082d800a;display:flex;flex-direction:column;min-height:106px}
+.kiel-review__stars{color:#ffbc00;letter-spacing:.4px;font-family:Arial,sans-serif;font-size:clamp(16px,1.72vw,21px);line-height:1.12;white-space:nowrap}
+.kiel-review blockquote{margin:3px 0 7px;font-size:clamp(11px,1.04vw,14px);line-height:1.26;letter-spacing:-.05px;color:#123a8b;flex:1}
+.kiel-review__person{display:flex;align-items:center;gap:9px}
+.kiel-review__person img{display:block;width:34px;height:34px;object-fit:cover;border-radius:50%;flex:none}
+.kiel-review__person strong,.kiel-review__person span{display:block;line-height:1.15;font-size:clamp(10px,1.03vw,14px)}
+.kiel-review__person strong{font-weight:800;color:#072f86}
+.kiel-review__person span{font-weight:400;color:#4e6ba3;margin-top:3px}
+.kiel-reviews__arrow{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;display:grid;place-items:center;border:1px solid #d4e6f8;border-radius:50%;background:white;color:#005df0;box-shadow:0 1px 4px #082e8014;cursor:pointer;z-index:2}
+.kiel-reviews__arrow:hover{background:#eef7ff}
+.kiel-reviews__arrow svg{width:17px;height:17px;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.kiel-reviews__arrow--prev{left:-18px}
+.kiel-reviews__arrow--next{right:-18px}
+.kiel-reviews__arrow--prev svg{transform:rotate(180deg)}
+.kiel-extra-section__notice{font-size:11px;color:#5575a6;margin:8px 0 0}
+/* Responsive: 2-column tablet and a mobile carousel with a single visible
+   review. No horizontally overflowing page, no forced crop of actual text. */
+@media(max-width:800px){
+ .kiel-extras{padding-inline:clamp(17px,4vw,32px)}
+ .kiel-type-card__body{padding:8px 7px 9px}
+ .kiel-type-card__icon{width:25px;height:25px}
+}
+@media(max-width:700px){
+ .kiel-extras{padding:22px 16px 26px}
+ .kiel-extra-section + .kiel-extra-section{margin-top:25px}
+ .kiel-extra-section h2{font-size:23px}
+ .kiel-extra-section__head{align-items:start}
+ .kiel-extra-section__link{font-size:11px;margin-top:4px}
+ .kiel-extra-section__description{font-size:12px}
+ .kiel-types__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .kiel-type-card__photo{aspect-ratio:2.5/1}
+ .kiel-type-card__body{grid-template-columns:24px 1fr;gap:3px;padding:9px 7px 11px}
+ .kiel-type-card__icon{width:23px;height:23px}
+ .kiel-type-card h3{font-size:12px}
+ .kiel-type-card p{font-size:11px}
+ .kiel-type-card__cta{font-size:11px}
+ .kiel-faq__grid{grid-template-columns:1fr;gap:6px}
+ .kiel-faq__item summary{min-height:44px;font-size:12px;padding:9px 10px}
+ .kiel-reviews__viewport{padding:0 34px}
+ .kiel-reviews__track{display:flex;gap:0;min-width:0}
+ .kiel-review{display:none;width:100%;flex:0 0 100%;min-height:156px;padding:13px}
+ .kiel-review.is-visible{display:flex}
+ .kiel-review__stars{font-size:20px}
+ .kiel-review blockquote{font-size:13px}
+ .kiel-review__person strong,.kiel-review__person span{font-size:12px}
+ .kiel-reviews__arrow--prev{left:0}.kiel-reviews__arrow--next{right:0}
+}
+@media(max-width:410px){
+ .kiel-types__grid{grid-template-columns:1fr}
+ .kiel-type-card{display:grid;grid-template-columns:42% 58%;min-height:133px}
+ .kiel-type-card__photo{height:100%;aspect-ratio:auto}
+ .kiel-type-card__body{grid-template-columns:23px minmax(0,1fr);padding:11px 9px}
+ .kiel-type-card p{font-size:11px;line-height:1.28}
+ .kiel-extra-section__head{gap:7px}
+ .kiel-extra-section__link{white-space:normal;text-align:right;max-width:113px}
+}
+@media(prefers-reduced-motion:reduce){.kiel-reviews__arrow,.kiel-faq__plus{transition:none}}
+
+/* Screen-reader carousel announcement must never appear as visible footer text. */
+.kiel-extras .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+/* View all supplied reviews: no fabricated testimonials or identity details. */
+.kiel-review-dialog{border:1px solid #c9def9;border-radius:10px;padding:22px;max-width:min(860px,calc(100vw - 32px));width:100%;box-shadow:0 12px 40px #001e5470;color:#08337d;background:#fff}
+.kiel-review-dialog::backdrop{background:rgba(0,24,67,.6)}
+.kiel-review-dialog h2{font-size:23px;margin:0 0 12px;color:#073487}
+.kiel-review-dialog__content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kiel-review-dialog__content .kiel-review{display:flex!important;width:auto;min-height:154px}
+.kiel-review-dialog__close{border:0;border-radius:5px;padding:10px 19px;background:#005be3;color:#fff;display:block;margin:17px 0 0 auto;font:700 14px 'Roboto Condensed',Arial,sans-serif;cursor:pointer}
+@media(max-width:700px){.kiel-review-dialog__content{grid-template-columns:1fr}}
+@media(max-width:410px){
+ /* Use the actual panoramic photograph rather than magnifying a 50px slice. */
+ .kiel-type-card{display:flex;flex-direction:column;min-height:0}
+ .kiel-type-card__photo{height:auto;aspect-ratio:3.2/1}
+ .kiel-type-card__body{grid-template-columns:27px minmax(0,1fr);padding:10px 12px 12px;gap:6px}
+ .kiel-type-card__icon{width:25px;height:25px}
+ .kiel-type-card h3{font-size:13px}
+ .kiel-type-card p,.kiel-type-card__cta{font-size:12px}
+}
+
+/* Screenshot matching at ordinary desktop widths; fluid upscale remains for large laptops. */
+@media(min-width:701px){
+ .kiel-type-card{height:clamp(133px,15vw,186px)}
+ .kiel-type-card__photo{height:clamp(49px,5.8vw,82px);aspect-ratio:auto;flex:none}
+ .kiel-type-card__body{flex:1;padding:6px 8px 7px;min-height:0}
+ .kiel-type-card__copy{display:flex;flex-direction:column;min-height:0}
+ .kiel-type-card p{line-height:1.2;margin-bottom:2px}
+ .kiel-type-card__cta{margin-top:auto}
+ .kiel-faq__item summary{min-height:29px;padding:6px 10px}
+ .kiel-review{min-height:104px;padding:7px 13px}
+ .kiel-review blockquote{line-height:1.2;margin:2px 0 4px}
+ .kiel-review__person img{height:32px;width:32px}
+}

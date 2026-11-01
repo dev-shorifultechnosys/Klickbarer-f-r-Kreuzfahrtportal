@@ -1,0 +1,115 @@
+/* ============================================================================
+   KREUZFAHRTPARKPLATZ.DE — KIEL COMPARISON, FINAL VISUAL QA (V7)
+   ---------------------------------------------------------------------------
+   Client's two exact sources: "Kiel Auswahl 01 von 02" + "Kiel Auswahl Footer".
+   The seven-column footer is deliberately NOT replaced by the Homepage footer.
+   No images, words, prices, provider rankings or heading hierarchy are rewritten.
+   This file contains ONLY viewport alignment, interaction and accessibility fixes.
+   Cascades after all original Kiel styles; no global homepage changes.
+   ============================================================================ */
+
+/* 1 — Client's original page uses fluid side gutters. The previous 1290px cap
+   made the comparison/extras narrow at 1440–1920px, while its footer went edge
+   to edge. Use the same ~4.8% proportional gutter at all desktop sizes. */
+@media (min-width: 701px) {
+  .kiel-page .kiel-comparison,
+  .kiel-page .kiel-extras {
+    padding-left: clamp(26px, 4.8vw, 96px);
+    padding-right: clamp(26px, 4.8vw, 96px);
+  }
+  .kiel-page .kiel-comparison__layout,
+  .kiel-page .kiel-extras__inner { max-width: none; width: 100%; }
+  .kiel-page .header-inner { max-width: none; padding-inline: clamp(26px,4.8vw,96px); }
+  .kiel-page .kiel-hero__content { max-width: none; padding-left:clamp(26px,4.8vw,96px); padding-right:clamp(26px,4.8vw,96px); }
+  .kiel-page .kiel-search { max-width: none; width: calc(100% - 9.6vw); }
+}
+
+/* 2 — Navigation must be centered relative to the VIEWPORT, not the space left
+   between logo and favorites. Preserve all four exact German menu labels. */
+@media (min-width: 701px) {
+  .kiel-page .header-inner { position: relative; }
+  .kiel-page .main-navigation {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(13px, 1.95vw, 31px);
+    width: max-content;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+  .kiel-page .nav-button { white-space: nowrap; }
+  .kiel-page .header-actions { margin-left: auto; }
+  .kiel-page .nav-dropdown { top:calc(100% + 5px); }
+}
+/* Do not let two large desktop controls overlap at the narrowest laptop width. */
+@media (min-width:701px) and (max-width: 860px) {
+  .kiel-page .header-inner {padding-inline:clamp(22px,4.8vw,41px);}
+  .kiel-page .brand-logo {width:clamp(128px,16vw,143px);}
+  .kiel-page .main-navigation { gap:clamp(11px,1.55vw,14px); }
+  .kiel-page .nav-button {font-size:10px;}
+  .kiel-page .favorites-button {font-size:10px;padding-inline:7px;}
+  .kiel-page .header-actions {gap:5px;}
+}
+
+/* 3 — Keep Anreise and Rückkehr calendars truly independent. Each opens from
+   its own field, with German Mo–So weekday labels and localized month controls.
+   The right-hand picker stays inside the viewport even on small tablets. */
+.kiel-page .kiel-search__field { isolation: auto; }
+.kiel-page .kiel-date { position: absolute; z-index: 60; max-width: calc(100vw - 24px); }
+.kiel-page .kiel-date[hidden] { display:none !important; }
+.kiel-page .kiel-date .date-panel-heading { white-space: nowrap; }
+.kiel-page .kiel-date .month-control { min-width: 32px; min-height: 32px; }
+.kiel-page .kiel-date .calendar-days { display: grid; }
+@media (min-width:701px) and (max-width:960px) {
+  .kiel-page .kiel-search__field[data-field="rueckkehr"] .kiel-date {left:50%;right:auto;transform:translateX(-50%);}
+}
+@media (max-width:700px) {
+  .kiel-page .kiel-date { max-width: min(320px,calc(100vw - 32px)); }
+  .kiel-page .kiel-search__field[data-field="anreise"] .kiel-date {left:0;right:auto;transform:none;}
+  .kiel-page .kiel-search__field[data-field="rueckkehr"] .kiel-date {left:auto;right:0;transform:none;}
+}
+
+/* 4 — Smooth read flow across intermediate devices without changing content.
+   Avoid desktop-only column jumps on landscape tablets. */
+@media (min-width:701px) and (max-width:1050px) {
+  .kiel-page .kiel-comparison__layout {gap:clamp(15px,2.3vw,25px);}
+  .kiel-page .kiel-extras__inner {min-width:0;}
+}
+
+/* 5 — Avoid horizontal bleed from tiny pager and top sort row on mobile.
+   Maintain usable tap targets for filtering, pagination and date buttons. */
+@media (max-width:700px) {
+  .kiel-page .kiel-comparison,
+  .kiel-page .kiel-extras { width:100%; max-width:100%; }
+  .kiel-page .kiel-results__top { flex-wrap:wrap; }
+  .kiel-page .kiel-results__top h2 { flex: 1 1 auto; }
+  .kiel-page .kiel-sort {margin-left:auto;}
+  .kiel-page .kiel-date .month-control {min-height:36px;}
+  .kiel-page .parking-offer__cta {min-height:38px;}
+}
+
+/* 6 — Reduced animation and focus are user settings, not visual redesign. */
+@media (prefers-reduced-motion: reduce) {
+  .kiel-page *, .kiel-page *::before, .kiel-page *::after {scroll-behavior:auto !important;transition-duration:0.01ms !important;}
+}
+/* Preserve the original official white mark even in renderers that defer the
+   transparent RGBA <img> paint inside a composited harbor background. The
+   identical asset is used as a background fallback, never a replacement logo. */
+.kiel-page .home-footer .footer-brand-link {
+  background: url('assets/footer/footer-logo-client-original.webp') left top / contain no-repeat;
+}
+
+/* IMPORTANT functional fix discovered during real browser clicking:
+   desktop popup extends below the Hero, so later comparison section used to
+   paint ON TOP of date cells. Give Hero its own higher stacking layer while
+   keeping the fixed navigation above it. Both calendars remain clickable. */
+.kiel-page .kiel-hero { z-index: 8; }

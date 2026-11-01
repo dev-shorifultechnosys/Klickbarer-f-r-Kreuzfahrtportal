@@ -1,0 +1,133 @@
+
+/* ===========================================================================
+   KREUZFAHRT PARKPLATZ / VALET KIEL — CLIENT SECTION 06–11 (2026-11-01)
+   Separate stylesheet preserves approved hero/gallery/sidebar styles.
+   Native German text, source-matched assets, all vectors are resolution free.
+   Layout: six-column story, three-column service info, two-column last row.
+   =========================================================================== */
+.valet-lower { --vp-royal:#003994; --vp-blue:#0056d9; --vp-border:#dcecf9; --vp-light:#f6fbff;
+  width:100%; padding:0 clamp(14px,3.35vw,52px) 20px; margin:0 auto;
+  color:#00318c; font-family:var(--bodyfont); }
+.valet-lower h2, .valet-lower h3, .valet-lower p { margin:0; }
+.valet-lower *, .vp-reviews-dialog * { box-sizing:border-box; }
+.vp-panel { background:#fff; border:1px solid var(--vp-border); border-radius:9px; box-shadow:0 1px 0 rgba(16,64,142,.02); }
+.vp-section-title { color:var(--vp-royal); font-size:clamp(17px,1.42vw,21px); font-weight:800; letter-spacing:-.12px; line-height:1.14; }
+.vp-section-title svg { width:25px; height:29px; flex:0 0 auto; color:var(--vp-blue); fill:none; stroke:var(--vp-blue); stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; }
+.vp-process { padding:9px 14px 13px; }
+.vp-process > .vp-section-title { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.vp-steps { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:13px; padding:0; margin:0; list-style:none; }
+.vp-step { position:relative; min-width:0; }
+.vp-step:not(:last-child)::after { content:'→'; position:absolute; color:#83b3ea; font-family:Arial,sans-serif; font-size:22px; right:-14px; top:45px; z-index:1; }
+.vp-step-head { height:34px; display:flex; align-items:center; gap:13px; margin-bottom:4px; }
+.vp-step-num { flex:0 0 25px; width:25px; height:25px; display:grid; place-items:center; color:#fff; background:linear-gradient(135deg,#1477ef,#0045c8); border-radius:50%; font-size:13px; font-weight:800; }
+.vp-step-icon { width:35px; height:35px; display:grid; place-items:center; border-radius:50%; background:#eaf4ff; color:#0842ae; }
+.vp-step-icon svg { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.vp-step-icon svg:has(use[href="#vp-icon-parking"]) { stroke:none; }
+.vp-step img { height:auto; width:100%; aspect-ratio:2.2; object-fit:cover; border-radius:4px; border:1px solid #e3edf7; }
+.vp-step h3 { color:#002d86; font-size:clamp(11px,1.07vw,14px); font-weight:800; margin-top:6px; line-height:1.15; white-space:nowrap; }
+.vp-step p { font-size:clamp(10px,1.04vw,13px); color:#23488b; line-height:1.3; margin-top:5px; }
+.vp-information-grid { display:grid; grid-template-columns:1fr 1.57fr 1.12fr; align-items:stretch; gap:9px; margin-top:9px; }
+.vp-information-grid > .vp-panel { padding:12px 13px 13px; min-width:0; }
+.vp-equipment .vp-section-title, .vp-transfer .vp-section-title { display:flex; gap:10px; align-items:flex-start; margin-bottom:11px; }
+.vp-equipment .vp-section-title { max-width:245px; }
+.vp-checklist { padding:0; margin:0; list-style:none; }
+.vp-checklist li { display:flex; gap:9px; align-items:flex-start; margin:5px 0; line-height:1.3; font-size:clamp(11px,1.04vw,13.5px); color:#163f91; }
+.vp-checklist li::before { content:''; flex:0 0 16px; width:16px; height:17px; background:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="m4 12 5 5L20 6" fill="none" stroke="%23009d4d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/%3E%3C/svg%3E') center/14px 14px no-repeat; }
+.vp-equipment .vp-checklist { padding-left:5px; }
+.vp-transfer-cols { display:grid; grid-template-columns:1fr 1fr; }
+.vp-transfer-cols > div { min-width:0; padding:0 7px; }
+.vp-transfer-cols > div:first-child { padding-left:0; border-right:1px solid #dcebf7; }
+.vp-transfer-cols > div:last-child { padding-left:15px; }
+.vp-transfer-cols h3 { font-weight:800; color:#00318d; font-size:clamp(12px,1.09vw,14px); margin:0 0 7px; }
+.vp-good-to-know > .vp-section-title { margin-bottom:9px; }
+.vp-tip { display:grid; grid-template-columns:29px minmax(0,1fr); align-items:flex-start; gap:11px; margin:7px 0; }
+.vp-tip > svg { width:23px; height:23px; stroke:#0051cb; color:#0051cb; stroke-width:2.8; fill:none; margin-top:2px; }
+.vp-tip h3 { color:#00409b; font-size:clamp(11px,1vw,13px); line-height:1.14; font-weight:800; }
+.vp-tip p { font-size:clamp(10px,.95vw,12.5px); color:#25478b; line-height:1.22; margin-top:2px; }
+.vp-bottom-grid { display:grid; grid-template-columns: 1.13fr 2fr; gap:9px; margin-top:9px; }
+.vp-bottom-grid > .vp-panel { padding:12px 13px 10px; min-width:0; }
+.vp-park-location > .vp-section-title { margin-bottom:5px; }
+.vp-park-location > p { color:#335493; line-height:1.3; font-size:clamp(11px,1.06vw,13px); margin-bottom:7px; }
+.vp-parking-map { position:relative; border-radius:7px; overflow:hidden; background:#e6f3ff; aspect-ratio:2.62; }
+.vp-parking-map > img { width:100%; height:100%; object-fit:cover; }
+.vp-map-button { position:absolute; z-index:2; bottom:5%; left:15%; width:74%; min-height:30px; display:flex; align-items:center; justify-content:center; gap:5px; padding:6px 7px; border:0; border-radius:4px; background:#0052c9; color:#fff; text-decoration:none; font-size:clamp(10px,.88vw,12px); font-weight:800; white-space:nowrap; }
+.vp-map-button:hover, .vp-map-button:focus-visible { background:#003c9c; }
+.vp-map-button svg, .vp-review-link svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.4; }
+.vp-reviews-header { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:20px; }
+.vp-review-link { background:transparent; border:0; display:flex; align-items:center; gap:6px; padding:0; font-size:clamp(10px,1vw,13px); color:#0665ed; white-space:nowrap; text-decoration:underline; text-underline-offset:2px; }
+.vp-review-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; }
+.vp-review-card { min-width:0; padding:10px 12px; border:1px solid #dcecf9; border-radius:7px; min-height:140px; background:#fff; }
+.vp-stars { font-family:Arial,sans-serif; color:#ffb400; font-size:19px; line-height:1; letter-spacing:-2px; display:block; margin-bottom:2px; }
+.vp-review-card h3 { font-size:clamp(12px,1.08vw,14px); line-height:1.17; margin-bottom:5px; color:#00398c; font-weight:800; }
+.vp-review-card p { color:#294e96; font-size:clamp(12px,1.08vw,14px); line-height:1.26; min-height:52px; }
+.vp-review-card footer { display:flex; flex-wrap:wrap; align-items:center; gap:5px; margin-top:7px; color:#003c92; font-size:clamp(11px,1.02vw,13px); }
+.vp-review-card footer span { color:#315294; }
+.vp-review-pager { display:none; align-items:center; justify-content:center; gap:12px; margin-top:12px; }
+.vp-review-pager button { border:1px solid #d4e8f8; background:#fff; color:#0050c3; border-radius:50%; display:grid; place-items:center; width:32px; height:32px; }
+.vp-review-pager svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.5; }
+.vp-reviews-dialog { border:1px solid #b8d9f4; border-radius:10px; background:white; max-width:min(550px,calc(100vw - 24px)); color:#003888; box-shadow:0 15px 45px #061e4250; }
+.vp-reviews-dialog::backdrop { background:#0c285999; }
+.vp-reviews-dialog-body { position:relative; padding:10px; }
+.vp-reviews-dialog h2 { margin:0 25px 4px 0; font-size:22px; }
+.vp-reviews-dialog-body>p { margin:0 0 15px; font-size:13px; }
+.vp-reviews-dialog-body .vp-review-card { margin-bottom:9px; }
+.vp-dialog-close { position:absolute; top:0; right:2px; background:transparent; border:0; font-size:28px; color:#00318b; }
+@media(min-width:1300px){
+  .vp-process { padding:14px 17px; }
+  .vp-step-head { height:45px; }
+  .vp-step-icon { width:44px; height:44px; }
+  .vp-step-icon svg { width:31px; height:31px; }
+  .vp-step-num { width:32px; height:32px; flex-basis:32px; font-size:17px; }
+  .vp-information-grid> .vp-panel,.vp-bottom-grid>.vp-panel { padding:17px 17px; }
+  .vp-review-card { min-height:160px; }
+}
+@media(max-width:950px){
+  .vp-steps { grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px 22px; }
+  .vp-step:not(:last-child)::after { display:none; }
+  .vp-step h3 { font-size:13px; }
+  .vp-step p { font-size:12px; }
+  .vp-information-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .vp-good-to-know { grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; column-gap:16px; }
+  .vp-good-to-know>.vp-section-title { grid-column:1/-1; }
+  .vp-bottom-grid { grid-template-columns:1fr; }
+  .vp-parking-map { max-height:260px; }
+  .vp-review-card p { min-height:auto; }
+}
+@media(max-width:560px){
+  .valet-lower { padding:0 14px 25px; }
+  .vp-process { padding:12px; }
+  .vp-process>.vp-section-title { font-size:19px; }
+  .vp-steps { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 11px; }
+  .vp-step-head { gap:10px; }
+  .vp-step h3 { white-space:normal; font-size:12px; margin-top:5px; }
+  .vp-step p { font-size:11px; }
+  .vp-information-grid { grid-template-columns:1fr; gap:10px; }
+  .vp-information-grid> .vp-panel { padding:16px; }
+  .vp-transfer-cols h3 { font-size:14px; }
+  .vp-transfer-cols { gap:5px; }
+  .vp-transfer-cols .vp-checklist li { font-size:12px; }
+  .vp-good-to-know { display:block; }
+  .vp-tip { margin:12px 0; }
+  .vp-tip h3 { font-size:13px; }
+  .vp-tip p { font-size:12px; }
+  .vp-section-title { font-size:19px; }
+  .vp-bottom-grid> .vp-panel { padding:15px 13px; }
+  .vp-parking-map { aspect-ratio:2.35; }
+  .vp-map-button { font-size:9px; bottom:5%; width:83%; left:9%; }
+  .vp-reviews-header { margin-bottom:12px; }
+  .vp-review-link { font-size:11px; }
+  .vp-review-cards { display:block; }
+  .vp-review-card { display:none; min-height:135px; }
+  .vp-review-card.is-active { display:block; }
+  .vp-review-card p { font-size:14px; margin-top:4px; }
+  .vp-review-card h3 { font-size:15px; }
+  .vp-review-card footer { font-size:13px; }
+  .vp-review-pager { display:flex; }
+}
+@media(max-width:355px){
+ .vp-reviews-header { flex-direction:column; align-items:flex-start; }
+ .vp-transfer-cols { grid-template-columns:1fr; }
+ .vp-transfer-cols > div:first-child { border-right:0; border-bottom:1px solid #dcebf7; padding-bottom:10px; }
+ .vp-transfer-cols > div:last-child { padding:10px 0 0; }
+}
+@media(prefers-reduced-motion:reduce){.vp-review-card { scroll-behavior:auto; }}

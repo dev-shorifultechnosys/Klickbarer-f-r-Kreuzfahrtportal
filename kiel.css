@@ -1,0 +1,115 @@
+/* ============================================================================
+   KreuzfahrtParkplatz.de — SEO PAGE / KIEL — first reference section
+   Exact German copy, real text, local assets, inline SVG, no frameworks/CDN.
+   Only the client-supplied Kiel header/hero/search section is in this version.
+   Original V11 Homepage styles remain untouched in styles.css.
+   ============================================================================ */
+
+/* 01. HEADER — preserve artwork and visual language of the Homepage. */
+.kiel-page { background: #fff; color: #07327f; }
+.kiel-page .site-header { height: clamp(44px, 5vw, 74px); }
+.kiel-page .header-inner { max-width: 1450px; padding-inline: clamp(23px, 5.3vw, 75px); }
+/* Same official 1020×307 artwork as the approved Homepage V11.
+   Its 3.32:1 ratio is taller than the previous incorrect placeholder.
+   Scale by header height to avoid crop; maintain original proportions. */
+.kiel-page .brand-logo { width: clamp(135px, 16vw, 228px); height: auto; max-height: 100%; object-fit: contain; }
+.kiel-page .main-navigation { gap: clamp(12px, 2.4vw, 28px); margin-left: clamp(20px, 4.2vw, 47px); }
+.kiel-page .nav-button { font-size: clamp(10px, 1.2vw, 14px); padding: 8px 0; }
+.kiel-page .header-actions { margin-left: auto; gap: clamp(7px, 1.6vw, 16px); }
+.kiel-page .favorites-button { font-size: clamp(11px, 1.2vw, 14px); height: clamp(29px, 3.1vw, 39px); }
+.kiel-page .nav-dropdown { top: calc(100% + 5px); }
+.kiel-page .header-panel { top: calc(100% + 5px); }
+
+/* 02. HERO — photographic asset only. Every visible label is editable HTML. */
+.kiel-hero { position:relative; isolation:isolate; height: clamp(238px,28.5vw,465px); background:#e7f4fd; overflow:visible; }
+.kiel-hero__background { position:absolute; z-index:-1; inset:0; background: url('assets/hero-kiel-crystal.webp') center 49% / cover no-repeat; }
+.kiel-hero__background::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(238,249,255,.36) 0%,rgba(238,249,255,.11) 40%,transparent 68%); pointer-events:none; }
+.kiel-hero__content { max-width:1450px; margin-inline:auto; padding: clamp(9px,1.6vw,22px) clamp(42px,5.5vw,78px) 0; }
+.kiel-breadcrumb { display:flex; align-items:center; gap:7px; font-size:clamp(9.5px,1.1vw,13px); line-height:1.2; color:#123c84; margin:0 0 clamp(7px,1.1vw,13px); }
+.kiel-breadcrumb a { color:inherit; text-decoration:none; }
+.kiel-breadcrumb a:hover { text-decoration:underline; }
+.kiel-breadcrumb span[aria-hidden] { color:#0e5fe0; font-weight:700; }
+.kiel-hero h1 { color:#07337f; font-family:Arial,"Roboto",sans-serif; font-size:clamp(36px,4.3vw,65px); line-height:1.04; letter-spacing:-.7px; font-weight:800; margin:0; }
+.kiel-hero__subtitle { color:#092f7a; font-family:Arial,"Roboto",sans-serif; font-weight:500; font-size:clamp(15px,1.9vw,25px); margin:4px 0 0; line-height:1.25; }
+.kiel-hero__benefits { display:grid; row-gap:clamp(3px,.5vw,7px); list-style:none; padding:0; margin:clamp(8px,1.2vw,17px) 0 0; }
+.kiel-hero__benefits li { display:flex; align-items:center; gap:9px; color:#082b73; font-size:clamp(10.5px,1.28vw,17px); line-height:1.17; white-space:nowrap; }
+.kiel-hero__check { flex:0 0 auto; display:grid; place-items:center; width:clamp(13px,1.58vw,21px); height:clamp(13px,1.58vw,21px); border-radius:50%; color:#fff; background:#0c9f4a; }
+.kiel-hero__check .icon { width:80%; height:80%; stroke-width:3.4; }
+
+/* 03. SEARCH — the screenshot's 3 fields and a genuine button, not a picture. */
+.kiel-search { position:absolute; z-index:5; left:50%; bottom:clamp(9px,1.2vw,18px); transform:translateX(-50%); width:calc(100% - clamp(80px,9.5vw,150px)); max-width:1290px; min-height:clamp(52px,5.7vw,78px); padding:clamp(5px,.66vw,10px); border:1px solid #e1eaf5; border-radius:8px; background:#fff; box-shadow:0 6px 15px rgba(6,45,95,.18); display:grid; grid-template-columns:1.02fr 1.03fr 1.15fr minmax(160px,.89fr); gap:0; align-items:center; }
+.kiel-search__field { position:relative; min-width:0; height:100%; }
+.kiel-search__field + .kiel-search__field::before { content:""; position:absolute; z-index:1; width:1px; left:0; top:12%; bottom:12%; background:#e1ebf6; }
+.kiel-search__control { display:flex; gap:clamp(8px,1.1vw,15px); width:100%; height:100%; padding:4px clamp(6px,1.6vw,23px); align-items:center; border:0; background:#fff; border-radius:4px; color:#003fbc; text-align:left; min-width:0; }
+.kiel-search__control:hover { background:#f6fbff; }
+.kiel-search__calendar { width:clamp(22px,2.55vw,33px); height:clamp(22px,2.55vw,33px); flex:0 0 auto; stroke-width:2.15; }
+.kiel-search__copy { display:flex; flex-direction:column; align-items:flex-start; gap:3px; min-width:0; flex:1; }
+.kiel-search__label { font-size:clamp(9.5px,1.05vw,13.2px); font-weight:400; color:#5b6f9a; line-height:1.06; white-space:nowrap; }
+.kiel-search__value { font-size:clamp(11.5px,1.35vw,18px); line-height:1.07; font-weight:700; color:#07327f; white-space:nowrap; }
+.kiel-search__ship { width:clamp(30px,3.4vw,46px); height:auto; object-fit:contain; flex:0 0 auto; }
+.kiel-search .icon--chevron { width:18px; height:18px; margin-left:auto; color:#004adb; }
+.kiel-search__submit { height:clamp(39px,4.7vw,57px); background:#ffca00; border:0; color:#002d82; font-size:clamp(11px,1.27vw,16px); font-weight:700; padding:0 10px; border-radius:5px; display:flex; align-items:center; justify-content:center; gap:9px; white-space:nowrap; }
+.kiel-search__submit:hover { background:#ffdd27; }
+.kiel-search__arrow { width:18px; height:18px; stroke-width:2.3; }
+.kiel-search__status { position:absolute; z-index:12; left:50%; transform:translateX(-50%); top:calc(100% - 7px); background:#fff; border:1px solid #9bc3ed; border-radius:7px; padding:9px 14px; width:min(680px,calc(100% - 36px)); font-size:13px; box-shadow:0 6px 15px #0d286b24; }
+.kiel-search__status[data-error="true"] { border-color:#d56b50; color:#8a2416; }
+/* Per-field calendar anchoring (own popup for each date). */
+.kiel-search .kiel-date { left:50%; bottom:auto; top:calc(100% + 10px); transform:translateX(-50%); width:min(294px,90vw); z-index:40; font-family:inherit; }
+.kiel-search .kiel-date .date-panel-hint { color:#536a91; font-size:11px; margin:8px 0 0; line-height:1.3; }
+.kiel-line-options { top:calc(100% + 9px); left:4px; }
+/* No visual overlay should conceal the active date picker. */
+.kiel-search__field:has(.kiel-date:not([hidden])) { z-index:16; }
+[hidden] { display:none !important; }
+
+/* Tablet: preserve all client labels and natural spacing, no horizontal scroll. */
+@media (max-width: 850px) and (min-width:701px){
+  .kiel-page .main-navigation { margin-left:clamp(25px,6vw,51px); position:static; display:flex; flex-direction:row; background:transparent; padding:0; border:0; box-shadow:none; width:auto; height:100%; gap:12px; }
+  .kiel-page .nav-button { width:auto; font-size:10.5px; padding:8px 0; }
+  .kiel-page .nav-dropdown { position:absolute; width:max-content; box-shadow:0 13px 30px rgba(6,45,112,.16); }
+  .kiel-page .mobile-menu-toggle { display:none; }
+  .kiel-page .favorites-button > span { display:inline; }
+  .kiel-page .favorites-button { width:auto; }
+  .kiel-page .brand-logo { width: clamp(125px,16vw,145px); }
+  .kiel-page .header-actions { margin-left:auto; }
+  .kiel-page .header-inner { padding-inline:clamp(25px,5.4vw,45px); }
+  .kiel-hero__content { padding-left:clamp(38px,5.5vw,46px); }
+}
+/* Phone: retain EXACT German content, but rearrange the search into usable rows. */
+@media (max-width:700px){
+  .kiel-page .site-header { height:60px; }
+  .kiel-page .header-inner { padding-inline:15px; }
+  .kiel-page .brand-logo { width:clamp(151px,43vw,195px); }
+  .kiel-page .main-navigation { margin-left:0; position:absolute; top:60px; display:none; flex-direction:column; align-items:stretch; height:auto; padding:9px 19px 15px; gap:0; border-bottom:1px solid #d5e4f6; box-shadow:0 9px 18px #163a6b20; background:#fff; }
+  .kiel-page .main-navigation.is-open { display:flex; }
+  .kiel-page .nav-button { font-size:15px; width:100%; justify-content:space-between; padding:12px; }
+  .kiel-page .nav-dropdown { position:static; width:100%; min-width:0; box-shadow:none; margin-bottom:5px; }
+  .kiel-page .mobile-menu-toggle { display:grid; }
+  .kiel-page .header-actions { margin-left:auto; gap:4px; }
+  .kiel-page .favorites-button { width:37px; padding:0; justify-content:center; }
+  .kiel-page .favorites-button > span { display:none; }
+  .kiel-hero { height:auto; min-height:660px; padding-bottom:23px; }
+  .kiel-hero__background { height:365px; inset:0 0 auto; background-position:62% center; }
+  .kiel-hero__background::after { background:linear-gradient(180deg,rgba(236,248,255,.76) 0%,rgba(236,248,255,.63) 49%,rgba(236,248,255,.25) 78%,#eff8ff 99%); }
+  .kiel-hero__content { padding:18px 21px 0; min-height:326px; }
+  .kiel-breadcrumb { font-size:11px; margin-bottom:15px; }
+  .kiel-hero h1 { font-size:clamp(31px,7.6vw,46px); line-height:1.05; }
+  .kiel-hero__subtitle { font-size:clamp(15px,4.2vw,19px); max-width:340px; }
+  .kiel-hero__benefits { margin-top:16px; gap:11px; }
+  .kiel-hero__benefits li { font-size:13px; white-space:normal; line-height:1.25; gap:9px; max-width:360px; }
+  .kiel-hero__check { width:18px; height:18px; }
+  .kiel-search { position:relative; bottom:auto; left:auto; transform:none; width:calc(100% - 30px); max-width:450px; margin:4px auto 0; display:grid; grid-template-columns:1fr 1fr; gap:7px; padding:12px; min-height:auto; border-radius:10px; box-shadow:0 9px 22px #0b3d731e; }
+  .kiel-search__field { height:56px; border:1px solid #d9e8f5; border-radius:6px; }
+  .kiel-search__field + .kiel-search__field::before { display:none; }
+  .kiel-search__field--line { grid-column:span 2; }
+  .kiel-search__control { padding:6px 9px; gap:7px; }
+  .kiel-search__calendar { width:23px; height:23px; }
+  .kiel-search__ship { width:29px; }
+  .kiel-search__label { font-size:11px; }
+  .kiel-search__value { font-size:13px; }
+  .kiel-search__submit { grid-column:span 2; height:48px; font-size:15px; }
+  .kiel-search__status { position:relative; margin:11px auto 0; top:auto; left:auto; transform:none; }
+  .kiel-search .kiel-date { left:0; transform:none; width:294px; }
+  .kiel-search__field[data-field="rueckkehr"] .kiel-date { left:auto; right:0; }
+}
+@media (max-width:375px){ .kiel-hero { min-height:685px; } .kiel-hero__benefits li { font-size:12px; } .kiel-search__control { padding:5px 5px; } .kiel-search__calendar { width:20px; height:20px; } .kiel-search__value { font-size:12px; } }
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto !important;transition-duration:0ms !important;}}

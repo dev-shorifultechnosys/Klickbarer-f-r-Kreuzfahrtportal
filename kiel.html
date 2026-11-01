@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef7fd">
+  <meta name="description" content="Kreuzfahrt ab Kiel: Parkplätze am Ostseekai, Ostuferhafen, Norwegenkai und Schwedenkai vergleichen und sicher buchen.">
+  <title>Kreuzfahrt ab Kiel – Parkplätze vergleichen | KreuzfahrtParkplatz.de</title>
+  <!-- Reuse the approved V11 homepage design system. No extra dependencies. -->
+  <link rel="preload" as="image" href="assets/hero-kiel-crystal.webp" type="image/webp" fetchpriority="high">
+  <!-- Header identity is the exact same approved high-resolution logo as Homepage V11. -->
+  <link rel="preload" as="image" href="assets/official-kreuzfahrt-logo.webp" type="image/webp">
+  <link rel="icon" href="assets/ship-logo-clean.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="kiel.css">
+  <link rel="stylesheet" href="kiel-results.css">
+  <link rel="stylesheet" href="kiel-extra.css">
+  <link rel="stylesheet" href="kiel-footer.css">
+  <!-- V7: Client-matched desktop width, centered menu and responsive overlay fixes. -->
+  <link rel="stylesheet" href="kiel-final.css">
+  <script src="kiel.js" defer></script>
+  <script src="kiel-results.js" defer></script>
+  <script src="kiel-live-map.js" defer></script>
+  <script src="kiel-extra.js" defer></script>
+  <script src="kiel-footer.js" defer></script>
+  <script src="kiel-final.js" defer></script>
+</head>
+<body class="kiel-page">
+  <!-- Vector icons are intentional; crisp at any pixel density and accessible through native labels. -->
+  <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="6.7" r="3.7"/><path d="M5 21v-3.1a7 7 0 0 1 14 0V21H5Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="2.7" y="5.5" width="18.6" height="16" rx="1.7"/><path d="M7.4 2.6v5.4M16.6 2.6v5.4M2.8 10.1h18.4"/><rect x="6" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="11" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="16" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="6" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="11" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="16" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6.5-6.5L20 12l-6.5 6.5"/></symbol>
+    <symbol id="icon-footer-check" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="currentColor" stroke="none"/><path d="m8.3 15.5 5.4 5.3 10.4-11" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+
+    <!-- Parking comparison: consistent light-weight SVG pictograms -->
+    <symbol id="result-arrow" viewBox="0 0 24 24"><path d="M3 12h17m-6-6 6 6-6 6"/></symbol>
+    <symbol id="result-up" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></symbol>
+    <symbol id="result-pin" viewBox="0 0 24 24"><path d="M12 21s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="result-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="result-car" viewBox="0 0 24 24"><path d="M5 12 7 6h10l2 6M3 13h18v7H3zM7 20v2m10-2v2M7 16h3m4 0h3"/></symbol>
+    <symbol id="result-walk" viewBox="0 0 24 24"><circle cx="15" cy="4" r="2"/><path d="m12 8 4 0 3 5M12 8l-3 6-5 3m9-1 5 5m-8-8-3 9"/></symbol>
+    <symbol id="result-video" viewBox="0 0 24 24"><path d="M4 6h14v12H4V6Zm14 5 4-3v8l-4-3M9 11l3 2-3 2z"/></symbol>
+    <symbol id="result-shield" viewBox="0 0 24 24"><path d="M12 2 21 6v6c0 5-4 8-9 10-5-2-9-5-9-10V6l9-4z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="result-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="result-charging" viewBox="0 0 24 24"><path d="m14 2-8 11h7l-2 9 8-12h-7l2-8"/></symbol>
+    <symbol id="result-key" viewBox="0 0 24 24"><circle cx="8" cy="10" r="5"/><path d="m12 13 9 9m-4-4 3-3"/></symbol>
+    <symbol id="result-parking" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8"/></symbol>
+    <symbol id="result-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v7M12 7v.4"/></symbol>
+    <symbol id="result-heart" viewBox="0 0 24 24"><path d="M20.8 4.5a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.7a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+    <symbol id="result-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="result-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.5 7.1 1-5.1 5 .9 7.1-6-3.3-6 3.3.9-7.1-5.1-5 7.1-1L12 2z"/></symbol>
+
+    <!-- Category pictograms: hand-authored crisp geometry (no external icon font). -->
+    <symbol id="kiel-extra-walk" viewBox="0 0 24 24"><circle cx="14" cy="3.5" r="2.1"/><path d="m11 9 4-1 3 5 3 1M11 9l-3 5-5 2m9-5-2 6-4 5m7-5 6 5"/></symbol>
+    <symbol id="kiel-extra-car" viewBox="0 0 24 24"><path d="m4 13 2-6.5c.2-.9 1-1.5 2-1.5h8c1 0 1.8.6 2 1.5L20 13M3 13h18v7H3v-7Zm4 7v2m10-2v2M6 16h3m6 0h3"/></symbol>
+    <symbol id="kiel-extra-garage" viewBox="0 0 24 24"><path d="m2 11 10-9 10 9v11H2V11Z"/><path d="M9 22v-9h6v9"/></symbol>
+    <symbol id="kiel-extra-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6.5-6 6.5 6-6.5 6"/></symbol>
+    <symbol id="kiel-extra-question" viewBox="0 0 24 24"><path d="m6 5 5 5-5 5m7-9 5 4-5 5"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#kiel-main">Zum Inhalt springen</a>
+  <!-- 01 / HEADER: exact approved Homepage V11 logo file, without redrawing or substituting the Kiel placeholder. -->
+  <header class="site-header" id="seitenkopf">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="KreuzfahrtParkplatz.de – Startseite">
+        <img class="brand-logo" src="assets/official-kreuzfahrt-logo.webp" width="1020" height="307" alt="KREUZFAHRT PARKPLATZ.DE" decoding="async" fetchpriority="high">
+      </a>
+      <nav id="hauptnavigation" class="main-navigation" aria-label="Hauptnavigation">
+        <div class="nav-item">
+          <button type="button" class="nav-button" data-menu="ports-menu" aria-controls="ports-menu" aria-expanded="false">Kreuzfahrthäfen <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div id="ports-menu" class="nav-dropdown" hidden><a href="kiel.html" aria-current="page">Kiel</a><span class="dropdown-note">Weitere Häfen folgen als separate Projektphase.</span></div>
+        </div>
+        <div class="nav-item">
+          <button type="button" class="nav-button" data-menu="cruises-menu" aria-controls="cruises-menu" aria-expanded="false">Reedereien <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div id="cruises-menu" class="nav-dropdown" hidden>
+            <button type="button" data-choose-line="AIDA">AIDA</button>
+            <button type="button" data-choose-line="Mein Schiff">Mein Schiff</button>
+            <button type="button" data-choose-line="MSC">MSC</button>
+            <button type="button" data-choose-line="Costa">Costa</button>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button type="button" class="nav-button" data-menu="parking-menu" aria-controls="parking-menu" aria-expanded="false">Parkarten <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div id="parking-menu" class="nav-dropdown" hidden>
+            <a href="index.html#parkplatzarten">Terminal-Parking</a>
+            <a href="index.html#parkplatzarten">Shuttle-Parking</a>
+            <a href="index.html#parkplatzarten">Parkhaus / Halle</a>
+            <a href="index.html#parkplatzarten">Valet Parking</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button type="button" class="nav-button" data-menu="help-menu" aria-controls="help-menu" aria-expanded="false">Hilfe <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div id="help-menu" class="nav-dropdown nav-dropdown--right" hidden>
+            <button type="button" id="help-faq">Häufige Fragen</button>
+            <button type="button" id="help-service">Kundenservice</button>
+          </div>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button class="favorites-button" type="button" id="favorites-trigger" aria-controls="favorites-panel" aria-expanded="false"><svg class="icon icon--heart"><use href="#icon-heart"/></svg><span>Merkliste (0)</span></button>
+        <button class="account-button" type="button" id="account-trigger" aria-label="Mein Konto" aria-controls="account-panel" aria-expanded="false"><svg class="icon icon--user"><use href="#icon-user"/></svg></button>
+        <button class="mobile-menu-toggle" type="button" id="mobile-menu-trigger" aria-label="Menü öffnen" aria-controls="hauptnavigation" aria-expanded="false"><svg class="icon"><use href="#icon-menu"/></svg></button>
+      </div>
+      <div class="header-panel" id="favorites-panel" role="status" hidden>Deine Merkliste ist noch leer.</div>
+      <div class="header-panel" id="account-panel" role="status" hidden>Der Kontobereich folgt in einer späteren Projektphase.</div>
+      <div class="header-panel" id="help-panel" role="status" hidden>Der vollständige Kundenservice ist Teil der späteren Projektphase.</div>
+    </div>
+  </header>
+
+  <main id="kiel-main">
+    <!-- 02 / KIEL PAGE: supplied screenshot, not redesigned. Photography is its own asset;
+         ALL breadcrumb, headline, features, form values and button copy are live HTML. -->
+    <section class="kiel-hero" aria-labelledby="kiel-title">
+      <div class="kiel-hero__background" role="img" aria-label="Kreuzfahrtschiff am Kreuzfahrtterminal Ostseekai Kiel"></div>
+      <div class="kiel-hero__content">
+        <nav class="kiel-breadcrumb" aria-label="Brotkrumennavigation"><a href="index.html">Startseite</a><span aria-hidden="true">›</span><a href="index.html#kreuzfahrthaefen">Kreuzfahrthäfen</a><span aria-hidden="true">›</span><span aria-current="page">Kiel</span></nav>
+        <h1 id="kiel-title">Kreuzfahrt ab Kiel</h1>
+        <p class="kiel-hero__subtitle">Parkplätze vergleichen und sicher buchen.</p>
+        <ul class="kiel-hero__benefits" aria-label="Vorteile">
+          <li><span class="kiel-hero__check"><svg class="icon"><use href="#icon-check"/></svg></span><span>Parkplätze am Ostseekai, Ostuferhafen, Norwegenkai und Schwedenkai</span></li>
+          <li><span class="kiel-hero__check"><svg class="icon"><use href="#icon-check"/></svg></span><span>Mit dem Extra Schutz der Allianz – ohne Zusatzkosten.</span></li>
+          <li><span class="kiel-hero__check"><svg class="icon"><use href="#icon-check"/></svg></span><span>Schnell, einfach und zum besten Preis.</span></li>
+        </ul>
+      </div>
+
+      <!-- 03 / Search: 3 exact reference fields, 2 independent date calendars. -->
+      <form class="kiel-search" id="kiel-search" aria-label="Parkplatzangebote in Kiel aktualisieren" novalidate>
+        <div class="kiel-search__field" data-field="anreise">
+          <button type="button" class="kiel-search__control" id="kiel-arrival-trigger" aria-controls="kiel-arrival-calendar" aria-expanded="false" aria-haspopup="dialog">
+            <svg class="icon kiel-search__calendar"><use href="#icon-calendar"/></svg>
+            <span class="kiel-search__copy"><span class="kiel-search__label">Anreise</span><span class="kiel-search__value" id="kiel-arrival-value">12.05.2026</span></span>
+          </button>
+          <div class="date-panel kiel-date" role="dialog" aria-label="Anreisedatum auswählen" id="kiel-arrival-calendar" hidden>
+            <div class="date-panel-heading"><button class="month-control" type="button" data-month-shift="-1" aria-label="Vorheriger Monat">‹</button><strong class="current-month" aria-live="polite"></strong><button type="button" class="month-control" data-month-shift="1" aria-label="Nächster Monat">›</button></div>
+            <div class="weekday-names" aria-hidden="true"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div><div class="calendar-days" role="group" aria-label="Anreisetage"></div>
+            <p class="date-panel-hint">Bitte wähle ein zukünftiges Anreisedatum.</p>
+          </div>
+        </div>
+        <div class="kiel-search__field" data-field="rueckkehr">
+          <button type="button" class="kiel-search__control" id="kiel-departure-trigger" aria-controls="kiel-departure-calendar" aria-expanded="false" aria-haspopup="dialog">
+            <svg class="icon kiel-search__calendar"><use href="#icon-calendar"/></svg>
+            <span class="kiel-search__copy"><span class="kiel-search__label">Rückkehr</span><span class="kiel-search__value" id="kiel-departure-value">19.05.2026</span></span>
+          </button>
+          <div class="date-panel kiel-date" role="dialog" aria-label="Rückreisedatum auswählen" id="kiel-departure-calendar" hidden>
+            <div class="date-panel-heading"><button class="month-control" type="button" data-month-shift="-1" aria-label="Vorheriger Monat">‹</button><strong class="current-month" aria-live="polite"></strong><button type="button" class="month-control" data-month-shift="1" aria-label="Nächster Monat">›</button></div>
+            <div class="weekday-names" aria-hidden="true"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div><div class="calendar-days" role="group" aria-label="Rückreisetage"></div>
+            <p class="date-panel-hint">Das Rückreisedatum muss nach dem Anreisedatum liegen.</p>
+          </div>
+        </div>
+        <div class="kiel-search__field kiel-search__field--line" data-field="reederei">
+          <button class="kiel-search__control" type="button" id="kiel-line-trigger" aria-controls="kiel-line-options" aria-expanded="false" aria-haspopup="listbox">
+            <img class="kiel-search__ship" src="assets/ship-original-reference.png" alt="" width="37" height="34" decoding="async">
+            <span class="kiel-search__copy"><span class="kiel-search__label">Reederei (optional)</span><span class="kiel-search__value" id="kiel-line-value">z. B. AIDA</span></span>
+            <svg class="icon icon--chevron"><use href="#icon-chevron"/></svg>
+          </button>
+          <div class="field-options kiel-line-options" id="kiel-line-options" role="listbox" aria-label="Reedereien" hidden>
+            <button type="button" role="option" data-line="" aria-selected="true">Keine Auswahl</button><button type="button" role="option" data-line="AIDA">AIDA</button><button type="button" role="option" data-line="Mein Schiff">Mein Schiff</button><button type="button" role="option" data-line="MSC">MSC</button><button type="button" role="option" data-line="Costa">Costa</button>
+          </div>
+        </div>
+        <button class="kiel-search__submit" type="submit">Angebote aktualisieren <svg class="icon kiel-search__arrow"><use href="#icon-arrow"/></svg></button>
+      </form>
+      <p class="kiel-search__status" id="kiel-search-status" role="status" aria-live="polite" hidden></p>
+    </section>
+
+    <!-- ===================================================================
+      04 / KIEL PARKING COMPARISON — supplied "Kiel Auswahl 01" screenshot.
+      5 provider examples taken exclusively from client design; no live inventory.
+      Dynamic content generated by kiel-results.js from data object for easy API
+      replacement. All copy is real editable HTML, not baked into screenshots.
+    ==================================================================== -->
+    <section class="kiel-comparison" id="kiel-vergleich" aria-labelledby="kiel-results-title">
+      <div class="kiel-comparison__layout">
+        <aside class="kiel-filters" aria-label="Parkplatzangebote filtern">
+          <!-- 04.01 LIVE MAP — Real OpenStreetMap slippy map, not a flat screenshot.
+       No invented provider pins: only verified ferry/cruise terminal locations.
+       Requires a network connection to load OpenStreetMap tiles. -->
+          <section class="kiel-map" aria-label="Interaktive Karte: Kieler Kreuzfahrtterminals" id="kiel-live-map">
+            <div class="kiel-map__view">
+              <div class="kiel-map__placeholder" aria-hidden="true">
+                <span class="kiel-map__water"></span><span class="kiel-map__road road--one"></span><span class="kiel-map__road road--two"></span>
+                <span class="kiel-map__placeholder-title">Kiel · Hafen</span>
+                <span class="kiel-map__placeholder-subtitle">Live-Karte wird geladen …</span>
+              </div>
+              <iframe class="kiel-map__iframe" id="kiel-map-iframe"
+                title="Interaktive OpenStreetMap-Karte von Kiel mit wählbarem Terminalmarker"
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=10.12693%2C54.31393%2C10.16693%2C54.33793&amp;layer=mapnik&amp;marker=54.32593%2C10.14693"
+                allowfullscreen></iframe>
+              <span class="kiel-map__live" aria-label="Interaktive Karte">LIVE</span>
+            </div>
+            <div class="kiel-map__controls" role="group" aria-label="Terminal auf der Karte auswählen">
+              <button class="is-selected" type="button" data-kiel-terminal="ostseekai" aria-pressed="true" title="Ostseekai anzeigen">Ostseekai</button>
+              <button type="button" data-kiel-terminal="norwegenkai" aria-pressed="false" title="Norwegenkai anzeigen">Norwegenkai</button>
+              <button type="button" data-kiel-terminal="schwedenkai" aria-pressed="false" title="Schwedenkai anzeigen">Schwedenkai</button>
+            </div>
+            <div class="kiel-map__bottom">
+              <span id="kiel-map-current" aria-live="polite">Terminal Ostseekai</span>
+              <a id="kiel-map-full" href="https://www.openstreetmap.org/?mlat=54.32593&amp;mlon=10.14693#map=15/54.32593/10.14693" target="_blank" rel="noopener noreferrer">Karte öffnen ↗</a>
+            </div>
+            <p class="kiel-map__offline" id="kiel-map-offline" hidden>Live-Karte benötigt eine Internetverbindung. <a href="https://www.openstreetmap.org/?mlat=54.32593&amp;mlon=10.14693#map=15/54.32593/10.14693" target="_blank" rel="noopener noreferrer">In OpenStreetMap öffnen</a></p>
+          </section>
+          <div class="filters-head"><h2>Filter</h2><button class="filters-toggle" type="button" id="mobile-filter-toggle" aria-expanded="false" aria-controls="filter-groups">Filter anzeigen <span aria-hidden="true">⌄</span></button></div>
+          <form id="filter-groups" class="filter-groups" aria-label="Parkplatzfilter">
+            <fieldset class="filter-group" data-filter-group="type"><legend><button type="button" class="filter-title" aria-expanded="true" aria-controls="filter-body-type">Parkplatzart <svg class="result-icon"><use href="#result-up"/></svg></button></legend>
+              <div id="filter-body-type" class="filter-group__body">
+                <label><input name="type" type="checkbox" value="all" checked> Alle anzeigen</label>
+                <label><input name="type" type="checkbox" value="terminal"> Terminal-Parking <span class="filter-count">65</span></label>
+                <label><input name="type" type="checkbox" value="shuttle"> Shuttle-Parkplätze <span class="filter-count">48</span></label>
+                <label><input name="type" type="checkbox" value="garage"> Halle &amp; Parkhaus <span class="filter-count">32</span></label>
+                <label><input name="type" type="checkbox" value="valet"> Valet Parking <span class="filter-count">12</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="filter-group" data-filter-group="price"><legend><button type="button" class="filter-title" aria-expanded="true" aria-controls="filter-body-price">Preis (7 Tage) <svg class="result-icon"><use href="#result-up"/></svg></button></legend>
+              <div id="filter-body-price" class="filter-group__body price-body"><output for="price-range" id="price-label">0 € – 300 €</output><input type="range" id="price-range" name="price" min="0" max="300" value="300" step="1" aria-label="Maximalpreis in Euro"></div>
+            </fieldset>
+            <fieldset class="filter-group" data-filter-group="distance"><legend><button type="button" class="filter-title" aria-expanded="true" aria-controls="filter-body-distance">Entfernung zum Terminal <svg class="result-icon"><use href="#result-up"/></svg></button></legend>
+              <div id="filter-body-distance" class="filter-group__body">
+                <label><input type="checkbox" name="distance" value="all" checked> Alle anzeigen</label>
+                <label><input type="checkbox" name="distance" value="direct"> Direkt am Terminal <span class="filter-count">18</span></label>
+                <label><input type="checkbox" name="distance" value="2"> bis 2 km <span class="filter-count">54</span></label>
+                <label><input type="checkbox" name="distance" value="5"> bis 5 km <span class="filter-count">28</span></label>
+                <label><input type="checkbox" name="distance" value="over5"> über 5 km <span class="filter-count">17</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="filter-group" data-filter-group="service"><legend><button type="button" class="filter-title" aria-expanded="true" aria-controls="filter-body-service">Ausstattung &amp; Service <svg class="result-icon"><use href="#result-up"/></svg></button></legend>
+              <div id="filter-body-service" class="filter-group__body">
+                <label><input type="checkbox" name="service" value="covered"> Halle / überdacht <span class="filter-count">38</span></label>
+                <label><input type="checkbox" name="service" value="video"> Videoüberwachung <span class="filter-count">56</span></label>
+                <label><input type="checkbox" name="service" value="24h"> 24/7 geöffnet <span class="filter-count">61</span></label>
+                <label><input type="checkbox" name="service" value="shuttle"> Shuttle-Service inkl. <span class="filter-count">47</span></label>
+                <label><input type="checkbox" name="service" value="valet"> Valet-Service <span class="filter-count">12</span></label>
+                <label><input type="checkbox" name="service" value="charging"> E-Ladestation <span class="filter-count">8</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="filter-group" data-filter-group="rating"><legend><button type="button" class="filter-title" aria-expanded="true" aria-controls="filter-body-rating">Kundenbewertung <svg class="result-icon"><use href="#result-up"/></svg></button></legend>
+              <div id="filter-body-rating" class="filter-group__body">
+                <label><input type="checkbox" name="rating" value="all" checked> Alle anzeigen</label>
+                <label><input type="checkbox" name="rating" value="4.5"> ab 4,5 Sterne <span class="filter-count">42</span></label>
+                <label><input type="checkbox" name="rating" value="4.0"> ab 4,0 Sterne <span class="filter-count">63</span></label>
+                <label><input type="checkbox" name="rating" value="3.5"> ab 3,5 Sterne <span class="filter-count">19</span></label>
+              </div>
+            </fieldset>
+            <button class="filter-reset" type="reset">Filter zurücksetzen</button>
+          </form>
+          <div class="kiel-filter-tip"><span class="kiel-filter-tip__bulb" aria-hidden="true">☀</span><div><strong>Tipp</strong><p>Je früher du buchst, desto größer ist die Auswahl und desto günstiger sind die Preise.</p></div></div>
+        </aside>
+        <div class="kiel-results">
+          <div class="kiel-results__top"><h2 id="kiel-results-title">73 Parkplätze in Kiel</h2><label class="kiel-sort" for="kiel-sort">Sortieren nach <select id="kiel-sort" name="sort" aria-label="Parkplatzangebote sortieren"><option value="recommended">Unsere Empfehlung</option><option value="price-low">Preis: aufsteigend</option><option value="price-high">Preis: absteigend</option><option value="rating">Beste Bewertung</option><option value="distance">Entfernung zum Terminal</option></select></label></div>
+          <p id="results-feedback" class="results-feedback" role="status" aria-live="polite" hidden></p>
+          <div id="parking-results-list" class="parking-results-list" aria-label="Parkplatzangebote Kiel"></div>
+          <div class="kiel-results__bottom"><nav class="results-pages" aria-label="Ergebnisseiten"><button type="button" data-page="prev" aria-label="Vorherige Seite">‹</button><button type="button" data-page="1" class="is-current" aria-current="page">1</button><button type="button" data-page="2">2</button><button type="button" data-page="3">3</button><button type="button" data-page="4">4</button><button type="button" data-page="5">5</button><span aria-hidden="true">…</span><button type="button" data-page="15">15</button><button type="button" data-page="next" aria-label="Nächste Seite">›</button></nav><span class="results-total" id="results-total">73 Ergebnisse</span></div>
+          <p class="comparison-disclaimer" aria-label="Hinweis zum Prototyp">Vorschau mit den fünf vom Auftraggeber vorgegebenen Beispielangeboten. Preise, Bewertungen, Filter-Anzahlen und Gesamtzahl stammen aus der Designvorlage; keine Live-Verfügbarkeit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+      05 / PARKPLATZARTEN, 06 / FAQ, 07 / KUNDENSTIMMEN
+      Exact sequence, German copy and cards from the approved supplied Kiel
+      comparison screenshot. Assets reuse the same client's existing files.
+      IMPORTANT: only FAQ questions were supplied; expanded body text is
+      provisional and should be replaced with client-approved wording.
+      This section is deliberately page-specific (not copied onto other SEO
+      pages, which require distinct copy/footer variants).
+    ===================================================================== -->
+    <div id="kiel-extra-content" class="kiel-extras">
+      <div class="kiel-extras__inner">
+        <section class="kiel-extra-section kiel-types" id="kiel-parkplatzarten" aria-labelledby="kiel-types-title">
+          <div class="kiel-extra-section__head">
+            <div><h2 id="kiel-types-title">Parkplatzarten in Kiel</h2><p class="kiel-extra-section__description">Finde die passende Parkmöglichkeit für deine Kreuzfahrt.</p></div>
+            <a href="#kiel-vergleich" class="kiel-extra-section__link">Alle Parkplatzarten anzeigen →</a>
+          </div>
+          <div class="kiel-types__grid">
+            <article class="kiel-type-card">
+              <picture class="kiel-type-card__photo"><img src="assets/parking/terminal.webp" alt="Kreuzfahrtschiff direkt am Kieler Terminal" width="597" height="180" decoding="async" loading="lazy"></picture>
+              <div class="kiel-type-card__body"><div class="kiel-type-card__icon"><svg aria-hidden="true"><use href="#kiel-extra-walk"/></svg></div><div class="kiel-type-card__copy"><h3>Terminal-Parking</h3><p>Direkt am Terminal parken und mit dem Gepäck zum Schiff laufen.</p><a class="kiel-type-card__cta" href="#kiel-vergleich" data-filter-type="terminal">Terminal-Parkplätze →</a></div></div>
+            </article>
+            <article class="kiel-type-card">
+              <picture class="kiel-type-card__photo"><img src="assets/parking/shuttle.webp" alt="Shuttlebus zu den Kreuzfahrtschiffen in Kiel" width="612" height="180" decoding="async" loading="lazy"></picture>
+              <div class="kiel-type-card__body"><div class="kiel-type-card__icon"><svg aria-hidden="true"><use href="#kiel-extra-car"/></svg></div><div class="kiel-type-card__copy"><h3>Shuttle-Parkplätze</h3><p>Günstig parken und bequem mit dem Shuttle zum Terminal.</p><a class="kiel-type-card__cta" href="#kiel-vergleich" data-filter-type="shuttle">Shuttle-Parkplätze →</a></div></div>
+            </article>
+            <article class="kiel-type-card">
+              <picture class="kiel-type-card__photo"><img src="assets/parking/garage.webp" alt="Überdachte Stellplätze in einem Parkhaus" width="612" height="180" decoding="async" loading="lazy"></picture>
+              <div class="kiel-type-card__body"><div class="kiel-type-card__icon"><svg aria-hidden="true"><use href="#kiel-extra-garage"/></svg></div><div class="kiel-type-card__copy"><h3>Halle &amp; Parkhaus</h3><p>Geschützt und sicher – ideal für längere Reisen.</p><a class="kiel-type-card__cta" href="#kiel-vergleich" data-filter-type="garage">Überdachte Parkplätze →</a></div></div>
+            </article>
+            <article class="kiel-type-card">
+              <picture class="kiel-type-card__photo"><img src="assets/parking/valet.webp" alt="Persönliche Übergabe eines Autoschlüssels beim Valet Parking" width="597" height="180" decoding="async" loading="lazy"></picture>
+              <div class="kiel-type-card__body"><div class="kiel-type-card__icon"><svg aria-hidden="true"><use href="#kiel-extra-car"/></svg></div><div class="kiel-type-card__copy"><h3>Valet Parking</h3><p>Maximaler Komfort – Fahrzeug am Terminal abgeben.</p><a class="kiel-type-card__cta" href="#kiel-vergleich" data-filter-type="valet">Valet-Angebote →</a></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="kiel-extra-section kiel-faq" id="kiel-faq" aria-labelledby="kiel-faq-title">
+          <div class="kiel-extra-section__head">
+            <h2 id="kiel-faq-title">Häufige Fragen zu Parkplätzen in Kiel</h2>
+            <a href="#kiel-faq" class="kiel-extra-section__link" id="kiel-faq-all" aria-label="Alle häufigen Fragen zu Parkplätzen in Kiel anzeigen">Alle FAQs anzeigen →</a>
+          </div>
+          <div class="kiel-faq__grid">
+            <details class="kiel-faq__item"><summary><span class="kiel-faq__leading" aria-hidden="true">››</span><span class="kiel-faq__question">Wie früh sollte ich den Parkplatz in Kiel buchen?</span><span class="kiel-faq__plus" aria-hidden="true">+</span></summary><div class="kiel-faq__answer"><!-- PROVISIONAL ANSWER: awaiting client-provided FAQ answer text. --><p>Eine frühzeitige Reservierung bietet meist eine größere Auswahl an Parkmöglichkeiten und Preisen. Vergleiche die Angebote für deinen Reisezeitraum.</p></div></details>
+            <details class="kiel-faq__item"><summary><span class="kiel-faq__leading" aria-hidden="true">››</span><span class="kiel-faq__question">Ist ein Shuttle-Service inklusive?</span><span class="kiel-faq__plus" aria-hidden="true">+</span></summary><div class="kiel-faq__answer"><!-- PROVISIONAL ANSWER --> <p>Ob ein Shuttle-Service inklusive ist, wird in den Leistungen des jeweiligen Parkplatzangebots angegeben.</p></div></details>
+            <details class="kiel-faq__item"><summary><span class="kiel-faq__leading" aria-hidden="true">››</span><span class="kiel-faq__question">Gibt es Parkplätze direkt am Ostseekai?</span><span class="kiel-faq__plus" aria-hidden="true">+</span></summary><div class="kiel-faq__answer"><!-- PROVISIONAL ANSWER --> <p>Du kannst nach Terminal-Parking und nach der Entfernung zum Terminal filtern. Die Verfügbarkeit hängt vom Reisezeitraum ab.</p></div></details>
+            <details class="kiel-faq__item"><summary><span class="kiel-faq__leading" aria-hidden="true">››</span><span class="kiel-faq__question">Ist mein Fahrzeug während der Parkdauer versichert?</span><span class="kiel-faq__plus" aria-hidden="true">+</span></summary><div class="kiel-faq__answer"><!-- PROVISIONAL ANSWER --> <p>Bei qualifizierenden Buchungen ist der Allianz Parkplatzschutz inklusive. Der genaue Umfang richtet sich nach den Versicherungsbedingungen.</p></div></details>
+          </div>
+        </section>
+
+        <section class="kiel-extra-section kiel-reviews" id="kiel-kundenstimmen" aria-labelledby="kiel-reviews-title">
+          <div class="kiel-extra-section__head">
+            <div><h2 id="kiel-reviews-title">Kundenstimmen</h2><p class="kiel-extra-section__description">Das sagen unsere Nutzer über kreuzfahrtparkplatz.de</p></div>
+            <a href="#kiel-kundenstimmen" class="kiel-extra-section__link" id="kiel-reviews-all">Alle Bewertungen ansehen →</a>
+          </div>
+          <div class="kiel-reviews__viewport">
+            <button type="button" class="kiel-reviews__arrow kiel-reviews__arrow--prev" data-review-direction="-1" aria-label="Vorherige Bewertung"><svg aria-hidden="true"><use href="#kiel-extra-arrow"/></svg></button>
+            <div class="kiel-reviews__track" id="kiel-reviews-track">
+              <article class="kiel-review" data-reviewer="Sabine M."><div class="kiel-review__stars" aria-label="5 von 5 Sternen">★★★★★</div><blockquote>„Einfache Buchung und alles hat perfekt geklappt. Der Shuttle war pünktlich und sehr freundlich.“</blockquote><div class="kiel-review__person"><img src="assets/reviews/sabine.webp" width="112" height="112" alt="Sabine M." loading="eager" decoding="async"><div><strong>Sabine M.</strong><span>Kreuzfahrt ab Kiel</span></div></div></article>
+              <article class="kiel-review" data-reviewer="Thomas K."><div class="kiel-review__stars" aria-label="5 von 5 Sternen">★★★★★</div><blockquote>„Übersichtlich, faire Preise und eine große Auswahl. So beginnt der Urlaub entspannt.“</blockquote><div class="kiel-review__person"><img src="assets/reviews/thomas.webp" width="112" height="112" alt="Thomas K." loading="eager" decoding="async"><div><strong>Thomas K.</strong><span>Kreuzfahrt ab Hamburg</span></div></div></article>
+              <article class="kiel-review" data-reviewer="Julia R."><div class="kiel-review__stars" aria-label="5 von 5 Sternen">★★★★★</div><blockquote>„Wir haben einen überdachten Stellplatz gebucht und waren rundum zufrieden. Klare Weiterempfehlung!“</blockquote><div class="kiel-review__person"><img src="assets/reviews/julia.webp" width="112" height="112" alt="Julia R." loading="eager" decoding="async"><div><strong>Julia R.</strong><span>Kreuzfahrt ab Warnemünde</span></div></div></article>
+            </div>
+            <button type="button" class="kiel-reviews__arrow kiel-reviews__arrow--next" data-review-direction="1" aria-label="Nächste Bewertung"><svg aria-hidden="true"><use href="#kiel-extra-arrow"/></svg></button>
+          </div>
+          <p class="sr-only" id="kiel-review-status" aria-live="polite"></p>
+          <dialog class="kiel-review-dialog" id="kiel-review-dialog" aria-labelledby="kiel-review-dialog-title">
+            <h2 id="kiel-review-dialog-title">Kundenstimmen</h2>
+            <div class="kiel-review-dialog__content" id="kiel-review-dialog-content"></div>
+            <button type="button" class="kiel-review-dialog__close" id="kiel-review-dialog-close">Schließen</button>
+          </dialog>
+        </section>
+      </div>
+    </div>
+
+    <!-- Lightbox only simulates the detail step until the next approved page exists. -->
+    <dialog class="provider-dialog" id="provider-dialog" aria-labelledby="provider-dialog-heading"><div id="provider-dialog-body"></div><button class="provider-dialog__close" type="button" id="provider-dialog-close">Schließen</button></dialog>
+
+  </main>
+<footer class="home-footer" id="kiel-auswahl-footer" aria-label="Fußbereich KreuzfahrtParkplatz.de">
+    <!-- Night photo and bright layered waves reproduce the supplied composition. -->
+    <div class="footer-hero">
+      <div class="footer-hero-art" aria-hidden="true"></div>
+      <div class="footer-hero-inner">
+        <div class="footer-brand-column">
+          <a class="footer-brand-link" href="index.html" aria-label="KreuzfahrtParkplatz.de – zur Startseite">
+            <img src="assets/footer/footer-logo-client-original.webp" alt="KREUZFAHRT PARKPLATZ.DE" width="420" height="140" loading="eager" decoding="async">
+          </a>
+          <p class="footer-brand-tagline">PARKPLÄTZE VERGLEICHEN. VERSICHERT PARKEN.</p>
+          <p class="footer-intro">Deutschlands Vergleichsportal für<br>Kreuzfahrtparkplätze an allen wichtigen<br>Häfen. Einfach, sicher und stressfrei parken –<br>mit Allianz Parkplatzschutz inklusive.</p>
+          <ul class="footer-benefits">
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Große Auswahl an Parkplätzen</li>
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Sicher &amp; versichert mit Allianz</li>
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Einfache und schnelle Online-Buchung</li>
+          </ul>
+        </div>
+        <nav class="footer-top-links" aria-label="Beliebte Häfen">
+          <h2>Beliebte Häfen</h2>
+          <ul>
+            <li><a href="#kiel-vergleich" data-footer-kiel>Kreuzfahrtparkplatz Kiel</a></li>
+            <li><a href="#footer-message" data-footer-future="Hamburg">Kreuzfahrtparkplatz Hamburg</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde">Kreuzfahrtparkplatz Warnemünde</a></li>
+            <li><a href="#footer-message" data-footer-future="Bremerhaven">Kreuzfahrtparkplatz Bremerhaven</a></li>
+            <li><a href="#footer-message" data-footer-future="Rostock">Kreuzfahrtparkplatz Rostock</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde">Kreuzfahrtparkplatz Travemünde</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-top-links footer-terminals" aria-label="Kreuzfahrt Liegeplätze">
+          <h2>Kreuzfahrt Liegeplätze</h2>
+          <ul>
+            <li><a href="#kiel-vergleich" data-footer-kiel data-footer-route="/kiel/norwegenkai">Kreuzfahrtparkplatz Kiel Norwegenkai</a></li>
+            <li><a href="#kiel-vergleich" data-footer-kiel data-footer-route="/kiel/ostuferhafen">Kreuzfahrtparkplatz Kiel Ostuferhafen</a></li>
+            <li><a href="#kiel-vergleich" data-footer-kiel data-footer-route="/kiel/schwedenkai">Kreuzfahrtparkplatz Kiel Schwedenkai</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Terminal 1">Kreuzfahrtparkplatz Warnemünde Terminal 1</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Terminal 2">Kreuzfahrtparkplatz Warnemünde Terminal 2</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde P7">Kreuzfahrtparkplatz Warnemünde P7</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Ostpreußenkai">Kreuzfahrtparkplatz Travemünde Ostpreußenkai</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Skandinavienkai">Kreuzfahrtparkplatz Travemünde Skandinavienkai</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-top-links footer-ships" aria-label="Kreuzfahrtschiffe">
+          <h2>Kreuzfahrtschiffe</h2>
+          <ul>
+            <li><a href="#kiel-vergleich" data-select-line="AIDA" data-footer-kiel data-footer-route="/kiel/aida">Kreuzfahrtparkplatz Kiel AIDA</a></li>
+            <li><a href="#kiel-vergleich" data-select-line="MSC" data-footer-kiel data-footer-route="/kiel/msc">Kreuzfahrtparkplatz Kiel MSC</a></li>
+            <li><a href="#kiel-vergleich" data-select-line="Mein Schiff" data-footer-kiel data-footer-route="/kiel/mein-schiff">Kreuzfahrtparkplatz Kiel Mein Schiff</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde AIDA">Kreuzfahrtparkplatz Warnemünde AIDA</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde TUI">Kreuzfahrtparkplatz Warnemünde TUI</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde MSC">Kreuzfahrtparkplatz Warnemünde MSC</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Sky Princess">Kreuzfahrtparkplatz Warnemünde Sky Princess</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Deutschland">Kreuzfahrtparkplatz Travemünde MS Deutschland</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Europa">Kreuzfahrtparkplatz Travemünde MS Europa</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Scenic Eclipse II">Kreuzfahrtparkplatz Travemünde Scenic Eclipse II</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Hamburg">Kreuzfahrtparkplatz Travemünde MS Hamburg</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Client-supplied wave, harbour and hand-drawn “Gute Reise!” graphic.
+           Decorative artwork only; all SEO copy and links remain live HTML.
+           An accessible German text equivalent is supplied separately. -->
+      <img class="footer-wave-photo" src="assets/footer/wave-gute-reise-exact.webp"
+           alt="" aria-hidden="true" width="1536" height="135" decoding="async" loading="eager">
+      <span class="visually-hidden">Gute Reise!</span>
+    </div>
+
+    <!-- Kiel Auswahl Footer: exactly seven page-specific SEO columns.
+     IMPORTANT: Do not replace with Homepage (5 columns) or other SEO footers.
+     All heading/paragraph text is selectable HTML. Icons are separate vector SVG. -->
+<div class="footer-seo" aria-label="Weitere Informationen zum Kreuzfahrtparkplatz Kiel"><div class="footer-seo-inner"><section class="footer-seo-column" aria-label="SEO-Information 1"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-ship-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Kreuzfahrtparkplätze<br>in Kiel – bequem parken,<br>entspannt reisen</h2></div><p>Ob Ostseekai, Ostuferhafen, Norwegenkai oder Schwedenkai – auf kreuzfahrtparkplatz.de findest du passende Parkmöglichkeiten für deine Kreuzfahrt ab Kiel.</p><p>Vergleiche Angebote verschiedener Anbieter und sichere dir den Parkplatz, der zu deinen Anforderungen und deinem Budget passt.</p></section><section class="footer-seo-column" aria-label="SEO-Information 2"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-search-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Kreuzfahrtparkplatz<br>Kiel vergleichen</h2></div><p>Wenn du mit dem eigenen Auto zu deiner Kreuzfahrt nach Kiel anreist, hast du unterschiedliche Möglichkeiten, dein Fahrzeug während der Reise abzustellen.</p><p>Je nach Angebot stehen Parkplätze direkt am Terminal, Außenstellplätze mit Shuttle, überdachte Parkplätze, Parkhäuser und Valet-Services zur Verfügung.</p><p>Neben dem Gesamtpreis siehst du wichtige Informationen wie:</p><p class="footer-strong">Entfernung zum Terminal · Transferzeit · Shuttle-Service · Stellplatzart · Öffnungszeiten · Schlüsselabgabe · Bewertungen · weitere Leistungen</p></section><section class="footer-seo-column" aria-label="SEO-Information 3"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-pin-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Parken am<br>Kreuzfahrthafen Kiel</h2></div><p>Welcher Parkplatz für deine Reise am besten geeignet ist, hängt unter anderem vom Abfahrtsterminal deines Kreuzfahrtschiffes ab.</p><p>Zu den Kieler Hafenbereichen gehören unter anderem <strong>Ostseekai, Ostuferhafen, Norwegenkai und Schwedenkai.</strong></p><p>Wenn du möglichst kurze Wege bevorzugst, kannst du gezielt nach Parkmöglichkeiten am oder nahe dem jeweiligen Terminal suchen.</p><p>Preisbewusste Kreuzfahrtgäste können dagegen Angebote mit Shuttle-Service vergleichen, die etwas weiter vom Terminal entfernt liegen.</p></section><section class="footer-seo-column" aria-label="SEO-Information 4"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-ship-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Parkplatz für AIDA,<br>Mein Schiff, MSC &amp;<br>weitere Reedereien</h2></div><p>Kiel ist Ausgangspunkt zahlreicher Kreuzfahrten. Deshalb kannst du die Parkplatzsuche auch passend zu deiner Reederei durchführen.</p><p>Beliebte Suchen sind beispielsweise:</p><ul class="footer-checked-links"><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>AIDA Parkplatz Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>Mein Schiff Parkplatz Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>MSC Parkplatz Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>Costa Parkplatz Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>Parkplatz Ostseekai Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>Parkplatz Ostuferhafen Kiel</span></li><li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span>Kreuzfahrt Parkplatz Kiel mit Shuttle</span></li></ul><p>Wähle deine Reisedaten und – wenn bekannt – deine Reederei. Anschließend kannst du passende Parkplatzangebote vergleichen.</p></section><section class="footer-seo-column" aria-label="SEO-Information 5"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-euro-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Was kostet ein<br>Kreuzfahrtparkplatz<br>in Kiel?</h2></div><p>Die Kosten hängen von mehreren Faktoren ab. Dazu gehören die Dauer deiner Kreuzfahrt, die Lage des Parkplatzes und die gewünschten Serviceleistungen.</p><p>Ein Parkplatz direkt am Terminal kann anders kalkuliert sein als ein weiter entfernt liegender Außenstellplatz mit Shuttle.</p><p>Auch Parkhäuser, Hallenplätze und Valet-Angebote können sich preislich unterscheiden.</p><p>Deshalb lohnt sich ein Vergleich für deinen konkreten Reisezeitraum.</p></section><section class="footer-seo-column" aria-label="SEO-Information 6"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-shield-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Mit Allianz<br>Parkplatzschutz –<br>ohne Zusatzkosten</h2></div><p>Ein besonderer Vorteil bei qualifizierenden Buchungen über kreuzfahrtparkplatz.de ist der zusätzliche Allianz Parkplatzschutz.</p><p>Damit möchten wir dir nicht nur helfen, einen passenden Parkplatz zu finden, sondern dir während deiner Kreuzfahrt zusätzliche Sicherheit für dein Fahrzeug bieten.</p><p>Der konkrete Schutz richtet sich nach den jeweils geltenden Versicherungsbedingungen.</p></section><section class="footer-seo-column" aria-label="SEO-Information 7"><div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-calendar-client.svg" alt="" aria-hidden="true" width="48" height="48" decoding="async" loading="eager"><h2>Frühzeitig Parkplatz<br>für die Kreuzfahrt<br>reservieren</h2></div><p>Besonders während der Kreuzfahrtsaison kann es sinnvoll sein, deinen Parkplatz bereits vor der Anreise nach Kiel zu reservieren.</p><p>An stark frequentierten Tagen reisen viele Kreuzfahrtgäste gleichzeitig an. Eine frühzeitige Buchung kann deshalb die Auswahl an verfügbaren Parkmöglichkeiten erhöhen.</p><p class="footer-conclusion"><strong>Deine Kreuzfahrt startet in Kiel?</strong></p><p class="footer-end-lines">Parkplatz vergleichen.<br>Geschützt buchen.<br>Kreuzfahrt genießen.</p></section></div></div>
+    <!-- Bottom bar: original payments and country/language choices. -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-upper">
+        <p>© 2026 KreuzfahrtParkplatz.de <span aria-hidden="true">　|　</span> Alle Rechte vorbehalten.</p>
+        <div class="footer-payment-list" aria-label="Akzeptierte Zahlungsmethoden">
+          <img src="assets/footer/pay-visa.webp" width="65" height="36" alt="Visa" loading="eager" decoding="async">
+          <img src="assets/footer/pay-mastercard.webp" width="61" height="36" alt="Mastercard" loading="eager" decoding="async">
+          <img src="assets/footer/pay-paypal.webp" width="74" height="36" alt="PayPal" loading="eager" decoding="async">
+          <img src="assets/footer/pay-applepay.webp" width="71" height="36" alt="Apple Pay" loading="eager" decoding="async">
+          <img src="assets/footer/pay-gpay.webp" width="77" height="36" alt="Google Pay" loading="eager" decoding="async">
+          <img src="assets/footer/pay-bank.webp" width="175" height="36" alt="Banküberweisung" loading="eager" decoding="async">
+        </div>
+      </div>
+      <div class="footer-bottom-lower">
+        <nav aria-label="Rechtliches"><a href="#footer-message" data-footer-legal="AGB">AGB</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Datenschutz">Datenschutz</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Widerrufsbelehrung">Widerrufsbelehrung</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Impressum">Impressum</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Cookie-Einstellungen">Cookie-Einstellungen</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Barrierefreiheit">Barrierefreiheit</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Affiliate-Partner werden">Jetzt Affiliate Partner werden</a></nav>
+        <div class="footer-country">
+          <button class="footer-country-button" type="button" id="footer-country-toggle" aria-expanded="false" aria-controls="footer-country-options"><span aria-hidden="true" class="footer-germany-flag"></span>Deutschland <svg class="icon" aria-hidden="true"><use href="#icon-chevron"/></svg></button>
+          <div id="footer-country-options" class="footer-country-panel" hidden><span>Deutschland · Deutsch</span><p>Weitere Länder und Sprachen sind in dieser Projektphase nicht vorgesehen.</p></div>
+        </div>
+      </div>
+      <p class="footer-message" id="footer-message" role="status" aria-live="polite" hidden></p>
+    </div>
+  </footer>
+</body>
+</html>

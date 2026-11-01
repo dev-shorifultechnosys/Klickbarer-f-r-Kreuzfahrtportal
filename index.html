@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eef7ff">
+  <meta name="description" content="Vergleiche Kreuzfahrtparkplätze in Kiel – mit dem Extra Schutz der Allianz. Wähle deinen Hafen und Reisezeitraum.">
+  <title>Kreuzfahrtparkplätze vergleichen &amp; buchen | KreuzfahrtParkplatz.de</title>
+  <!-- CSS is intentionally local: no frameworks, icon CDN or build step. -->
+  <link rel="preload" href="assets/footer/harbor-night.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/hero-kiel-crystal.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="assets/official-kreuzfahrt-logo.webp" as="image" type="image/webp">
+  <link rel="icon" type="image/png" href="assets/ship-original-reference.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Carefully drawn inline SVG symbols: consistent icon strokes, Retina-ready, zero CDN requests. -->
+  <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="6.7" r="3.7"/><path d="M5 21v-3.1a7 7 0 0 1 14 0V21H5Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="2.7" y="5.5" width="18.6" height="16" rx="1.7"/><path d="M7.4 2.6v5.4M16.6 2.6v5.4M2.8 10.1h18.4"/><rect x="6" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="11" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="16" y="13.2" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="6" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="11" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/><rect x="16" y="17.5" width="2.6" height="2.6" rx=".35" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-anchor" viewBox="0 0 24 24"><circle cx="12" cy="3.9" r="2.1"/><path d="M12 6v15M8.5 10.2h7M4.3 14.4v2.1a7.7 7.7 0 0 0 15.4 0v-2.1M2.4 16.8l1.9-2.4 2.1 2.2M21.6 16.8l-1.9-2.4-2.1 2.2"/><path d="M9 21h6"/></symbol>
+    <symbol id="icon-ship" viewBox="0 0 32 32"><path d="M14 3h5v4h3l2 2H11l3-2z"/><path d="M9 10c4-2 10-2 14 0l2 4H7l2-4Z"/><path d="M6.7 15H26l-3 5.4c-4.7 1.3-9.7 1.3-14.7 0L6.7 15Z" fill="currentColor" stroke="none"/><path d="M4.2 23.3c2.5 0 2.5 1.7 5.1 1.7s2.6-1.7 5.2-1.7 2.6 1.7 5.2 1.7 2.6-1.7 5.2-1.7 2.6 1.7 5.1 1.7M4.2 28c2.5 0 2.5 1.4 5.1 1.4s2.6-1.4 5.2-1.4 2.6 1.4 5.2 1.4 2.6-1.4 5.2-1.4 2.6 1.4 5.1 1.4"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6.5-6.5L20 12l-6.5 6.5"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+
+    <!-- Client-reference insurance icons: icon 1 unchanged, icons 2–4 faithfully redrawn from Startseite Main.png. -->
+    <symbol id="icon-scratch" viewBox="0 0 32 32"><path d="m7 21 14-14 4 4-14 14-6 1 2-5Z"/><path d="m18.5 9.5 4 4M5 28h22"/></symbol>
+    <symbol id="icon-burglary" viewBox="0 0 32 32">
+      <!-- Faithful redraw: cap + flat brim + mask/face + guard uniform.
+           The blue silhouette is taken from the client's visual reference,
+           not a generic padlock or anonymous person glyph. -->
+      <path fill="currentColor" stroke="none" d="M11.6 4.2h8.8c2.3 0 3.5 1.6 3.5 3.9v3.4H8.1V8c0-2.3 1.2-3.8 3.5-3.8Z"/>
+      <path fill="currentColor" stroke="none" d="M6.9 11h18.2c1 0 1.6.7 1.6 1.6v.75H5.3v-.75c0-.9.6-1.6 1.6-1.6Z"/>
+      <path fill="currentColor" stroke="none" d="M10 13.4h12v5.8c0 4.2-2.5 6.7-6 6.7s-6-2.5-6-6.7v-5.8Z"/>
+      <rect x="10.9" y="15.9" width="10.2" height="5.3" rx="2.45" fill="white" stroke="none"/>
+      <path d="M14.05 17.5h3.9l-1.95 1.65Z" fill="currentColor" stroke="none"/>
+      <path fill="white" stroke="none" d="M12.4 21.6c2.2 2.15 5.1 2.15 7.2 0l-.35 2.2C17 25.6 15 25.6 12.75 23.8Z"/>
+      <path fill="currentColor" stroke="none" d="M9.4 23.6 13.1 25c2 1.6 3.8 1.6 5.8 0l3.7-1.4c2.3 1 3.8 2.8 3.8 5.2V30H5.6v-1.2c0-2.4 1.4-4.2 3.8-5.2Z"/>
+    </symbol>
+    <symbol id="icon-car-front" viewBox="0 0 32 32">
+      <!-- Client reference: chunky front-facing vehicle, white windshield,
+           small rectangular white headlights, solid blue bumper and wheels. -->
+      <path fill="currentColor" stroke="none" d="M10.4 5.1h11.2c2.2 0 3.6 1.3 4.1 3.2L27.2 14c1.3.8 1.9 2 1.9 3.5v5.9c0 1.9-1.2 3.1-3 3.1H5.9c-1.8 0-3-1.2-3-3.1v-5.9c0-1.5.7-2.7 1.9-3.5l1.5-5.7c.5-1.9 1.9-3.2 4.1-3.2Z"/>
+      <path fill="white" stroke="none" d="m10.3 9.2-.9 4.7h13.2l-.9-4.7c-.16-.78-.6-1.1-1.45-1.1H11.75c-.85 0-1.3.32-1.45 1.1Z"/>
+      <rect fill="white" stroke="none" x="5.7" y="17.3" width="5" height="3.6" rx="1"/>
+      <rect fill="white" stroke="none" x="21.3" y="17.3" width="5" height="3.6" rx="1"/>
+      <rect fill="currentColor" stroke="none" x="5.3" y="24.8" width="5.2" height="5.2" rx="1.25"/>
+      <rect fill="currentColor" stroke="none" x="21.5" y="24.8" width="5.2" height="5.2" rx="1.25"/>
+      <path d="M11 24h10" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-euro" viewBox="0 0 32 32">
+      <!-- Client reference: wide, heavy, two-bar Euro with open right edge. -->
+      <path fill="currentColor" stroke="none" d="M19.3 3.2c3.75 0 6.45 1.25 8.15 3.35L25 9.35c-1.42-1.55-3.08-2.23-5.48-2.23-3.84 0-6.44 2.14-7.48 5.88H24.1v3.18H11.54v2.13h12.56v3.13H12.04c1.04 3.66 3.64 5.75 7.47 5.75 2.43 0 4.18-.78 5.57-2.24l2.37 2.7c-1.87 2.14-4.48 3.31-8.15 3.31-6.77 0-11.25-3.56-12.76-9.52H3.7v-3.13h2.4c-.05-.4-.07-.76-.07-1.11 0-.36.02-.72.06-1.09H3.7V13h2.82C8.03 6.94 12.55 3.2 19.3 3.2Z"/>
+    </symbol>
+    <symbol id="icon-magnifier" viewBox="0 0 32 32"><circle cx="13.5" cy="13.5" r="9"/><path d="m21 21 8 8"/></symbol>
+    <symbol id="icon-padlock" viewBox="0 0 32 32"><rect x="7" y="13" width="18" height="16" rx="3"/><path d="M11 13V9a5 5 0 0 1 10 0v4"/><circle cx="16" cy="20" r="1.5" fill="currentColor" stroke="none"/><path d="M16 21v3"/></symbol>
+    <symbol id="icon-thumb" viewBox="0 0 32 32"><path d="M11 13.5c3.7-5.2 4.6-8.8 5.9-10.3 1.9-1.3 4.7.6 4.7 2.7v5.3h5.2c2.4 0 3.5 2 2.8 4.1L26.9 27c-.3 1.6-1.7 2.8-3.3 2.8H11V13.5Z" fill="currentColor" stroke="none"/><rect x="2.8" y="13.7" width="5.7" height="16" rx="1.2" fill="currentColor" stroke="none"/></symbol>
+
+    <!-- ==========================================================================
+         HOME 05 / exact-reference category icons.
+         Walking passenger, front-facing shuttle/car, and parking garage are
+         crisp 24px SVG paths. They are NOT rasterized screenshot fragments.
+         ========================================================================= -->
+    <symbol id="icon-walking" viewBox="0 0 32 32">
+      <circle cx="18.9" cy="4.8" r="3.25" fill="currentColor" stroke="none"/>
+      <path d="M14.5 12.4 19.1 10l4.3 5.2 4 1.5" stroke="currentColor" stroke-width="3.15" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m18.5 12.3-4 7.1-4 8.9" stroke="currentColor" stroke-width="3.65" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m15.7 18.2 5.1 4.1 1.3 6.3" stroke="currentColor" stroke-width="3.65" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m14.9 12.3-6 5.8" stroke="currentColor" stroke-width="3.15" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-garage" viewBox="0 0 32 32">
+      <path d="M1.75 13.35 15.3 3.6c.45-.35.95-.35 1.4 0l13.55 9.75V29H1.75V13.35Z" fill="currentColor" stroke="none"/>
+      <rect x="11.3" y="14.5" width="9.4" height="10.7" rx=".6" fill="#FFFFFF" stroke="none"/>
+      <rect x="13.4" y="16.8" width="5.2" height="6" rx=".35" fill="currentColor" stroke="none"/>
+    </symbol>
+
+    <!-- Home 07: the check badge & step connector. Native SVG scales cleanly. -->
+    <symbol id="icon-step-check" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="currentColor" stroke="none"/><path d="m8.4 15.8 5 5 10.2-11.2" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-next-thin" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-carousel-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+    <!-- Footer-only symbols. Real scalable vector icons, never flattened text. -->
+    <symbol id="icon-footer-pin" viewBox="0 0 32 32"><path d="M16 2.7c-6.4 0-11.3 4.9-11.3 11.1 0 7.3 11.3 16 11.3 16s11.3-8.7 11.3-16c0-6.2-4.9-11.1-11.3-11.1Z" fill="currentColor" stroke="none"/><circle cx="16" cy="13.5" r="4.4" fill="#0A3E75" stroke="none"/></symbol>
+    <symbol id="icon-footer-shield" viewBox="0 0 32 32"><path d="M16 1.7 29 6v9c0 8.1-5.3 12.6-13 15.3C8.3 27.6 3 23.1 3 15V6l13-4.3Z" fill="currentColor" stroke="none"/><path d="m9 15.7 5.1 4.5L23 10.4" stroke="#073B79" stroke-width="2.7" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="icon-footer-search" viewBox="0 0 32 32"><circle cx="13.7" cy="13.6" r="10.2" stroke-width="4"/><path d="m21 21 8.2 8" stroke-width="4"/></symbol>
+    <symbol id="icon-footer-check" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="currentColor" stroke="none"/><path d="m8.3 15.5 5.4 5.3 10.4-11" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-footer-car" viewBox="0 0 32 32"><path d="M5.2 13.7 7.6 7c.6-1.6 1.5-2.3 3.2-2.3h10.4c1.8 0 2.8.7 3.4 2.3l2.3 6.7M3.6 14h24.8c1.2 0 1.9 1 1.9 2.2v7.5c0 1.1-.9 2-2 2H3.7c-1.1 0-2-.9-2-2v-7.5c0-1.2.7-2.2 1.9-2.2Z" fill="currentColor" stroke="none"/><path d="m10.2 8-1.6 5h14.8l-1.6-5H10.2ZM6.1 17.3h5v3.2h-5Zm14.8 0h5v3.2h-5Z" fill="#073B79" stroke="none"/><path d="M5 26v3h5v-3m12 0v3h5v-3" stroke="currentColor" stroke-width="3"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#parkplatzsuche">Direkt zur Parkplatzsuche</a>
+
+  <!-- ========================== HEADER / GLOBAL NAVIGATION ========================== -->
+  <header class="site-header" id="seitenanfang">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="KreuzfahrtParkplatz.de – Startseite">
+        <!-- OFFICIAL client-supplied full-color identity. Exported at >4x screen resolution.
+             All non-brand UI copy stays real, editable HTML. Do not substitute a redrawn logo. -->
+        <img class="brand-logo" src="assets/official-kreuzfahrt-logo.webp"
+             width="1020" height="307" alt="KREUZFAHRT PARKPLATZ.DE"
+             decoding="async" fetchpriority="high">
+      </a>
+      <nav class="main-navigation" id="hauptnavigation" aria-label="Hauptnavigation">
+        <div class="nav-item">
+          <button class="nav-button" type="button" data-menu="ports-menu" aria-expanded="false" aria-controls="ports-menu">Kreuzfahrthäfen <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div class="nav-dropdown" id="ports-menu" hidden>
+            <a href="kiel.html">Kiel · Parkplatzsuche</a>
+            <span class="dropdown-note">Weitere Häfen folgen in einer späteren Ausbaustufe.</span>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-button" type="button" data-menu="cruise-menu" aria-expanded="false" aria-controls="cruise-menu">Reedereien <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div class="nav-dropdown" id="cruise-menu" hidden>
+            <a href="#parkplatzsuche" data-select-line="AIDA">AIDA</a>
+            <a href="#parkplatzsuche" data-select-line="Mein Schiff">Mein Schiff</a>
+            <a href="#parkplatzsuche" data-select-line="MSC">MSC</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-button" type="button" data-menu="parking-menu" aria-expanded="false" aria-controls="parking-menu">Parkarten <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div class="nav-dropdown" id="parking-menu" hidden>
+            <a href="#parkplatzsuche" data-parking-type="Terminal-Parking">Terminal-Parking</a>
+            <a href="#parkplatzsuche" data-parking-type="Shuttle-Parking">Shuttle-Parking</a>
+            <a href="#parkplatzsuche" data-parking-type="Parkhaus / Halle">Parkhaus / Halle</a>
+            <a href="#parkplatzsuche" data-parking-type="Valet Parking">Valet Parking</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-button" type="button" data-menu="help-menu" aria-expanded="false" aria-controls="help-menu">Hilfe <svg class="icon icon--small"><use href="#icon-chevron"/></svg></button>
+          <div class="nav-dropdown nav-dropdown--right" id="help-menu" hidden>
+            <a href="#hilfe-panel" data-open-help>Häufige Fragen</a>
+            <a href="#hilfe-panel" data-open-help>Kundenservice</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button class="favorites-button" type="button" id="favorites-trigger" aria-expanded="false" aria-controls="favorites-panel">
+          <svg class="icon icon--heart"><use href="#icon-heart"/></svg>
+          <span>Merkliste (<span id="favorite-count">0</span>)</span>
+        </button>
+        <button class="account-button" type="button" id="account-trigger" aria-label="Mein Konto" aria-expanded="false" aria-controls="account-panel">
+          <svg class="icon icon--user"><use href="#icon-user"/></svg>
+        </button>
+        <button class="mobile-menu-toggle" type="button" id="mobile-menu-trigger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="hauptnavigation">
+          <svg class="icon"><use href="#icon-menu"/></svg>
+        </button>
+      </div>
+      <div class="header-panel header-panel--help" id="hilfe-panel" role="status" hidden>
+        <strong>Hilfe &amp; Kundenservice</strong>
+        <p>Die vollständigen Hilfe- und FAQ-Seiten sind Teil des nächsten Projektabschnitts.</p>
+        <button type="button" class="panel-dismiss" data-close-panel="hilfe-panel">Schließen</button>
+      </div>
+      <div class="header-panel" id="favorites-panel" role="status" hidden>Deine Merkliste ist noch leer.</div>
+      <div class="header-panel" id="account-panel" role="status" hidden>Der Kontobereich wird in einer späteren Projektphase angebunden.</div>
+    </div>
+  </header>
+
+  <!-- ========================== HERO / ORIGINAL KIEL CONTENT ======================= -->
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- One cohesive high-resolution image: no stitched slices or shaded overlays. -->
+      <div class="hero-image" role="img" aria-label="Kreuzfahrtschiff, parkende Autos und Kreuzfahrtgäste am Ostseekai Kiel"></div>
+      <div class="hero-content">
+        <h1 id="hero-title">Kreuzfahrtparkplätze<br>vergleichen &amp; buchen</h1>
+        <p class="hero-tagline">Finde den passenden Parkplatz für deine Kreuzfahrt.<br>Mit den Extra Schutz der Allianz – ohne Zusatzkosten.</p>
+      </div>
+
+      <!-- This is a real form, not a screenshot or overlay of text inside an image. -->
+      <form class="search-form" id="parkplatzsuche" novalidate aria-label="Parkplätze suchen">
+        <div class="search-field search-field--port">
+          <button type="button" class="field-control" id="port-trigger" aria-haspopup="listbox" aria-controls="port-options" aria-expanded="false">
+            <svg class="icon field-icon"><use href="#icon-anchor"/></svg>
+            <span class="field-copy"><span class="field-label">Abfahrtshäfen</span><span class="field-value" id="port-display">Hafen auswählen</span></span>
+            <svg class="icon icon--chevron"><use href="#icon-chevron"/></svg>
+          </button>
+          <div class="field-options" id="port-options" role="listbox" aria-label="Abfahrtshäfen" hidden>
+            <button type="button" role="option" aria-selected="false" data-port-option="Kiel">Kiel</button>
+          </div>
+        </div>
+        <div class="search-field search-field--date">
+          <button type="button" class="field-control" id="arrival-trigger" aria-haspopup="dialog" aria-controls="arrival-calendar" aria-expanded="false" data-date-type="arrival">
+            <svg class="icon field-icon"><use href="#icon-calendar"/></svg>
+            <span class="field-copy"><span class="field-label">Anreise</span><span class="field-value" id="arrival-display">Datum wählen</span></span>
+          </button>
+          <!-- Anreise: self-contained calendar, localized in German (de-DE). -->
+          <div class="date-panel" id="arrival-calendar" role="dialog" aria-label="Anreise auswählen" hidden>
+            <div class="date-panel-heading">
+              <button type="button" class="month-control" data-month-shift="-1" aria-label="Vorheriger Monat">‹</button>
+              <strong class="current-month" aria-live="polite"></strong>
+              <button type="button" class="month-control" data-month-shift="1" aria-label="Nächster Monat">›</button>
+            </div>
+            <div class="weekday-names" aria-hidden="true"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
+            <div class="calendar-days" role="group" aria-label="Kalendertage"></div>
+            <p class="date-panel-hint">Wähle dein Anreisedatum.</p>
+          </div>
+        </div>
+        <div class="search-field search-field--date">
+          <button type="button" class="field-control" id="departure-trigger" aria-haspopup="dialog" aria-controls="departure-calendar" aria-expanded="false" data-date-type="departure">
+            <svg class="icon field-icon"><use href="#icon-calendar"/></svg>
+            <span class="field-copy"><span class="field-label">Rückkehr</span><span class="field-value" id="departure-display">Datum wählen</span></span>
+          </button>
+          <!-- Rückkehr: self-contained calendar, localized in German (de-DE). -->
+          <div class="date-panel" id="departure-calendar" role="dialog" aria-label="Rückkehr auswählen" hidden>
+            <div class="date-panel-heading">
+              <button type="button" class="month-control" data-month-shift="-1" aria-label="Vorheriger Monat">‹</button>
+              <strong class="current-month" aria-live="polite"></strong>
+              <button type="button" class="month-control" data-month-shift="1" aria-label="Nächster Monat">›</button>
+            </div>
+            <div class="weekday-names" aria-hidden="true"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
+            <div class="calendar-days" role="group" aria-label="Kalendertage"></div>
+            <p class="date-panel-hint">Wähle dein Rückreisedatum.</p>
+          </div>
+        </div>
+        <div class="search-field search-field--line">
+          <button type="button" class="field-control" id="line-trigger" aria-haspopup="listbox" aria-controls="line-options" aria-expanded="false">
+            <img class="field-icon field-icon--ship" src="assets/ship-original-reference.png" width="37" height="34" alt="" aria-hidden="true">
+            <span class="field-copy"><span class="field-label">Reederei (optional)</span><span class="field-value" id="line-display">z. B. AIDA</span></span>
+            <svg class="icon icon--chevron"><use href="#icon-chevron"/></svg>
+          </button>
+          <div class="field-options" id="line-options" role="listbox" aria-label="Reedereien" hidden>
+            <button type="button" data-line-option="">Keine Auswahl</button>
+            <button type="button" data-line-option="AIDA">AIDA</button>
+            <button type="button" data-line-option="Mein Schiff">Mein Schiff</button>
+            <button type="button" data-line-option="MSC">MSC</button>
+            <button type="button" data-line-option="Costa">Costa</button>
+          </div>
+        </div>
+        <button class="search-submit" type="submit">Parkplätze finden <svg class="icon icon--arrow"><use href="#icon-arrow"/></svg></button>
+      </form>
+      <p class="form-message" id="search-message" role="status" aria-live="polite" hidden></p>
+
+    </section>
+
+    <!-- =====================================================================
+         SECTION 02: ALLIANZ PARKPLATZSCHUTZ
+         Client reference: Startseite Main, immediately below the search hero.
+         The Allianz wordmark is the original supplied raster artwork;
+         all headings/body copy/icon labels remain real selectable HTML text.
+         ===================================================================== -->
+    <section class="insurance-section" id="allianz-schutz" aria-labelledby="insurance-heading">
+      <div class="insurance-inner">
+        <div class="insurance-brand">
+          <img src="assets/allianz-original.webp" width="2000" height="517"
+               alt="Allianz" loading="lazy" decoding="async">
+        </div>
+        <div class="insurance-description">
+          <h2 id="insurance-heading">Dein Kreuzfahrtparkplatz –<br>mit extra Schutz von der Allianz.</h2>
+          <p>Bei jeder Buchung über kreuzfahrtparkplatz.de ist dein Fahrzeug<br class="desktop-break">
+             während der gesamten Parkdauer zusätzlich gegen typische<br class="desktop-break">
+             Risiken abgesichert – ohne Zusatzkosten für dich.</p>
+        </div>
+        <div class="insurance-benefits" aria-label="Vorteile des Allianz Parkplatzschutzes">
+          <div class="benefit-card">
+            <span class="benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-scratch"/></svg></span>
+            <span>Schutz vor<br>Kratzer &amp;<br>Parkschäden</span>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-burglary"/></svg></span>
+            <span>Versicherung bei<br>Einbruch &amp;<br>Diebstahl</span>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-car-front"/></svg></span>
+            <span>Für die gesamte<br>Parkdauer</span>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-euro"/></svg></span>
+            <span>Ohne zusätzliche<br>Kosten für dich</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 03: TRUST / FIVE BENEFITS
+         These are informational points, not fake navigation links.
+         ===================================================================== -->
+    <section class="trust-strip" aria-label="Warum KreuzfahrtParkplatz.de">
+      <div class="trust-inner">
+        <div class="trust-item"><svg class="icon" aria-hidden="true"><use href="#icon-magnifier"/></svg><span>Angebote vergleichen</span></div>
+        <div class="trust-item"><svg class="icon" aria-hidden="true"><use href="#icon-padlock"/></svg><span>Sichere Online-Buchung</span></div>
+        <div class="trust-item"><svg class="icon" aria-hidden="true"><use href="#icon-thumb"/></svg><span>Geprüfte Anbieter</span></div>
+        <div class="trust-item"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg><span>Terminal, Shuttle &amp; Valet</span></div>
+        <div class="trust-item"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span>Passend zu deinem Schiff</span></div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 04: POPULAR CRUISE PORTS
+         Only Kiel has content in the current project. The other three cards
+         retain the supplied visual design but are explicitly marked as
+         future scope by their click handler; no imaginary booking URLs.
+         ===================================================================== -->
+    <section class="ports-section" id="kreuzfahrthaefen" aria-labelledby="ports-heading">
+      <div class="ports-container">
+        <div class="section-heading-row">
+          <div>
+            <h2 id="ports-heading">Beliebte Kreuzfahrthäfen in Deutschland</h2>
+            <p>Finde Parkplätze an den wichtigsten Kreuzfahrthäfen – schnell, einfach und zum besten Preis.</p>
+          </div>
+          <a class="ports-all-link" href="#kreuzfahrthaefen" data-port-directory>Alle Kreuzfahrthäfen anzeigen <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <div class="port-grid">
+          <article class="port-card">
+            <img class="port-card-photo" src="assets/ports/kiel.webp" alt="Kreuzfahrtschiff im Hafen Kiel" width="720" height="400" loading="lazy" decoding="async">
+            <div class="port-card-content">
+              <h3>Kiel</h3>
+              <p>Ostseekai, Ostuferhafen,<br>Norwegenkai, Schwedenkai</p>
+              <a class="port-card-action" href="kiel.html">Parkplätze in Kiel <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="port-card">
+            <img class="port-card-photo" src="assets/ports/hamburg.webp" alt="Hamburger Hafen mit Elbphilharmonie" width="720" height="400" loading="lazy" decoding="async">
+            <div class="port-card-content">
+              <h3>Hamburg</h3>
+              <p>HafenCity, Steinwerder,<br>Altona</p>
+              <a class="port-card-action" href="#kreuzfahrthaefen" data-future-port="Hamburg">Parkplätze in Hamburg <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="port-card">
+            <img class="port-card-photo" src="assets/ports/warnemuende.webp" alt="Kreuzfahrtschiff und rot-weißer Leuchtturm in Warnemünde" width="720" height="400" loading="lazy" decoding="async">
+            <div class="port-card-content">
+              <h3>Warnemünde</h3>
+              <p>Kreuzfahrtterminal Warnemünde</p>
+              <a class="port-card-action" href="#kreuzfahrthaefen" data-future-port="Warnemünde">Parkplätze in Warnemünde <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="port-card">
+            <img class="port-card-photo" src="assets/ports/bremerhaven.webp" alt="Kreuzfahrtschiff am Columbus Cruise Center Bremerhaven" width="720" height="400" loading="lazy" decoding="async">
+            <div class="port-card-content">
+              <h3>Bremerhaven</h3>
+              <p>Columbus Cruise Center</p>
+              <a class="port-card-action" href="#kreuzfahrthaefen" data-future-port="Bremerhaven">Parkplätze in Bremerhaven <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+        </div>
+        <p class="ports-feedback" id="ports-feedback" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 05 — PARKING CATEGORIES
+         Reference: Startseite Main.png / Parkplatzarten (four horizontal cards).
+         Only the photographs are image assets. All copy and icons are genuine
+         selectable HTML text and vector SVGs for a future Figma rebuild.
+         ===================================================================== -->
+    <section class="parking-types-section" id="parkplatzarten" aria-labelledby="parking-types-title">
+      <div class="home-section-container">
+        <div class="home-section-head">
+          <div>
+            <h2 id="parking-types-title">Parkplatzarten – finde die passende Option</h2>
+            <p>Vom günstigen Außenstellplatz bis zum komfortablen Valet-Service – vergleiche die verschiedenen Parkmöglichkeiten.</p>
+          </div>
+        </div>
+        <div class="home-product-grid parking-type-grid">
+          <article class="home-product-card parking-type-card">
+            <img src="assets/parking/terminal.webp" alt="Kreuzfahrtschiff direkt am Terminal" width="597" height="180" loading="lazy" decoding="async">
+            <div class="parking-type-body">
+              <svg class="icon parking-type-icon parking-type-icon--walking" aria-hidden="true"><use href="#icon-walking"/></svg>
+              <div class="parking-type-copy"><h3>Direkt am Terminal</h3>
+                <p>Auto abstellen und mit dem<br>Gepäck zum Schiff laufen.</p>
+                <a href="#parkplatzsuche" class="parking-type-link" data-parking-type="Terminal-Parking" data-home-card="parkplatz">Terminal-Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="home-product-card parking-type-card">
+            <img src="assets/parking/shuttle.webp" alt="Shuttlebus am Kreuzfahrthafen" width="612" height="180" loading="lazy" decoding="async">
+            <div class="parking-type-body">
+              <svg class="icon parking-type-icon parking-type-icon--car" aria-hidden="true"><use href="#icon-car-front"/></svg>
+              <div class="parking-type-copy"><h3>Parkplatz mit Shuttle</h3>
+                <p>Auto parken und bequem<br>zum Kreuzfahrtterminal fahren.</p>
+                <a href="#parkplatzsuche" class="parking-type-link" data-parking-type="Shuttle-Parking" data-home-card="parkplatz">Shuttle-Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="home-product-card parking-type-card">
+            <img src="assets/parking/garage.webp" alt="Fahrzeuge in einer überdachten Parkhalle" width="612" height="180" loading="lazy" decoding="async">
+            <div class="parking-type-body">
+              <svg class="icon parking-type-icon parking-type-icon--garage" aria-hidden="true"><use href="#icon-garage"/></svg>
+              <div class="parking-type-copy"><h3>Halle &amp; Parkhaus</h3>
+                <p>Geschützte Parkmöglichkeiten<br>für die Dauer deiner Kreuzfahrt.</p>
+                <a href="#parkplatzsuche" class="parking-type-link" data-parking-type="Parkhaus/Halle" data-home-card="parkplatz">Überdachte Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="home-product-card parking-type-card">
+            <img src="assets/parking/valet.webp" alt="Schlüsselübergabe beim Valet Parking" width="597" height="180" loading="lazy" decoding="async">
+            <div class="parking-type-body">
+              <svg class="icon parking-type-icon parking-type-icon--car" aria-hidden="true"><use href="#icon-car-front"/></svg>
+              <div class="parking-type-copy"><h3>Valet Parking</h3>
+                <p>Fahrzeug am Übergabepunkt<br>abgeben – wir kümmern uns.</p>
+                <a href="#parkplatzsuche" class="parking-type-link" data-parking-type="Valet Parking" data-home-card="parkplatz">Valet-Angebote <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 06 — CRUISE LINES
+         Reference: Startseite Main.png / Passend zu deiner Reederei.
+         The cards preselect an existing German-language dropdown. No new
+         booking, affiliate or third-party URLs are invented here.
+         ===================================================================== -->
+    <section class="cruise-lines-section" id="reedereien" aria-labelledby="cruise-lines-title">
+      <div class="home-section-container">
+        <div class="home-section-head home-section-head--cruises">
+          <div><h2 id="cruise-lines-title">Passend zu deiner Reederei</h2>
+            <p>Finde Parkplätze für deine Kreuzfahrt – einfach nach Reederei filtern.</p></div>
+          <a class="home-section-more" href="#reedereien" id="all-cruiselines" aria-controls="cruise-lines-feedback">Alle Reedereien anzeigen <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <div class="home-product-grid cruise-line-grid">
+          <article class="home-product-card cruise-line-card">
+            <img src="assets/cruiselines/aida.webp" alt="AIDA Kreuzfahrtschiff" width="600" height="174" loading="lazy" decoding="async">
+            <div class="cruise-line-body"><h3>AIDA</h3><p>Parkplätze für deine<br>AIDA Kreuzfahrt finden.</p>
+              <a class="cruise-line-link" href="#parkplatzsuche" data-select-line="AIDA" data-home-card="reederei">AIDA Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="home-product-card cruise-line-card">
+            <img src="assets/cruiselines/mein-schiff.webp" alt="Mein Schiff Kreuzfahrtschiff" width="612" height="174" loading="lazy" decoding="async">
+            <div class="cruise-line-body"><h3>Mein Schiff</h3><p>Parkplätze für Mein Schiff<br>Kreuzfahrten vergleichen.</p>
+              <a class="cruise-line-link" href="#parkplatzsuche" data-select-line="Mein Schiff" data-home-card="reederei">Mein Schiff Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="home-product-card cruise-line-card">
+            <img src="assets/cruiselines/msc.webp" alt="MSC Cruises Kreuzfahrtschiff" width="612" height="174" loading="lazy" decoding="async">
+            <div class="cruise-line-body"><h3>MSC Cruises</h3><p>Parkplätze für MSC<br>Kreuzfahrten finden.</p>
+              <a class="cruise-line-link" href="#parkplatzsuche" data-select-line="MSC" data-home-card="reederei">MSC Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="home-product-card cruise-line-card">
+            <img src="assets/cruiselines/costa.webp" alt="Costa Kreuzfahrtschiff" width="597" height="174" loading="lazy" decoding="async">
+            <div class="cruise-line-body"><h3>Costa</h3><p>Parkplätze für Costa<br>Kreuzfahrten finden.</p>
+              <a class="cruise-line-link" href="#parkplatzsuche" data-select-line="Costa" data-home-card="reederei">Costa Parkplätze <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+        </div>
+        <p class="cruise-lines-feedback" id="cruise-lines-feedback" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         HOME 07 — SO EINFACH FUNKTIONIERT DER VERGLEICH
+         Original client reference: Startseite Main.png (lower section).
+         Each heading, number, caption and arrow is live DOM / SVG, never a
+         flattened image. Four steps represent presentation only, not fictive
+         booking destinations.
+         ===================================================================== -->
+    <section class="steps-section" id="so-funktionierts" aria-labelledby="steps-heading">
+      <div class="steps-container">
+        <h2 id="steps-heading">So einfach funktioniert der Vergleich</h2>
+        <ol class="steps-grid">
+          <li class="step-card">
+            <div class="step-visual"><span class="step-number">1</span><svg class="icon step-pictogram step-calendar" aria-hidden="true"><use href="#icon-calendar"/></svg></div>
+            <h3>Hafen &amp; Reisedaten eingeben</h3><p>Wähle deinen Abfahrtshafen<br>und den Reisezeitraum.</p>
+            <svg class="icon step-connector" aria-hidden="true"><use href="#icon-next-thin"/></svg>
+          </li>
+          <li class="step-card">
+            <div class="step-visual"><span class="step-number">2</span><svg class="icon step-pictogram step-search" aria-hidden="true"><use href="#icon-magnifier"/></svg></div>
+            <h3>Angebote vergleichen</h3><p>Parkplätze nach Preis,<br>Entfernung und Service filtern.</p>
+            <svg class="icon step-connector" aria-hidden="true"><use href="#icon-next-thin"/></svg>
+          </li>
+          <li class="step-card">
+            <div class="step-visual"><span class="step-number">3</span><svg class="icon step-pictogram step-check" aria-hidden="true"><use href="#icon-step-check"/></svg></div>
+            <h3>Parkplatz auswählen</h3><p>Passendes Angebot online<br>reservieren.</p>
+            <svg class="icon step-connector" aria-hidden="true"><use href="#icon-next-thin"/></svg>
+          </li>
+          <li class="step-card">
+            <div class="step-visual"><span class="step-number">4</span><img class="step-ship" src="assets/ship-logo-clean.png" width="148" height="136" alt="" aria-hidden="true" decoding="async"></div>
+            <h3>Kreuzfahrt genießen</h3><p>Entspannt anreisen und<br>in den Urlaub starten.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         HOME 08 — KUNDENSTIMMEN / ACCESSIBLE REVIEW CAROUSEL
+         Quotes, names, locations are transcribed from the client reference.
+         Portraits are the ONLY bitmap content here: tight crops of the actual
+         client-provided reference photo, never a raster screenshot card.
+         No additional testimonials, ratings, or review claims are fabricated.
+         Arrows rotate the THREE provided cards; screen-reader announcement is
+         updated without changing original review text.
+         ===================================================================== -->
+    <section class="testimonials-section" id="kundenstimmen" aria-labelledby="testimonials-heading">
+      <div class="testimonials-container">
+        <div class="testimonials-top">
+          <div><h2 id="testimonials-heading">Kundenstimmen</h2><p>Das sagen unsere Nutzer über kreuzfahrtparkplatz.de</p></div>
+          <a href="#kundenstimmen" id="all-reviews-link" class="all-reviews-link">Alle Bewertungen ansehen <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <div class="reviews-carousel">
+          <button type="button" class="review-nav review-nav--previous" id="review-previous" aria-label="Vorherige Kundenstimme"><svg class="icon" aria-hidden="true"><use href="#icon-carousel-arrow"/></svg></button>
+          <div class="reviews-list" id="review-list" aria-roledescription="Karussell" aria-label="Kundenstimmen">
+            <article class="review-card" data-review="0" data-visual-slot="1">
+              <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote>„Einfache Buchung und alles hat perfekt geklappt. Der Shuttle war pünktlich und sehr freundlich.“</blockquote>
+              <div class="review-person"><img src="assets/reviews/sabine.webp" alt="Porträt von Sabine M." width="35" height="35" loading="lazy" decoding="async"><div><strong>Sabine M.</strong><span>Kreuzfahrt ab Kiel</span></div></div>
+            </article>
+            <article class="review-card" data-review="1" data-visual-slot="2">
+              <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote>„Übersichtlich, faire Preise und eine große Auswahl. So beginnt der Urlaub entspannt.“</blockquote>
+              <div class="review-person"><img src="assets/reviews/thomas.webp" alt="Porträt von Thomas K." width="35" height="35" loading="lazy" decoding="async"><div><strong>Thomas K.</strong><span>Kreuzfahrt ab Hamburg</span></div></div>
+            </article>
+            <article class="review-card" data-review="2" data-visual-slot="3">
+              <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote>„Wir haben einen überdachten Stellplatz gebucht und waren rundum zufrieden. Klare Weiterempfehlung!“</blockquote>
+              <div class="review-person"><img src="assets/reviews/julia.webp" alt="Porträt von Julia R." width="35" height="35" loading="lazy" decoding="async"><div><strong>Julia R.</strong><span>Kreuzfahrt ab Warnemünde</span></div></div>
+            </article>
+          </div>
+          <button type="button" class="review-nav review-nav--next" id="review-next" aria-label="Nächste Kundenstimme"><svg class="icon" aria-hidden="true"><use href="#icon-carousel-arrow"/></svg></button>
+        </div>
+        <p id="review-update" class="visually-hidden" role="status" aria-live="polite"></p>
+        <p class="reviews-feedback" id="reviews-feedback" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+  </main>
+  <!-- =====================================================================
+       HOME FOOTER / CLIENT-SPECIFIC TEMPLATE (STARTSEITE FOOTER)
+       Exact upper link groups + the additional five SEO columns, payments,
+       legal metadata and country selector found in Startseite Footer.png.
+       All German text is real editable HTML; harbor photo and SVG waves are
+       decorative assets. IMPORTANT: this is NOT a generic SEO-page footer.
+       ===================================================================== -->
+  <footer class="home-footer" id="startseite-footer" aria-label="Fußbereich KreuzfahrtParkplatz.de">
+    <!-- Night photo and bright layered waves reproduce the supplied composition. -->
+    <div class="footer-hero">
+      <div class="footer-hero-art" aria-hidden="true"></div>
+      <div class="footer-hero-inner">
+        <div class="footer-brand-column">
+          <a class="footer-brand-link" href="#seitenanfang" aria-label="KreuzfahrtParkplatz.de – zur Startseite">
+            <img src="assets/footer/footer-logo-client-original.png" alt="KREUZFAHRT PARKPLATZ.DE" width="420" height="140" loading="eager" decoding="async">
+          </a>
+          <p class="footer-brand-tagline">PARKPLÄTZE VERGLEICHEN. VERSICHERT PARKEN.</p>
+          <p class="footer-intro">Deutschlands Vergleichsportal für<br>Kreuzfahrtparkplätze an allen wichtigen<br>Häfen. Einfach, sicher und stressfrei parken –<br>mit Allianz Parkplatzschutz inklusive.</p>
+          <ul class="footer-benefits">
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Große Auswahl an Parkplätzen</li>
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Sicher &amp; versichert mit Allianz</li>
+            <li><svg class="icon footer-icon-circle" aria-hidden="true"><use href="#icon-footer-check"/></svg>Einfache und schnelle Online-Buchung</li>
+          </ul>
+        </div>
+        <nav class="footer-top-links" aria-label="Beliebte Häfen">
+          <h2>Beliebte Häfen</h2>
+          <ul>
+            <li><a href="kiel.html" data-footer-kiel>Kreuzfahrtparkplatz Kiel</a></li>
+            <li><a href="#footer-message" data-footer-future="Hamburg">Kreuzfahrtparkplatz Hamburg</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde">Kreuzfahrtparkplatz Warnemünde</a></li>
+            <li><a href="#footer-message" data-footer-future="Bremerhaven">Kreuzfahrtparkplatz Bremerhaven</a></li>
+            <li><a href="#footer-message" data-footer-future="Rostock">Kreuzfahrtparkplatz Rostock</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde">Kreuzfahrtparkplatz Travemünde</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-top-links footer-terminals" aria-label="Kreuzfahrt Liegeplätze">
+          <h2>Kreuzfahrt Liegeplätze</h2>
+          <ul>
+            <li><a href="#parkplatzsuche" data-footer-kiel data-footer-route="/kiel/norwegenkai">Kreuzfahrtparkplatz Kiel Norwegenkai</a></li>
+            <li><a href="#parkplatzsuche" data-footer-kiel data-footer-route="/kiel/ostuferhafen">Kreuzfahrtparkplatz Kiel Ostuferhafen</a></li>
+            <li><a href="#parkplatzsuche" data-footer-kiel data-footer-route="/kiel/schwedenkai">Kreuzfahrtparkplatz Kiel Schwedenkai</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Terminal 1">Kreuzfahrtparkplatz Warnemünde Terminal 1</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Terminal 2">Kreuzfahrtparkplatz Warnemünde Terminal 2</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde P7">Kreuzfahrtparkplatz Warnemünde P7</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Ostpreußenkai">Kreuzfahrtparkplatz Travemünde Ostpreußenkai</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Skandinavienkai">Kreuzfahrtparkplatz Travemünde Skandinavienkai</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-top-links footer-ships" aria-label="Kreuzfahrtschiffe">
+          <h2>Kreuzfahrtschiffe</h2>
+          <ul>
+            <li><a href="#parkplatzsuche" data-select-line="AIDA" data-footer-kiel data-footer-route="/kiel/aida">Kreuzfahrtparkplatz Kiel AIDA</a></li>
+            <li><a href="#parkplatzsuche" data-select-line="MSC" data-footer-kiel data-footer-route="/kiel/msc">Kreuzfahrtparkplatz Kiel MSC</a></li>
+            <li><a href="#parkplatzsuche" data-select-line="Mein Schiff" data-footer-kiel data-footer-route="/kiel/mein-schiff">Kreuzfahrtparkplatz Kiel Mein Schiff</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde AIDA">Kreuzfahrtparkplatz Warnemünde AIDA</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde TUI">Kreuzfahrtparkplatz Warnemünde TUI</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde MSC">Kreuzfahrtparkplatz Warnemünde MSC</a></li>
+            <li><a href="#footer-message" data-footer-future="Warnemünde Sky Princess">Kreuzfahrtparkplatz Warnemünde Sky Princess</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Deutschland">Kreuzfahrtparkplatz Travemünde MS Deutschland</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Europa">Kreuzfahrtparkplatz Travemünde MS Europa</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde Scenic Eclipse II">Kreuzfahrtparkplatz Travemünde Scenic Eclipse II</a></li>
+            <li><a href="#footer-message" data-footer-future="Travemünde MS Hamburg">Kreuzfahrtparkplatz Travemünde MS Hamburg</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Client-supplied wave, harbour and hand-drawn “Gute Reise!” graphic.
+           Decorative artwork only; all SEO copy and links remain live HTML.
+           An accessible German text equivalent is supplied separately. -->
+      <img class="footer-wave-photo" src="assets/footer/wave-gute-reise-exact.webp"
+           alt="" aria-hidden="true" width="1536" height="135" decoding="async" loading="lazy">
+      <span class="visually-hidden">Gute Reise!</span>
+    </div>
+
+    <!-- HOME SEO COPY — page-specific: do not reuse for a Kiel SEO footer. -->
+    <div class="footer-seo" aria-label="Weitere Informationen zu Kreuzfahrtparkplätzen">
+      <div class="footer-seo-inner">
+        <section class="footer-seo-column">
+          <div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-search-client.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async"><h2>Kreuzfahrtparkplätze<br>einfach vergleichen</h2></div>
+          <p>Statt verschiedene Parkplatzanbieter einzeln zu suchen, kannst du auf kreuzfahrtparkplatz.de unterschiedliche Angebote übersichtlich miteinander vergleichen.</p>
+          <p>Dabei spielen nicht nur die Preise eine Rolle. Je nach Angebot kannst du unter anderem vergleichen:</p>
+          <p class="footer-strong">Entfernung zum Terminal · Shuttle-Service · Transferzeit · Außen- oder Hallenstellplatz · Schlüsselabgabe · Bewertungen · zusätzliche Leistungen</p>
+          <p>So findest du den Parkplatz, der am besten zu deiner Reise passt.</p>
+        </section>
+        <section class="footer-seo-column">
+          <div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-pin-client.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async"><h2>Parkplätze in Kiel, Hamburg,<br>Warnemünde und Bremerhaven</h2></div>
+          <p>Viele Kreuzfahrten starten an den großen deutschen Kreuzfahrthäfen.<br>Deshalb findest du bei uns gezielt Parkmöglichkeiten für:</p>
+          <ul class="footer-checked-links">
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><a href="#parkplatzsuche" data-footer-kiel>Kreuzfahrtparkplatz Kiel</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><a href="#footer-message" data-footer-future="Hamburg">Kreuzfahrtparkplatz Hamburg</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><a href="#footer-message" data-footer-future="Warnemünde">Kreuzfahrtparkplatz Warnemünde</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><a href="#footer-message" data-footer-future="Bremerhaven">Kreuzfahrtparkplatz Bremerhaven</a></li>
+          </ul>
+          <p>Auf den jeweiligen Hafenseiten kannst du die verfügbaren Anbieter, Parkplatzarten und Leistungen miteinander vergleichen.</p>
+        </section>
+        <section class="footer-seo-column">
+          <div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-ship-client.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async"><h2>Parkplatz passend<br>zu deiner Reederei</h2></div>
+          <p>Auch die Reederei und das Abfahrtsterminal können für die Auswahl des passenden Parkplatzes entscheidend sein. Deshalb kannst du gezielt nach Parkmöglichkeiten für bekannte Reedereien wie <strong>AIDA, Mein Schiff, MSC Cruises</strong> und <strong>Costa</strong> suchen.</p>
+        </section>
+        <section class="footer-seo-column">
+          <div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-car-client.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async"><h2>Terminal-Parking,<br>Shuttle oder Valet?</h2></div>
+          <p>Welche Parkart für dich am besten geeignet ist, hängt von deinen persönlichen Prioritäten ab.</p>
+          <ul class="footer-checked-links footer-checked-links--text">
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span><strong>Möglichst kurze Wege:</strong> Parkplatz direkt am Terminal</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span><strong>Günstiger parken:</strong> Außenstellplatz mit Shuttle</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span><strong>Wettergeschützt parken:</strong> Hallen- oder Parkhausangebote</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-footer-check"/></svg><span><strong>Maximaler Komfort:</strong> verfügbare Valet-Angebote vergleichen</span></li>
+          </ul>
+        </section>
+        <section class="footer-seo-column">
+          <div class="footer-seo-head"><img class="footer-client-icon" src="assets/footer/icon-footer-shield-client.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async"><h2>Mehr Sicherheit bei der Buchung<br>über kreuzfahrtparkplatz.de</h2></div>
+          <p>Ein besonderer Vorteil einer qualifizierenden Buchung über kreuzfahrtparkplatz.de ist der zusätzliche Fahrzeugschutz der Allianz.</p>
+          <p>Damit möchten wir dir nicht nur helfen, einen passenden Parkplatz zu finden, sondern unseren Kunden auch während ihrer Kreuzfahrt ein zusätzliches gutes Gefühl geben.</p>
+          <p class="footer-conclusion">Parkplatz vergleichen.<br>Geschützt buchen.<br>Kreuzfahrt genießen.</p>
+        </section>
+      </div>
+    </div>
+    <!-- Bottom bar: original payments and country/language choices. -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-upper">
+        <p>© 2026 KreuzfahrtParkplatz.de <span aria-hidden="true">　|　</span> Alle Rechte vorbehalten.</p>
+        <div class="footer-payment-list" aria-label="Akzeptierte Zahlungsmethoden">
+          <img src="assets/footer/pay-visa.webp" width="65" height="36" alt="Visa" loading="lazy" decoding="async">
+          <img src="assets/footer/pay-mastercard.webp" width="61" height="36" alt="Mastercard" loading="lazy" decoding="async">
+          <img src="assets/footer/pay-paypal.webp" width="74" height="36" alt="PayPal" loading="lazy" decoding="async">
+          <img src="assets/footer/pay-applepay.webp" width="71" height="36" alt="Apple Pay" loading="lazy" decoding="async">
+          <img src="assets/footer/pay-gpay.webp" width="77" height="36" alt="Google Pay" loading="lazy" decoding="async">
+          <img src="assets/footer/pay-bank.webp" width="175" height="36" alt="Banküberweisung" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="footer-bottom-lower">
+        <nav aria-label="Rechtliches"><a href="#footer-message" data-footer-legal="AGB">AGB</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Datenschutz">Datenschutz</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Widerrufsbelehrung">Widerrufsbelehrung</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Impressum">Impressum</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Cookie-Einstellungen">Cookie-Einstellungen</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Barrierefreiheit">Barrierefreiheit</a><span aria-hidden="true">|</span><a href="#footer-message" data-footer-legal="Affiliate-Partner werden">Jetzt Affiliate Partner werden</a></nav>
+        <div class="footer-country">
+          <button class="footer-country-button" type="button" id="footer-country-toggle" aria-expanded="false" aria-controls="footer-country-options"><span aria-hidden="true" class="footer-germany-flag"></span>Deutschland <svg class="icon" aria-hidden="true"><use href="#icon-chevron"/></svg></button>
+          <div id="footer-country-options" class="footer-country-panel" hidden><span>Deutschland · Deutsch</span><p>Weitere Länder und Sprachen sind in dieser Projektphase nicht vorgesehen.</p></div>
+        </div>
+      </div>
+      <p class="footer-message" id="footer-message" role="status" aria-live="polite" hidden></p>
+    </div>
+  </footer>
+
+</body>
+</html>

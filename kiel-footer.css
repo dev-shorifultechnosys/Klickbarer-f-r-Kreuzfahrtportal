@@ -1,0 +1,171 @@
+/* ============================================================================
+   KIEL AUSWAHL FOOTER / client exact page-specific design, November 2026
+   --------------------------------------------------------------------------
+   Reference: "Kiel Auswahl Footer(1).png" (1536 x 1024).
+   Extends existing V11 footer primitives without changing Homepage footer.
+   Seven genuine HTML SEO columns are unique to the Kiel comparison page.
+   Decorative harbour & "Gute Reise!" script remain supplied raster artwork;
+   logos and pictograms are separate image/SVG assets, not screenshot sections.
+   ========================================================================= */
+.kiel-page .home-footer {
+  color: #fff;
+  background: #07376d;
+  --kiel-footer-blue: #68b8fa;
+}
+.kiel-page .home-footer .footer-hero { min-height: clamp(385px, 35.7vw, 550px); }
+.kiel-page .home-footer .footer-hero-inner { max-width: none; }
+.kiel-page .home-footer .footer-wave-photo { object-position:center bottom; }
+/* The client reference has seven SEO columns instead of five. */
+.kiel-page .home-footer .footer-seo {
+  background: linear-gradient(180deg, #07386f 0%, #043269 85%, #052e60 100%);
+}
+.kiel-page .home-footer .footer-seo-inner {
+  max-width: none;
+  width: 100%;
+  padding: clamp(20px,1.45vw,23px) clamp(25px,1.78vw,29px) clamp(16px,1.6vw,24px);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+}
+.kiel-page .home-footer .footer-seo-column,
+.kiel-page .home-footer .footer-seo-column:first-child,
+.kiel-page .home-footer .footer-seo-column:nth-child(2n+1) {
+  border-left: 1px solid rgba(154,195,237,.56);
+  border-bottom: 0;
+  padding: 0 clamp(9px,1.07vw,16px);
+  min-width: 0;
+  font-size: clamp(10.5px, .775vw, 12px);
+  line-height: 1.43;
+  overflow-wrap: break-word;
+}
+.kiel-page .home-footer .footer-seo-column:first-child { border-left:0; padding-left:0; }
+.kiel-page .home-footer .footer-seo-column:last-child { padding-right:0; }
+.kiel-page .home-footer .footer-seo-head {
+  display:flex;
+  align-items:flex-start;
+  gap:clamp(8px,.8vw,13px);
+  min-height:clamp(56px,4.3vw,67px);
+  margin:0 0 6px;
+}
+.kiel-page .home-footer .footer-seo-head > .footer-client-icon {
+  width:clamp(33px,3.05vw,47px);
+  height:clamp(33px,3.05vw,47px);
+  flex:0 0 auto;
+  object-fit:contain;
+}
+.kiel-page .home-footer .footer-seo-head h2 {
+  font-size:clamp(11px,.95vw,15px);
+  line-height:1.18;
+  font-weight:700;
+  margin:4px 0 0;
+  color:#fff;
+}
+.kiel-page .home-footer .footer-seo-column p {
+  margin:0 0 clamp(9px,.84vw,13px);
+  line-height:1.43;
+}
+.kiel-page .home-footer .footer-seo-column .footer-strong {
+  font-weight:700;
+  line-height:1.32;
+}
+.kiel-page .home-footer .footer-checked-links {
+  margin:3px 0 12px;
+  padding:0;
+  display:grid;
+  gap:4px;
+}
+.kiel-page .home-footer .footer-checked-links li {
+  display:flex;
+  align-items:flex-start;
+  gap:clamp(5px,.48vw,8px);
+  font-weight:700;
+  margin:0;
+  line-height:1.25;
+}
+.kiel-page .home-footer .footer-checked-links .icon {
+  width:clamp(16px,1.58vw,24px);
+  height:clamp(16px,1.58vw,24px);
+  flex-shrink:0;
+  margin:0;
+  color:#098BFC;
+  stroke:none;
+}
+.kiel-page .home-footer .footer-conclusion {
+  border-top:1px solid rgba(214,238,255,.75);
+  margin:6px 0 3px!important;
+  padding-top:9px;
+  font-size:clamp(15px,1.12vw,18px);
+  line-height:1.25;
+}
+.kiel-page .home-footer .footer-end-lines {
+  font-size:clamp(13px,1vw,16px);
+  line-height:1.32!important;
+}
+/* Desktop matches exact order: copyright -> six badges -> legal links/flag. */
+.kiel-page .home-footer .footer-bottom { position:relative; }
+.kiel-page .home-footer .footer-payment-list img { object-fit:contain; }
+.kiel-page .home-footer .footer-payment-list { flex-wrap:wrap; justify-content:flex-end; }
+@media(min-width:1401px){
+  .kiel-page .home-footer .footer-seo-inner { min-height:366px; }
+  .kiel-page .home-footer .footer-seo-column { font-size:11.7px; }
+}
+/* At intermediate widths use fewer columns so the German text stays readable,
+   rather than shrinking it to tiny pixels or clipping a long bullet list. */
+@media(min-width:1051px) and (max-width:1400px){
+ .kiel-page .home-footer .footer-seo-inner { grid-template-columns: repeat(4,minmax(0,1fr));row-gap:22px; }
+ .kiel-page .home-footer .footer-seo-column { font-size:13px!important;line-height:1.43!important; }
+ .kiel-page .home-footer .footer-seo-column:nth-child(4n+1) { border-left:0;padding-left:0; }
+ .kiel-page .home-footer .footer-seo-head h2{font-size:15px;}
+}
+@media(min-width:701px) and (max-width:1050px){
+ .kiel-page .home-footer .footer-seo-inner { grid-template-columns:repeat(2,minmax(0,1fr));row-gap:23px; }
+ .kiel-page .home-footer .footer-seo-column { font-size:13px!important;line-height:1.45!important; }
+ .kiel-page .home-footer .footer-seo-column:nth-child(2n+1){border-left:0;padding-left:0;}
+ .kiel-page .home-footer .footer-seo-head h2{font-size:16px;}
+ .kiel-page .home-footer .footer-seo-head>.footer-client-icon{width:43px;height:43px;}
+}
+@media(max-width:700px){
+ .kiel-page .home-footer .footer-seo-inner { grid-template-columns:1fr;gap:16px;padding:24px 20px; }
+ .kiel-page .home-footer .footer-seo-column,
+ .kiel-page .home-footer .footer-seo-column:first-child,
+ .kiel-page .home-footer .footer-seo-column:nth-child(2n+1){
+   border-left:0;border-bottom:1px solid rgba(155,205,255,.26);
+   padding:0 0 18px;
+   font-size:13.5px!important;
+   line-height:1.48!important;
+ }
+ .kiel-page .home-footer .footer-seo-column:last-child{border-bottom:0;padding-bottom:0;}
+ .kiel-page .home-footer .footer-seo-head{min-height:0;gap:13px;margin-bottom:12px;}
+ .kiel-page .home-footer .footer-seo-head h2{font-size:16px;line-height:1.22;}
+ .kiel-page .home-footer .footer-seo-head>.footer-client-icon{height:42px;width:42px;}
+ .kiel-page .home-footer .footer-checked-links .icon{width:22px;height:22px;}
+ .kiel-page .home-footer .footer-conclusion{font-size:17px;}
+ .kiel-page .home-footer .footer-end-lines{font-size:15px;}
+ .kiel-page .home-footer .footer-payment-list{justify-content:flex-start;gap:8px 10px;}
+ .kiel-page .home-footer .footer-bottom-upper{align-items:flex-start;}
+ .kiel-page .home-footer .footer-bottom-lower{row-gap:15px;}
+}
+@media(max-width:390px){
+ .kiel-page .home-footer .footer-payment-list img{height:26px;max-width:100%;}
+ .kiel-page .home-footer .footer-bottom-lower nav{white-space:normal;}
+}
+/* Layout calibration at reference's 1536px canvas: slightly wider German text
+   measures, tighter checklist rhythm, no artificial height or clipping. */
+@media(min-width:1401px){
+ .kiel-page .home-footer .footer-seo-inner {
+   grid-template-columns: 17.2fr 15.2fr 14fr 14.1fr 13.6fr 13.1fr 12.8fr;
+   padding-left:23px;padding-right:22px;
+ }
+ .kiel-page .home-footer .footer-seo-column,
+ .kiel-page .home-footer .footer-seo-column:first-child {padding-left:9px;padding-right:9px;}
+ .kiel-page .home-footer .footer-seo-column:first-child {padding-left:0;}
+ .kiel-page .home-footer .footer-seo-column:last-child {padding-right:0;}
+ .kiel-page .home-footer .footer-seo-column p {margin-bottom:9px;line-height:1.37;}
+ .kiel-page .home-footer .footer-seo-head {min-height:52px;margin-bottom:3px;}
+ .kiel-page .home-footer .footer-seo-head>.footer-client-icon{height:39px;width:39px;}
+ .kiel-page .home-footer .footer-seo-head h2{font-size:13.7px;}
+ .kiel-page .home-footer .footer-checked-links{gap:1px;margin-bottom:9px;}
+ .kiel-page .home-footer .footer-checked-links .icon{width:19px;height:19px;}
+ .kiel-page .home-footer .footer-checked-links li{line-height:1.23;}
+ .kiel-page .home-footer .footer-seo-column {font-size:11.5px;}
+}

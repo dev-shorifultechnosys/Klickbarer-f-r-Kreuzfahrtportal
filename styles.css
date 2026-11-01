@@ -1,0 +1,965 @@
+/* ============================================================================
+   KreuzfahrtParkplatz.de | Header + Hero + Search
+   Based on: client's "Startseite Main.png" visual reference (920 × 339 sample).
+
+   Implementation rules:
+   - Keep all German interface copy as editable HTML, NEVER bake it into a screenshot.
+   - The original client's exact logo artwork is an optimized high-resolution image.
+   - The original tiny ship symbol was traced into a high-fidelity lightweight SVG.
+   - Pure photographic content appears only in optimized local WebP files.
+   - No UI frameworks, external CSS libraries, icon kits or runtime CDN calls.
+   - Styles are organized by component to simplify later developer handoff.
+   ============================================================================ */
+
+:root {
+  color-scheme: light;
+  --ink: #082f7b;
+  --ink-deep: #063284;
+  --blue: #0046ce;
+  --border: #e1ebf6;
+  --surface: #f4f9ff;
+  --yellow: #ffca00;
+  --yellow-hover: #f1ba00;
+  --radius: 7px;
+  --max-content: 1280px;
+  font-family: "Roboto Condensed", "Arial Narrow", "Roboto", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; color: var(--ink); background: #fff; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+button:focus-visible, a:focus-visible, .calendar-day:focus-visible {
+  outline: 3px solid #2189fa;
+  outline-offset: 3px;
+}
+a { color: inherit; }
+[hidden] { display: none !important; }
+.icon { width: 24px; height: 24px; flex: 0 0 auto; stroke: currentColor; stroke-width: 2.05; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.svg-library { position: absolute; width: 0; height: 0; overflow: hidden; }
+.skip-link { position: absolute; z-index: 1000; left: 12px; top: -80px; background: #fff; padding: 8px 12px; }
+.skip-link:focus { top: 12px; }
+
+/* ===================================== HEADER ==================================== */
+.site-header {
+  height: 47px;
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid rgba(152,190,222,.55);
+  background: linear-gradient(90deg,#e9f5fd 0%,#f5faff 45%,#edf7fd 100%);
+  box-shadow: 0 1px 2px rgba(25,70,112,.09);
+}
+.header-inner {
+  position: relative; max-width: var(--max-content); height: 100%; margin: auto;
+  padding: 0 20px 0 clamp(17px,3.5vw,50px);
+  display: flex; align-items: center; gap: 0;
+}
+.brand {
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  flex: 0 0 auto; min-width: 0; text-decoration: none;
+}
+/* Full official client's artwork, not typed/recreated text or generic ship logo. */
+.brand-logo { display:block; width:150px; height:auto; object-fit:contain; image-rendering:auto; }
+.main-navigation { display: flex; gap: clamp(13px,2.45vw,26px); margin-left: auto; align-items: center; height: 100%; }
+.nav-item { position: relative; }
+.nav-button {
+  padding: 13px 0; border: 0; color: var(--ink); background: none;
+  display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+  font-size: 11.6px; font-weight: 500; letter-spacing: -.08px;
+}
+.icon--small { width: 13px; height: 13px; stroke-width: 2.3; }
+.nav-button:hover, .nav-button[aria-expanded=true] { color: var(--blue); }
+.nav-button[aria-expanded=true] .icon--small { transform: rotate(180deg); }
+.header-actions { margin-left: clamp(17px,6.4vw,62px); display: flex; gap: 11px; align-items: center; }
+.favorites-button { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 16px;
+  border-radius: 7px; border: 1px solid #e5f0fe; color: var(--ink); background: #eaf5ff;
+  font-size: 12px; font-weight: 600; white-space: nowrap; }
+.favorites-button:hover { background: #ddecff; }
+.icon--heart { width: 22px; height: 22px; stroke: #0750e0; stroke-width: 2.05; }
+.account-button, .mobile-menu-toggle { display: grid; place-items: center; padding: 0; border: 0; width: 34px; height: 34px; color: #0649dd; background: transparent; }
+.icon--user { width: 23px; height: 23px; stroke-width: 2; }
+.mobile-menu-toggle { display: none; }
+.nav-dropdown, .header-panel {
+  position: absolute; top: calc(100% + 5px); left: -18px; min-width: 191px;
+  border: 1px solid #ccdef4; background: white; padding: 7px;
+  border-radius: 8px; box-shadow: 0 13px 30px rgba(6,45,112,.16); z-index: 45;
+}
+.nav-dropdown--right { right: 0; left: auto; }
+.nav-dropdown button, .nav-dropdown a, .field-options button { display: block; text-align: left; width: 100%; border: 0; border-radius: 5px; color: var(--ink); background: #fff; padding: 9px 10px; font-size: 13px; text-decoration: none; }
+.nav-dropdown button:hover, .nav-dropdown a:hover, .field-options button:hover { background: #e7f2ff; }
+.dropdown-note, .dropdown-info { display: block; color: #697b91; font-size: 11px; padding: 8px 10px; line-height: 1.4; }
+.dropdown-info { margin: 0; }
+.header-panel--help { font-size:13px; line-height:1.45; }
+.header-panel--help p { margin:7px 0 10px; }
+.panel-dismiss { padding:7px 12px; border:1px solid var(--border); border-radius:5px; background:#edf6ff; color:var(--ink); }
+.header-panel { left: auto; right: 42px; top: 48px; width: 245px; padding: 16px; font-size: 13px; }
+
+/* ====================================== HERO ===================================== */
+/*
+ * IMPORTANT: use exactly ONE image across the hero, no split side background,
+ * no photographic overlay, no texture strip and no vignette.
+ * Image text is limited to signage naturally present in the photograph;
+ * headline and other UI remain separate live, editable HTML elements.
+ */
+.hero {
+  position: relative;
+  min-height: 292px;
+  overflow: visible;
+  background: #eaf4fb;
+}
+.hero-image {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/hero-kiel-crystal.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero-content {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 29px clamp(17px,4.7vw,67px) 0;
+  pointer-events: none; /* heading must not steal clicks from search */
+}
+.hero-content h1 {
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  color: #072f7d;
+  font-size: clamp(35px,5vw,46px);
+  line-height: .86;
+  letter-spacing: -.8px;
+}
+.hero-tagline {
+  margin: 4px 0 0;
+  font-size: 14.3px;
+  line-height: 19px;
+  font-weight: 700;
+  color: #08337f;
+  letter-spacing: -.06px;
+}
+
+/* ==================================== SEARCH FORM ================================ */
+.search-form {
+  position: absolute; z-index: 4; bottom: 12px; left: 50%; transform: translateX(-50%);
+  width: calc(100% - 62px); max-width: 1190px; min-height: 58px;
+  display: grid; grid-template-columns: 1.14fr 1fr 1fr 1.15fr 158px;
+  align-items: center; gap: 0; padding: 7px;
+  background: #fff; border: 1px solid #e1ebf5; border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(31,65,91,.15);
+}
+.search-field { position: relative; min-width: 0; height: 41px; }
+.search-field--port .field-control { padding-left: 5px; }
+.search-field + .search-field::before { content: ""; position: absolute; top: 5px; bottom: 5px; left: 0; width: 1px; background: #e6eff7; }
+.field-control { width: 100%; height: 100%; display: flex; padding: 0 10px; align-items: center; gap: 9px; border: 0; border-radius: 4px; background: white; text-align: left; color: var(--ink); }
+.field-control:hover { background: #f5faff; }
+.field-icon { width: 24px; height: 24px; color: #034bd1; stroke-width: 2.15; }
+.field-icon--ship { width: 29px; height: 28px; object-fit: contain; flex: 0 0 auto; }
+.field-copy { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.field-label { font-size: 10.7px; font-weight: 400; color: #4b6190; line-height: 1.08; white-space: nowrap; }
+.field-value { font-size: 12px; font-weight: 700; color: #09327e; line-height: 1.08; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.icon--chevron { width: 17px; height: 17px; margin-left: auto; color: #0049dc; stroke-width: 2.3; }
+.search-submit { display: flex; justify-content: center; align-items: center; gap: 5px; height: 42px; width: 100%; padding: 0 8px; color: #07327e;
+  background: linear-gradient(#ffcf00,#ffc500); border-radius: 5px; border: 0; font-size: 12.1px; font-weight: 700; white-space: nowrap; }
+.search-submit:hover { background: var(--yellow-hover); }
+.icon--arrow { width: 16px; height: 16px; stroke-width: 2.2; }
+.field-options { position: absolute; top: calc(100% + 13px); left: 0; min-width: 180px; width: max-content; max-width: 240px; z-index: 40; border: 1px solid #c6dff4; background: #fff; border-radius: 8px; padding: 6px; box-shadow: 0 10px 26px rgba(0,40,105,.15); }
+.form-message { z-index: 8; position: absolute; top: calc(100% - 12px); left: max(31px,calc((100% - 1190px)/2)); margin: 0; padding: 8px 13px; background: #fff; border: 1px solid #93b7e5; border-radius: 5px; color: var(--ink); font-size: 13px; max-width: 510px; box-shadow: 0 3px 12px rgba(0,48,100,.12); }
+.form-message.error { border-color: #c84d46; color: #9a2525; }
+.date-panel { position: absolute; z-index: 60; bottom: -294px; left: 28%; width: 284px; padding: 12px; color: var(--ink);
+  background: white; border: 1px solid #c5dafa; border-radius: 9px; box-shadow: 0 13px 28px rgba(2,40,95,.18); }
+.date-panel-heading { display: flex; justify-content: space-between; align-items: center; font-size: 14px; padding: 2px 1px 8px; }
+.month-control { width: 29px; height: 28px; font-size: 24px; line-height: 25px; border: 1px solid #d9e5f5; border-radius: 5px; color: var(--ink); background: white; }
+.weekday-names, .calendar-days { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; gap: 2px; }
+.weekday-names { font-size: 11px; color: #52688e; margin-bottom: 5px; }
+.calendar-days { min-height: 210px; }
+.calendar-day { border: 0; border-radius: 5px; background: white; color: var(--ink); font-size: 12px; height: 28px; }
+.calendar-day:hover:not(:disabled), .calendar-day.selected { background: #0753d9; color: white; }
+.calendar-day:disabled { color: #aebcd0; }
+.calendar-empty { height: 28px; }
+
+/* ================================== RESPONSIVE =================================== */
+@media (min-width: 851px) { .hero-content h1 { width: max-content; max-width: 100%; transform: scaleX(1.08); transform-origin: left top; } }
+@media (min-width: 1120px) {
+  .site-header { height: 74px; }
+  .brand-logo { width: 228px; }
+  .nav-button { font-size: 13px; }
+  /* Retain nearly the same hero aspect ratio as the supplied 920px reference.
+     This avoids clipping ship masts, travelers and the terminal at wide widths. */
+  .hero { min-height: clamp(390px,31.65vw,620px); }
+  .hero-image { background-position: center center; }
+  .hero-content { padding-top: 41px; }
+  .hero-content h1 { font-size: clamp(50px,4vw,61px); }
+  .hero-tagline { font-size: 18px; line-height: 23px; }
+  .search-form { min-height: 72px; bottom: 20px; grid-template-columns: 1.14fr 1fr 1fr 1.15fr 194px; }
+  .field-control { padding: 0 18px; }
+  .field-label { font-size: 13px; }
+  .field-value { font-size: 15px; }
+  .search-submit { height: 50px; font-size: 15px; }
+
+}
+@media (max-width: 850px) {
+  .header-inner { padding-inline: 16px; }
+  .brand-logo { width: 145px; }
+  .header-actions { margin-left: auto; gap: 5px; }
+  .main-navigation { position: absolute; top: 47px; right: 0; left: 0; background: #fff; flex-direction: column; height: auto; gap: 0; padding: 8px 20px 16px; align-items: stretch; border-bottom: 1px solid #d5e4f6; box-shadow: 0 6px 15px rgba(0,42,90,.13); display: none; }
+  .main-navigation.is-open { display: flex; }
+  .nav-button { width: 100%; justify-content: space-between; font-size: 14px; padding: 12px 4px; }
+  .nav-dropdown { position: static; width: 100%; box-shadow: none; margin-bottom: 7px; }
+  .mobile-menu-toggle { display: grid; }
+  .favorites-button { height: 33px; padding-inline: 10px; font-size: 11px; }
+  .account-button { width: 27px; }
+  .hero-content { padding-left: 26px; }
+  .hero-content h1 { font-size: clamp(31px,5vw,42px); }
+  .hero-tagline { font-size: 12.5px; line-height: 17px; }
+  .search-form { width: calc(100% - 32px); grid-template-columns: 1.15fr 1fr 1fr 1.2fr 142px; }
+  .field-control { padding-inline: 7px; gap: 5px; }
+  .field-label { font-size: 9px; }
+  .field-value { font-size: 11px; }
+  .field-icon { width: 18px; height: 18px; }
+  .search-submit { font-size: 10px; }
+}
+@media (max-width: 630px) {
+  .site-header { height: 61px; }
+  .brand-logo { width: clamp(135px,38vw,167px); }
+  .favorites-button { width: 38px; justify-content: center; padding: 0; }
+  .favorites-button > span { display: none; }
+  .icon--heart { width: 23px; }
+  .main-navigation { top: 61px; }
+  .hero { min-height: 690px; background: #eaf4fb; }
+  /* Only the photograph is responsive; no gradient or second image layer. */
+  .hero-image { inset: 0; width: 100%; height: 100%; background-size: cover; background-position: 70% center; }
+  .hero-content { padding: 32px 22px 0; }
+  .hero-content h1 { font-size: clamp(31px,8vw,41px); max-width: 450px; letter-spacing: -.6px; line-height: 1.02; }
+  .hero-tagline { margin-top: 12px; font-size: 14px; line-height: 19px; max-width: 380px; text-shadow: 0 1px 9px rgba(255,255,255,.85); }
+  .search-form { display: grid; bottom: 26px; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; width: calc(100% - 28px); border-radius: 12px; }
+  .search-field { height: 56px; border: 1px solid #d9e7f6; border-radius: 7px; }
+  .search-field + .search-field::before { display: none; }
+  .search-field--port, .search-field--line { grid-column: span 2; }
+  .field-control { padding-inline: 10px; gap: 9px; }
+  .field-label { font-size: 12px; }
+  .field-value { font-size: 14px; }
+  .field-icon { width: 23px; height: 23px; }
+  .search-submit { height: 51px; grid-column: span 2; font-size: 15px; }
+  .form-message { left: 14px; right: 14px; top: auto; bottom: 3px; font-size: 12px; }
+  .date-panel { left: 50%; transform: translateX(-50%); bottom: -270px; }
+}
+@media (max-width: 360px) {
+  .hero { min-height: 730px; }
+  .hero-content h1 { font-size: 30px; }
+  .hero-tagline { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Useful focus states for actual in-page navigation */
+.nav-dropdown a:focus-visible, .panel-dismiss:focus-visible { outline:3px solid #2189fa; outline-offset:2px; }
+@media (max-width: 380px){ .brand-logo{width:132px} .header-inner{padding-inline:11px} }
+
+/* Very wide desktop: match the supplied 1919px reference's content span.
+   Smaller desktop/tablet widths retain the reference-sized 920px geometry. */
+@media (min-width: 1600px) {
+  :root { --max-content: 1515px; }
+  .header-inner { padding-left: 18px; }
+  .hero-content { padding-left: 40px; }
+  .search-form { max-width: 1490px; }
+}
+@media (max-width: 630px) {
+  .hero-content h1 { text-shadow: 0 1px 4px rgba(255,255,255,.52); }
+}
+
+
+/* ============================================================================
+   HOME 02 — ALLIANZ INSURANCE BANNER | approved desktop reference: 919 × 124.
+   Background is pale blue. Four distinct benefit tiles remain editable UI.
+   Allianz logo is sourced from the client's separately supplied Allianz.png.
+   ============================================================================ */
+.insurance-section { background: linear-gradient(180deg, #edf8ff 0%, #f0f9ff 100%); }
+.insurance-inner {
+  max-width: var(--max-content); margin: 0 auto; min-height: 124px;
+  padding: 9px clamp(16px,2.9vw,35px);
+  display: grid; grid-template-columns: 185px minmax(240px,1fr) 335px;
+  align-items: center; gap: 17px;
+}
+.insurance-brand {
+  display: flex; align-items: center; justify-content: center; height: 97px;
+  border-radius: 8px; background: rgba(255,255,255,.59);
+}
+.insurance-brand img { display: block; width: 158px; height: auto; max-width: 94%; }
+.insurance-description { padding-left: 20px; border-left: 1.5px solid #9fbbf0; }
+.insurance-description h2 { font-size: 21px; font-weight: 800; line-height: 1.03; letter-spacing: -.28px; color: #04338b; margin: 0 0 8px; }
+.insurance-description p { font-size: 10.5px; line-height: 1.25; font-weight: 400; margin: 0; color: #294b91; }
+.insurance-benefits { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px; }
+.benefit-card {
+  height: 102px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+  padding: 7px 3px 4px; text-align: center; gap: 3px;
+  border: 1px solid #d3eaff; border-radius: 7px; background: rgba(255,255,255,.92);
+  box-shadow: 0 2px 8px rgba(14,78,149,.05); font-size: 10px; line-height: 1.13; color: #072e81;
+}
+.benefit-icon { width: 43px; height: 43px; border-radius: 50%; background: #e2f1ff; display: grid; place-items: center; color: #0449cc; }
+.benefit-icon .icon { width: 27px; height: 27px; stroke-width: 2.2; }
+.benefit-icon .icon:has(use[href="#icon-euro"]) { stroke-width: 3.2; }
+
+/* V6 icon QA: all three benefit silhouettes are solid, transparent SVGs.
+   Keep consistent client blue, but disable inherited stroke for filled artwork.
+   Does not modify the pencil icon used in the first tile. */
+.benefit-icon .icon:has(use[href="#icon-burglary"]),
+.benefit-icon .icon:has(use[href="#icon-car-front"]),
+.benefit-icon .icon:has(use[href="#icon-euro"]) { stroke: none; }
+
+/* ============================================================================
+   HOME 03 — TRUST ICONS. These are static service benefits in the source.
+   Use CSS Grid so they wrap naturally without baking text into icon artwork.
+   ============================================================================ */
+.trust-strip { background: #fff; border-bottom: 1px solid #dbeafa; }
+.trust-inner {
+  max-width: var(--max-content); margin: auto; height: 46px;
+  padding: 0 clamp(24px,4.1vw,50px);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.trust-item { display: inline-flex; align-items: center; gap: 9px; min-width: 0; white-space: nowrap; font-size: 10.2px; line-height: 1; font-weight: 700; color: #072f7c; }
+.trust-item .icon { color: #0144c7; width: 22px; height: 22px; stroke-width: 2.5; }
+.trust-item .icon:has(use[href="#icon-thumb"]) { width: 25px; height: 25px; }
+
+/* ============================================================================
+   HOME 04 — POPULAR PORTS; reference geometry: 4 x ~201px cards at 920px.
+   Each photo is a stand-alone image, all text and buttons are real HTML.
+   ============================================================================ */
+.ports-section { background: #fff; }
+.ports-container { max-width: var(--max-content); margin: 0 auto; padding: 11px clamp(23px,3.5vw,44px) 7px; }
+.section-heading-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.section-heading-row h2 { font-size: 23px; line-height: 1.12; font-weight: 800; letter-spacing: -.3px; color: #0536a0; margin: 0 0 5px; }
+.section-heading-row p { font-size: 12.5px; line-height: 1.18; margin: 0; color: #314f91; }
+.ports-all-link { display: inline-flex; align-items: center; gap: 4px; flex: 0 0 auto; white-space: nowrap; font-size: 10.5px; text-decoration: none; color: #0055d8; padding-bottom: 1px; }
+.ports-all-link .icon { width: 13px; height: 13px; stroke-width: 2; }
+.ports-all-link:hover { text-decoration: underline; }
+.port-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+.port-card { min-width: 0; background: #fff; border: 1px solid #d6e8fb; border-radius: 6px; box-shadow: 0 1px 2px rgba(12,74,123,.05); overflow: hidden; }
+.port-card-photo { display: block; width: 100%; height: auto; aspect-ratio: 201/117; object-fit: cover; object-position: center; background: #e2eef8; }
+.port-card-content { padding: 7px 10px 8px; min-height: 90px; display: flex; flex-direction: column; }
+.port-card h3 { color: #07328b; font-size: 15.3px; font-weight: 800; line-height: 1.1; margin: 0 0 3px; }
+.port-card p { color: #173e82; font-size: 11px; font-weight: 400; line-height: 1.08; margin: 0 0 8px; min-height: 24px; }
+.port-card-action {
+  margin-top: auto; height: 24px; width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  border: 1px solid #327dff; border-radius: 4px; color: #0053df; background: #fff;
+  font-size: 10.6px; font-weight: 700; line-height: 1; text-decoration: none;
+}
+.port-card-action .icon { width: 12px; height: 12px; stroke-width: 2; }
+.port-card-action:hover, .port-card-action:focus-visible { background: #eaf4ff; }
+.ports-feedback { margin: 10px 0 0; padding: 9px 14px; background: #eff7ff; border: 1px solid #aacff7; border-radius: 6px; color: #07317f; font-size: 13px; }
+
+/* On large desktops keep proportionate typography/card sizes without stretching
+   a 920px screenshot. The shared max-width keeps future sections consistent. */
+@media (min-width: 1120px) {
+  .insurance-inner { min-height: 150px; grid-template-columns: 225px minmax(345px,1fr) 420px; gap: 25px; padding-top: 15px; padding-bottom: 15px; }
+  .insurance-brand { height: 112px; }
+  .insurance-brand img { width: 188px; }
+  .insurance-description h2 { font-size: 26px; }
+  .insurance-description p { font-size: 13px; }
+  .benefit-card { height: 112px; font-size: 12px; }
+  .benefit-icon { width: 46px; height: 46px; }
+  .trust-inner { height: 61px; }
+  .trust-item { font-size: 12.5px; }
+  .trust-item .icon { width: 25px; height: 25px; }
+  .ports-container { padding-top: 17px; padding-bottom: 18px; }
+  .section-heading-row h2 { font-size: 30px; }
+  .section-heading-row p { font-size: 15px; }
+  .ports-all-link { font-size: 13px; }
+  .port-card h3 { font-size: 20px; }
+  .port-card p { font-size: 14px; min-height: 36px; }
+  .port-card-content { padding: 12px 14px; min-height: 118px; }
+  .port-card-action { height: 33px; font-size: 12.5px; }
+}
+@media (max-width: 880px) {
+  .insurance-inner { grid-template-columns: 160px minmax(175px,1fr) 310px; padding-inline: 18px; gap: 12px; }
+  .insurance-brand img { width: 140px; }
+  .insurance-description { padding-left: 13px; }
+  .insurance-description h2 { font-size: 17px; }
+  .insurance-description p { font-size: 9.5px; }
+  .benefit-card { font-size: 9px; }
+  .trust-inner { padding-inline: 18px; gap: 8px; }
+  .trust-item { font-size: 9px; gap: 5px; }
+  .trust-item .icon { width: 19px; height: 19px; }
+  .ports-container { padding-inline: 18px; }
+  .port-grid { gap: 10px; }
+  .port-card-content { padding-inline: 7px; }
+  .port-card h3 { font-size: 14px; }
+  .port-card p { font-size: 10px; }
+  .port-card-action { font-size: 9.4px; }
+}
+@media (max-width: 700px) {
+  .insurance-inner { grid-template-columns: 160px 1fr; padding: 16px 18px; gap: 14px; }
+  .insurance-description { padding-left: 13px; }
+  .insurance-description h2 { font-size: 20px; }
+  .insurance-description p { font-size: 11px; }
+  .desktop-break { display: none; }
+  .insurance-benefits { grid-column: 1/-1; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; }
+  .benefit-card { height: 94px; font-size: 10px; }
+  .trust-inner { height: auto; padding: 13px 18px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); row-gap: 15px; }
+  .trust-item { font-size: 10px; white-space: normal; }
+  .ports-container { padding: 18px; }
+  .section-heading-row h2 { font-size: 24px; }
+  .section-heading-row p { font-size: 12px; }
+  .port-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .port-card h3 { font-size: 17px; }
+  .port-card p { font-size: 12px; }
+  .port-card-action { font-size: 11px; height: 31px; }
+}
+@media (max-width: 460px) {
+  .insurance-inner { grid-template-columns: 1fr; padding: 16px 14px; }
+  .insurance-brand { height: 65px; }
+  .insurance-brand img { width: 188px; }
+  .insurance-description { padding-left: 13px; }
+  .insurance-benefits { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .benefit-card { height: 106px; font-size: 12px; }
+  .benefit-icon { width: 47px; height: 47px; }
+  .trust-inner { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px 12px; }
+  .trust-item { font-size: 11px; }
+  .section-heading-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .section-heading-row h2 { font-size: 24px; }
+  .port-grid { grid-template-columns: 1fr; }
+  .port-card h3 { font-size: 18px; }
+  .port-card p { font-size: 13px; min-height: 30px; }
+  .port-card-action { font-size: 13px; height: 34px; }
+  .port-card-photo { aspect-ratio: 201/117; }
+}
+
+
+/* ============================================================================
+   HOME 05 + 06 | PARKING TYPES AND CRUISE-LINE CARDS
+   Pixel guidance: reference image 916 x 404 (source design 922px wide).
+   At ~920px, four equal cards use 14px gutters, 58px image height and
+   original 10–13px German UI text. All icons remain resolution-independent.
+   ============================================================================ */
+.parking-types-section { background: #f1f9fd; }
+.cruise-lines-section { background: #ffffff; }
+.home-section-container {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 11px clamp(23px, 3.5vw, 44px) 10px;
+}
+.home-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.home-section-head h2 {
+  margin: 0 0 5px;
+  color: #04389f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.07;
+  letter-spacing: -.2px;
+}
+.home-section-head p {
+  margin: 0;
+  color: #2c4e92;
+  font-size: 12.1px;
+  line-height: 1.2;
+}
+.home-section-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  padding-bottom: 1px;
+  color: #0051d1;
+  font-size: 10.5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.home-section-more:hover, .home-section-more:focus-visible { text-decoration: underline; }
+.home-section-more .icon { width: 13px; height: 13px; stroke-width: 1.95; }
+.home-product-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; }
+.home-product-card {
+  min-width: 0; overflow: hidden;
+  border: 1px solid #d5e8f8;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,64,125,.05);
+}
+.home-product-card > img {
+  display: block;
+  width: 100%; height: auto;
+  aspect-ratio: 201 / 59;
+  object-fit: cover;
+  object-position: center;
+  background: #cde9f9;
+}
+.parking-type-body { display: grid; grid-template-columns: 30px minmax(0,1fr); column-gap: 6px; padding: 8px 9px 8px; min-height: 86px; }
+.parking-type-icon { color: #0760ea; width: 29px; height: 29px; margin-top: 1px; flex: none; }
+.parking-type-icon--walking { stroke: #0760ea; stroke-width: 2.8; }
+.parking-type-icon--car, .parking-type-icon--garage { stroke: none; fill: currentColor; }
+.parking-type-copy, .cruise-line-body { min-width: 0; }
+.parking-type-copy h3, .cruise-line-body h3 { margin: 0 0 4px; color: #083689; font-size: 13.7px; line-height: 1.08; font-weight: 800; }
+.parking-type-copy p, .cruise-line-body p { margin: 0 0 6px; color: #214886; font-size: 11px; line-height: 1.23; font-weight: 400; }
+.parking-type-link, .cruise-line-link {
+  display: inline-flex; align-items: center; gap: 3px;
+  max-width: 100%; color: #0054d9;
+  font-size: 11.2px; line-height: 1.12;
+  text-decoration: underline;
+  text-underline-offset: 1.6px;
+  white-space: nowrap;
+}
+.parking-type-link:hover, .cruise-line-link:hover { color: #063488; }
+.parking-type-link .icon, .cruise-line-link .icon { width: 12px; height: 12px; stroke-width: 1.9; }
+.cruise-lines-section .home-section-container { padding-top: 10px; }
+.cruise-line-body { padding: 8px 12px 7px; min-height: 70px; }
+.cruise-line-body h3 { font-size: 13.9px; }
+.cruise-line-body p { margin-bottom: 4px; }
+.cruise-lines-feedback { padding: 9px 12px; margin: 10px 0 0; border: 1px solid #c8e0f7; border-radius: 6px; background: #edf7ff; font-size: 12px; }
+
+/* Widen content and scale modestly for desktops. Do not stretch small source
+   photos disproportionately or allow the German text to overlap any icons. */
+@media (min-width: 1120px) {
+  .home-section-container { padding-block: 17px 18px; }
+  .home-section-head h2 { font-size: 29px; }
+  .home-section-head p { font-size: 15px; }
+  .home-section-more { font-size: 13px; }
+  .home-product-grid { gap: 18px; }
+  .parking-type-body { grid-template-columns: 37px minmax(0,1fr); gap: 10px; padding: 11px 13px; min-height: 107px; }
+  .parking-type-icon { width: 35px; height: 35px; }
+  .parking-type-copy h3, .cruise-line-body h3 { font-size: 17.5px; }
+  .parking-type-copy p, .cruise-line-body p { font-size: 14px; }
+  .parking-type-link, .cruise-line-link { font-size: 14px; }
+  .cruise-line-body { padding: 11px 14px; min-height: 94px; }
+  .home-product-card > img { aspect-ratio: 201 / 59; }
+}
+@media (max-width: 880px) {
+  .home-section-container { padding-inline: 18px; }
+  .home-product-grid { gap: 10px; }
+  .parking-type-body { grid-template-columns: 25px minmax(0,1fr); gap: 5px; padding: 7px 6px; }
+  .parking-type-icon { width: 25px; height: 25px; }
+  .parking-type-copy h3, .cruise-line-body h3 { font-size: 12px; }
+  .parking-type-copy p, .cruise-line-body p { font-size: 10px; }
+  .parking-type-link, .cruise-line-link { font-size: 10.1px; }
+  .cruise-line-body { padding: 8px 7px; }
+}
+@media (max-width: 700px) {
+  .home-product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .home-section-container { padding: 18px; }
+  .home-section-head h2 { font-size: 23px; }
+  .home-section-head p { font-size: 12px; }
+  .parking-type-body { grid-template-columns: 34px minmax(0,1fr); padding: 10px; gap: 8px; min-height: 100px; }
+  .parking-type-icon { width: 32px; height: 32px; }
+  .parking-type-copy h3, .cruise-line-body h3 { font-size: 15px; }
+  .parking-type-copy p, .cruise-line-body p { font-size: 12px; }
+  .parking-type-link, .cruise-line-link { font-size: 12px; }
+  .cruise-line-body { padding: 10px; min-height: 85px; }
+}
+@media (max-width: 460px) {
+  .home-section-head { flex-direction: column; align-items: flex-start; gap: 7px; }
+  .home-section-head h2 { font-size: 23px; }
+  .home-product-grid { grid-template-columns: 1fr; gap: 13px; }
+  .home-product-card > img { aspect-ratio: 201 / 66; }
+  .parking-type-body { min-height: 105px; }
+  .parking-type-copy h3, .cruise-line-body h3 { font-size: 17px; }
+  .parking-type-copy p, .cruise-line-body p { font-size: 13px; }
+  .parking-type-link, .cruise-line-link { font-size: 13px; }
+  .cruise-line-body { padding: 11px 13px; min-height: 95px; }
+}
+
+
+/* ===========================================================================
+   HOME 07 — FOUR-STEP EXPLANATION
+   Source screenshot: 920 × 293 px (first 134 px). Four evenly spaced steps,
+   34px badges, 31px high blue pictograms; arrows are vector paths.
+   =========================================================================== */
+.steps-section { background:#f0f9fd; }
+.steps-container { max-width:var(--max-content); margin:0 auto; padding:8px clamp(23px,3.5vw,44px) 9px; }
+.steps-container h2 { font-size:22px; line-height:1.1; font-weight:800; letter-spacing:-.18px; color:#06389f; margin:0 0 7px; }
+.steps-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; margin:0; padding:0; gap:0; }
+.step-card { text-align:center; position:relative; min-width:0; padding:0 10px; }
+.step-visual { height:38px; display:flex; align-items:center; justify-content:flex-start; gap:clamp(32px,6vw,63px); padding-left:3px; }
+.step-number { display:grid; place-items:center; flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:linear-gradient(145deg,#1677e7,#0046d1); color:white; font-size:15px; font-weight:700; line-height:1; }
+.step-pictogram { flex-shrink:0; width:31px; height:31px; color:#005be1; }
+.step-calendar { stroke-width:2.65; }
+.step-search { stroke-width:2.25; }
+.step-check { stroke:none; }
+.step-ship { display:block; object-fit:contain; width:38px; height:34px; flex:0 0 auto; }
+.step-card h3 { font-size:12.6px; line-height:1.19; color:#072d84; font-weight:800; margin:4px 0 3px; white-space:nowrap; }
+.step-card p { color:#314e91; font-size:12.2px; line-height:1.24; margin:0; font-weight:400; }
+.step-connector { position:absolute; top:8px; right:-7px; width:18px; height:20px; color:#1264dd; stroke-width:1.5; }
+/* ===========================================================================
+   HOME 08 — CUSTOMER REVIEWS
+   Exactly three approved customer quotes, circular 35px portraits and a
+   cyclic keyboard-accessible carousel; text remains fully selectable.
+   =========================================================================== */
+.testimonials-section { background:#fff; }
+.testimonials-container { max-width:var(--max-content); margin:0 auto; padding:8px clamp(24px,3.8vw,47px) 12px; }
+.testimonials-top { display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:7px; }
+.testimonials-top h2 { font-size:21px; font-weight:800; line-height:1.05; margin:0 0 3px; color:#07318d; }
+.testimonials-top p { font-size:12.2px; line-height:1.15; margin:0; color:#31518f; }
+.all-reviews-link { display:inline-flex; flex:0 0 auto; align-items:center; gap:2px; font-size:10.6px; line-height:1; padding:0 0 4px; color:#0056de; text-decoration:none; }
+.all-reviews-link:hover { text-decoration:underline; }
+.all-reviews-link .icon { width:12px; height:12px; stroke-width:2; }
+.reviews-carousel { position:relative; }
+.reviews-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.review-card { display:flex; flex-direction:column; min-width:0; min-height:109px; background:#fff; border:1px solid #d7e9fa; border-radius:6px; padding:5px 18px 5px; box-shadow:0 1px 3px rgba(4,60,131,.025); }
+.review-stars { color:#ffb500; font-size:17px; line-height:18px; letter-spacing:.1px; font-family:Arial,sans-serif; font-weight:700; white-space:nowrap; }
+.review-card blockquote { margin:2px 0 2px; color:#143a89; font-size:12.4px; line-height:1.22; font-weight:400; flex:1; }
+.review-person { display:flex; align-items:center; gap:9px; min-width:0; }
+.review-person img { display:block; border-radius:50%; object-fit:cover; width:34px; height:34px; flex-shrink:0; }
+.review-person strong { display:block; color:#073180; line-height:1.04; font-size:12.4px; font-weight:800; }
+.review-person span { display:block; color:#54709d; line-height:1.11; font-size:11.6px; }
+.review-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:2; width:32px; height:32px; border:1px solid #deedff; border-radius:50%; background:#fff; color:#0061e8; display:grid; place-items:center; box-shadow:0 2px 4px rgba(7,75,151,.075); }
+.review-nav:hover { background:#eff7ff; }
+.review-nav .icon { width:18px; height:18px; stroke-width:2; }
+.review-nav--previous { left:-29px; }
+.review-nav--previous .icon { transform:rotate(180deg); }
+.review-nav--next { right:-29px; }
+.reviews-feedback { color:#18438a; background:#edf7ff; border:1px solid #c4ddff; border-radius:5px; padding:8px; margin:10px 0 0; font-size:12px; }
+.visually-hidden { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+@media (min-width:1120px) {
+  .steps-container { padding-top:16px; padding-bottom:19px; }
+  .steps-container h2 { font-size:28px; margin-bottom:13px; }
+  .step-visual { height:47px; gap:clamp(65px,6vw,99px); }
+  .step-number { width:39px; height:39px; font-size:18px; }
+  .step-pictogram { width:38px; height:38px; }
+  .step-ship { width:42px; height:42px; }
+  .step-card h3 { font-size:15px; margin:8px 0 5px; }
+  .step-card p { font-size:14px; }
+  .step-connector { top:15px; }
+  .testimonials-container { padding-top:17px; padding-bottom:20px; }
+  .testimonials-top h2 { font-size:27px; }
+  .testimonials-top p { font-size:14px; }
+  .all-reviews-link { font-size:12px; }
+  .reviews-list { gap:16px; }
+  .review-card { min-height:146px; padding:12px 19px; }
+  .review-stars { font-size:21px; line-height:25px; }
+  .review-card blockquote { font-size:15px; line-height:1.27; }
+  .review-person img { width:41px; height:41px; }
+  .review-person strong { font-size:15px; }
+  .review-person span { font-size:13px; }
+}
+@media (max-width:760px) {
+  .step-visual { gap:clamp(10px,5vw,35px); }
+  .step-card h3 { font-size:11px; white-space:normal; }
+  .step-card p { font-size:10.6px; }
+  .step-connector { right:-8px; }
+  .review-card { padding:8px 11px; min-height:136px; }
+  .review-card blockquote { font-size:11.2px; }
+  .review-person strong { font-size:11px; }
+  .review-person span { font-size:10.5px; }
+  .review-nav--previous { left:-21px; }
+  .review-nav--next { right:-21px; }
+}
+@media (max-width:620px) {
+  .steps-container { padding:17px 20px 19px; }
+  .steps-container h2 { font-size:23px; margin-bottom:14px; }
+  .steps-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:19px 6px; }
+  .step-card h3 { font-size:12.5px; }
+  .step-card p { font-size:11.7px; }
+  .step-visual { justify-content:center; gap:24px; }
+  .step-connector { display:none; }
+  .testimonials-container { padding:16px 25px 24px; }
+  .testimonials-top { align-items:flex-start; }
+  .testimonials-top h2 { font-size:23px; }
+  .testimonials-top p { font-size:11px; }
+  .reviews-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .review-card { min-height:145px; }
+  .review-card[data-visual-slot="3"] { display:none; }
+  .review-nav--previous { left:-21px; }
+  .review-nav--next { right:-21px; }
+}
+@media (max-width:460px) {
+  .steps-grid { gap:24px 4px; }
+  .step-card { padding:0 2px; }
+  .step-visual { gap:15px; }
+  .steps-container h2 { font-size:22px; }
+  .testimonials-top { flex-direction:column; gap:4px; }
+  .all-reviews-link { padding:1px 0 1px; font-size:11px; }
+  .reviews-list { grid-template-columns:minmax(0,1fr); }
+  .review-card { min-height:146px; padding:13px 16px; }
+  .review-card[data-visual-slot="2"] { display:none; }
+  .review-card blockquote { font-size:14px; }
+  .review-person strong { font-size:13px; }
+  .review-person span { font-size:12px; }
+  .review-stars { font-size:20px; line-height:24px; }
+  .review-nav--previous { left:-17px; }
+  .review-nav--next { right:-17px; }
+}
+@media (prefers-reduced-motion:reduce) { .review-card { scroll-behavior:auto; } }
+
+/* V8 pixel-review refinements: keep the original screenshot geometry at 920px. */
+@media (min-width:761px) and (max-width:1119px) {
+  .steps-container { padding-right:0; }
+  .steps-container h2 { margin-bottom:2px; }
+  .step-visual { gap:clamp(40px,6.75vw,70px); }
+  .testimonials-container { padding-inline:clamp(32px,4.35vw,47px); }
+}
+/* The reference uses wider humanist sans-serif body lettering than the
+   narrow headline face. Keep headlines unchanged; match labels/reviews. */
+.step-card h3, .step-card p,
+.review-card blockquote, .review-person strong, .review-person span {
+  font-family: Arial, Helvetica, sans-serif;
+}
+@media (min-width:761px) and (max-width:1119px) {
+  .testimonials-container { padding-top:5px; padding-bottom:0; }
+  .review-card { padding-top:3px; padding-bottom:3px; min-height:107px; }
+  .review-card blockquote { font-size:11.7px; line-height:1.19; }
+  .step-card h3 { font-size:11.8px; }
+  .step-card p { font-size:11.6px; }
+}
+@media (min-width:761px) and (max-width:1119px) {
+  .review-card blockquote { font-size:12.1px; line-height:1.17; }
+}
+
+
+/* ==========================================================================
+   HOME FOOTER / EXACT PAGE-SPECIFIC KREUZFAHRT VISUAL SYSTEM (V9)
+   Source: Startseite Footer.png (1536x1024). This is NOT reused on SEO pages.
+   - All copy remains selectable/editable HTML text.
+   - Night harbor only in WebP, waves are decorative 100% vector SVG.
+   - No images of footer columns or flattened UI screenshots.
+   - Fluid typography follows the supplied desktop proportions.
+   ========================================================================== */
+.home-footer { color: #fff; background:#07376D; overflow:hidden; }
+.home-footer a { color: inherit; text-decoration:none; }
+.home-footer a:hover { text-decoration:underline; text-underline-offset:3px; }
+.home-footer a:focus-visible,.home-footer button:focus-visible {outline:2px solid #69BFFF;outline-offset:3px; }
+.footer-hero { position:relative; isolation:isolate; min-height:clamp(360px,35.7vw,548px); background:#063970; overflow:hidden; }
+.footer-hero-art {position:absolute;inset:0;z-index:-1;background: url('assets/footer/harbor-night.webp') center bottom / 100% 100% no-repeat;}
+.footer-hero-inner { position:relative;z-index:2; width:100%;padding:clamp(25px,2.55vw,40px) clamp(18px,5.15vw,79px) 0; margin:0 auto; display:grid; grid-template-columns:32% 18% 27% 23%; gap:0; }
+.footer-brand-column {padding-right:clamp(10px,1.6vw,24px);}
+.footer-brand-link {display:block; width:clamp(205px,25.6vw,393px);max-width:100%;}
+.footer-brand-link img {display:block;width:100%;height:auto;object-fit:contain;object-position:left top;}
+.footer-brand-tagline {font-size:clamp(5px,.56vw,8.5px);font-weight:700;letter-spacing:clamp(.3px,.09vw,1.3px);white-space:nowrap;margin:clamp(-10px,-.4vw,-6px) 0 0 clamp(59px,7.1vw,108px);line-height:1.2;}
+.footer-intro {font-size:clamp(11px,1.19vw,18px);line-height:1.48;font-weight:400;margin:clamp(20px,1.83vw,28px) 0 clamp(13px,.98vw,16px);}
+.footer-benefits, .footer-top-links ul,.footer-checked-links {list-style:none;margin:0;padding:0;}
+.footer-benefits {display:grid;gap:clamp(4px,.46vw,7px);}
+.footer-benefits li {display:flex;align-items:center;gap:clamp(9px,1vw,16px);font-size:clamp(11px,1.06vw,16.3px);white-space:nowrap;}
+.footer-benefits .footer-icon-circle {color:#1088f4;width:clamp(20px,2.15vw,33px);height:clamp(20px,2.15vw,33px);}
+.footer-top-links {min-width:0;}
+.footer-top-links h2 {font-size:clamp(13px,1.37vw,21px);line-height:1.24;font-weight:700;margin:clamp(7px,1.0vw,16px) 0 clamp(12px,1.15vw,18px);white-space:nowrap;}
+.footer-top-links li{line-height:1.32;margin-bottom:clamp(5px,.7vw,11px);}
+.footer-top-links a{font-size:clamp(10px,1.045vw,16px);white-space:nowrap;line-height:1.32;font-weight:400;}
+.footer-wave-art {position:absolute; z-index:1;left:0;right:0;bottom:0;width:100%;height:clamp(98px,10.1vw,155px);pointer-events:none;}
+.footer-journey-script {position:absolute;z-index:3;bottom:clamp(7px,.9vw,14px);left:clamp(18px,4.4vw,68px);transform:rotate(-9deg);color:#fff;text-shadow:0 1px 2px rgba(0,25,69,.25);font-family:'Segoe Script','Brush Script MT','Apple Chancery','URW Chancery L',cursive;font-style:italic;font-size:clamp(29px,4.2vw,64px);font-weight:400;letter-spacing:-2px;line-height:1.05;white-space:nowrap;margin:0;}
+/* Lower five SEO columns are present in the full Startseite Footer screenshot. */
+.footer-seo {background:linear-gradient(180deg,#063B75 0%,#053269 80%,#052D5B 100%);}
+.footer-seo-inner {max-width:1536px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:clamp(14px,1.3vw,20px) clamp(18px,2.65vw,41px) clamp(17px,1.6vw,25px);}
+.footer-seo-column {min-width:0;padding:0 clamp(10px,1.24vw,19px);border-left:1px solid rgba(167,197,230,.55);font-size:clamp(10.5px,.915vw,14px);line-height:1.32;}
+.footer-seo-column:first-child {padding-left:0;border-left:0;}
+.footer-seo-column:last-child {padding-right:0;}
+.footer-seo-head {display:flex;align-items:flex-start;gap:clamp(7px,1.1vw,17px);min-height:clamp(34px,3.4vw,52px);}
+.footer-seo-head>.icon {color:#69B5FF;width:clamp(26px,3vw,46px);height:clamp(26px,3vw,46px);flex:0 0 auto;stroke-width:2.4;}
+.footer-seo-head h2 {font-size:clamp(11.4px,.95vw,14.6px);line-height:1.17;margin:4px 0 0;font-weight:700;color:#fff;}
+.footer-seo-column p{margin:clamp(5px,.59vw,9px) 0;}
+.footer-strong,.footer-checked-links strong{font-weight:700;}
+.footer-checked-links{margin:4px 0 14px;}
+.footer-checked-links li{display:flex;align-items:flex-start;gap:clamp(5px,.7vw,11px);margin:clamp(3px,.42vw,7px) 0;line-height:1.22;}
+.footer-checked-links>.footer-checked-links {padding-top:3px;}
+.footer-checked-links .icon {color:#118AF6;width:clamp(16px,1.57vw,24px);height:clamp(16px,1.57vw,24px);flex:0 0 auto;margin-top:-2px;}
+.footer-checked-links a {font-weight:700;}
+.footer-conclusion{border-top:1px solid rgba(213,230,255,.7);margin-top:8px!important;padding-top:9px;font-size:clamp(13px,1.14vw,17.4px);line-height:1.16!important;font-weight:700;}
+.footer-bottom {background:linear-gradient(180deg,#07366D,#052D60);padding:0 clamp(18px,3vw,46px) clamp(13px,1.6vw,25px);font-size:clamp(10px,.93vw,14px);}
+.footer-bottom-upper {display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid rgba(219,233,250,.5);min-height:clamp(45px,3.9vw,60px);}
+.footer-bottom-upper p{margin:0;white-space:nowrap;}
+.footer-payment-list{display:flex;align-items:center;gap:clamp(8px,1.28vw,19px);}
+.footer-payment-list img{height:clamp(23px,2.34vw,36px);width:auto;object-fit:contain;}
+.footer-bottom-lower {border-top:1px solid rgba(219,233,250,.5);padding-top:clamp(8px,.76vw,12px);display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.footer-bottom-lower nav{display:flex;align-items:center;gap:clamp(7px,.85vw,13px);white-space:nowrap;flex-wrap:wrap;}
+.footer-bottom-lower nav a {font-size:clamp(10px,.88vw,13.5px);}
+.footer-bottom-lower nav span {opacity:.78;}
+.footer-country{position:relative;flex:0 0 auto;}
+.footer-country-button{display:flex;align-items:center;gap:8px;color:#fff;border:0;background:transparent;padding:3px 2px;font-size:clamp(10px,.91vw,14px);}
+.footer-country-button .icon {width:15px;height:15px;}
+.footer-germany-flag {width:clamp(17px,1.6vw,24px);height:clamp(17px,1.6vw,24px);border-radius:50%;background:linear-gradient(to bottom,#111 0 33.33%,#D01818 33.33% 66.66%,#F2D51D 66.66% 100%);}
+.footer-country-panel{position:absolute;bottom:calc(100% + 8px);right:0;width:260px;background:#fff;color:#064077;padding:12px;border-radius:5px;box-shadow:0 10px 24px rgba(0,15,53,.3);font-size:12px;z-index:8;}
+.footer-country-panel p {margin:6px 0 0;line-height:1.3;}
+.footer-message {color:#fff;border:1px solid #328cdb;background:#084f98;border-radius:5px;margin:15px 0 0;padding:10px 14px;}
+/* Fluid desktop typography, without distorting client's reference proportions. */
+@media (min-width:1537px){
+  .footer-hero{min-height:548px}.footer-hero-art{background-size:cover}.footer-hero-inner{max-width:1600px}
+}
+@media (max-width:1100px){
+  .footer-hero-inner{grid-template-columns:30% 18% 26% 26%;padding-left:4vw;padding-right:3vw;}
+  .footer-top-links a{font-size:clamp(9px,1.04vw,12px);}
+  .footer-brand-tagline{white-space:normal;}
+  .footer-benefits li{font-size:clamp(9px,1.05vw,12px);}
+  .footer-seo-column{font-size:clamp(9px,1.03vw,11px);}
+}
+@media (max-width:760px){
+  .footer-hero{min-height:0;padding-bottom:110px;}
+  .footer-hero-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 17px;padding:27px 18px 0;}
+  .footer-brand-column{grid-column:1/-1;}
+  .footer-brand-link{width:min(320px,84%);}
+  .footer-brand-tagline{font-size:7px;margin-left:84px;margin-top:-2px;}
+  .footer-intro{font-size:14px;line-height:1.43;margin-top:22px;}
+  .footer-intro br {display:none;}
+  .footer-benefits li{font-size:13px;white-space:normal;}
+  .footer-top-links h2 {font-size:17px;white-space:normal;margin:0 0 12px;}
+  .footer-top-links a{white-space:normal;font-size:13px;line-height:1.4;}
+  .footer-top-links li{margin-bottom:8px;}
+  .footer-hero-art{background-size:auto 400px;background-position:right bottom;}
+  .footer-wave-art{height:110px;}
+  .footer-journey-script{font-size:40px;bottom:13px;left:22px;}
+  .footer-seo-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 0;}
+  .footer-seo-column,.footer-seo-column:first-child{padding:0 12px;border-left:1px solid rgba(167,197,230,.45);font-size:12px;line-height:1.45;}
+  .footer-seo-column:nth-child(2n+1){border-left:0;padding-left:0;}
+  .footer-seo-head h2{font-size:13px;}.footer-seo-head>.icon{width:30px;height:30px;}
+  .footer-checked-links .icon{width:21px;height:21px;}
+  .footer-bottom-upper,.footer-bottom-lower{flex-wrap:wrap;justify-content:flex-start;padding:15px 0;}
+  .footer-bottom-upper p{white-space:normal;font-size:12px;}
+  .footer-payment-list{gap:8px;flex-wrap:wrap;}
+  .footer-payment-list img{height:27px;}
+  .footer-bottom-lower nav{gap:7px 11px;}
+  .footer-bottom-lower nav a{font-size:12px;}
+  .footer-country{margin-left:auto;}
+}
+@media (max-width:460px){
+  .footer-hero-inner{grid-template-columns:1fr;gap:23px;}
+  .footer-brand-column{grid-column:auto;}
+  .footer-hero{padding-bottom:120px;}
+  .footer-intro{font-size:14px;}
+  .footer-top-links{border-top:1px solid rgba(187,221,255,.16);padding-top:14px;}
+  .footer-top-links li{margin-bottom:7px;}
+  .footer-seo-inner{grid-template-columns:1fr;gap:19px;}
+  .footer-seo-column,.footer-seo-column:first-child,.footer-seo-column:nth-child(2n+1){border-left:0;padding:0;border-bottom:1px solid rgba(167,197,230,.26);padding-bottom:15px;font-size:12.7px;}
+  .footer-seo-column:last-child{border-bottom:0;}
+  .footer-seo-head h2{font-size:15px;}
+  .footer-bottom{padding:0 20px 16px;}
+  .footer-payment-list img{height:25px;}
+  .footer-bottom-lower{align-items:flex-start;}
+  .footer-country{margin-left:0;}
+}
+
+
+/* ===========================================================================
+   V10 HOME FOOTER ARTWORK PATCH (client exact graphic assets)
+   Only .home-footer descendants are changed. Reference: Startseite Footer(1)
+   at 1536 × 1024. Copy is real HTML; artwork alone is image-backed.
+   =========================================================================== */
+.home-footer .footer-wave-art, .home-footer .footer-journey-script{display:none!important;}
+.home-footer .footer-wave-photo{
+  position:absolute; left:0;right:0;bottom:0;z-index:1;display:block;
+  width:100%; height:clamp(85px,8.79vw,135px);object-fit:fill;
+  pointer-events:none;user-select:none;
+}
+.home-footer .footer-brand-link{width:clamp(205px,25.6vw,393px);}
+.home-footer .footer-brand-link img{width:100%;height:auto;max-width:none;}
+.home-footer .footer-seo-head>.footer-client-icon{
+  width:clamp(28px,3.1vw,48px);height:clamp(28px,3.1vw,48px);
+  object-fit:contain;flex:0 0 auto;
+}
+.home-footer .footer-payment-list img{image-rendering:auto;}
+.home-footer .footer-germany-flag{
+ background:linear-gradient(180deg,#111 0 33.333%,#D00E21 33.333% 66.667%,#FFCE00 66.667%);
+ box-shadow:0 0 0 1px rgba(255,255,255,.12);
+}
+/* Off-screen accessible spelling for the graphical handwritten script. */
+.visually-hidden{position:absolute!important; width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
+@media(max-width:740px){
+ .home-footer .footer-wave-photo{height:112px;width:100%;object-fit:cover;object-position:left center;}
+ .home-footer .footer-seo-head>.footer-client-icon{width:35px;height:35px;}
+}
+@media(max-width:510px){
+ .home-footer .footer-wave-photo{height:120px;width:auto;min-width:100%;max-width:none;
+   object-fit:cover;object-position:left center;}
+ .home-footer .footer-brand-link{width:min(320px,95%);}
+ .home-footer .footer-seo-head>.footer-client-icon{width:39px;height:39px;}
+}
+
+/* Seamless fade from the independently reconstructed harbor to the client's exact ribbon artwork. */
+.home-footer .footer-wave-photo{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%);}
+/* Client screenshot alignment: upper SEO links finish above the harbor ribbon,
+   while preserving the exact attached logo artwork and all responsive frames. */
+@media (min-width:1025px) {
+  .home-footer .footer-top-links li { margin-bottom: 6.6px; }
+  /* Keep tagline below the exact client logo artwork, never on top of its wordmark. */
+}
+
+/* ============================================================================
+   V11 — REFERENCE QA PATCH / FLUID DESKTOP + CENTRED NAV + GERMAN CALENDARS
+   Based on the supplied 922px Startseite Main and 1536px Startseite Footer.
+   Scope: no redesign; keep original colors, wording and existing assets.
+   ============================================================================ */
+@media (min-width: 1120px) {
+  /* The V10 1280px container produced excessive empty left/right gutters at
+     1600px+ viewport widths. The reference is almost full-width (~92–94%). */
+  :root { --max-content: 1820px; }
+  .header-inner, .hero-content, .insurance-inner, .trust-inner,
+  .ports-container, .home-section-container, .steps-container,
+  .testimonials-container { max-width: 1820px; }
+  .header-inner { padding-inline: clamp(35px,4vw,76px); }
+  .hero-content { padding-inline: clamp(35px,4vw,76px); }
+  .insurance-inner { padding-inline: clamp(35px,4vw,76px); }
+  .trust-inner { padding-inline: clamp(35px,4vw,76px); }
+  .ports-container, .home-section-container, .steps-container,
+  .testimonials-container { padding-left: clamp(35px,4vw,76px);padding-right: clamp(35px,4vw,76px); }
+  .search-form { max-width: 1740px; width: calc(100% - clamp(70px,8vw,152px)); }
+  .main-navigation {
+    position: absolute; left:50%; transform:translateX(-50%);
+    margin-left:0; display:flex; align-items:center; justify-content:center;
+    gap:clamp(20px,2vw,34px);
+  }
+  .header-actions { margin-left:auto; }
+  /* Keep images large enough, but don't stretch cards beyond readability. */
+  .port-grid, .home-product-grid { gap:clamp(14px,1.2vw,22px); }
+  .insurance-inner {grid-template-columns:clamp(195px,17.7vw,275px) minmax(250px,1fr) minmax(400px,34.5%);gap:clamp(17px,2vw,30px);}
+  .insurance-benefits { gap:clamp(6px,.6vw,11px); }
+  .footer-seo-inner { max-width: none; padding-left:clamp(35px,4vw,76px);padding-right:clamp(35px,4vw,76px); }
+  .footer-hero-inner { max-width: none; }
+}
+@media (min-width:851px) and (max-width:1119px) {
+  .main-navigation { margin-left:auto; margin-right:12px; }
+  .header-actions {margin-left:18px;}
+}
+/* Two independent Anreise/Rückkehr calendars located below their triggers,
+   never one shared popup placed awkwardly across the full Hero background. */
+.search-field--date { z-index: 7; }
+.search-field--date:has(.date-panel:not([hidden])) { z-index: 80; }
+.search-field--date .date-panel {
+  position:absolute; top:calc(100% + 12px); left:0; right:auto; bottom:auto;
+  width: min(300px, 90vw); max-width:calc(100vw - 30px);
+  transform:none; padding:12px; border-radius:9px;
+  box-shadow: 0 14px 32px rgba(3,37,90,.2);
+  font-size:13px;
+}
+.search-field--date .date-panel .current-month {font-size:14px; text-transform:capitalize;}
+.date-panel-hint {margin:9px 0 0;color:#52688e;font-size:11px;line-height:1.4;}
+.calendar-day {min-height:32px; height:32px;}
+.calendar-day[aria-pressed="true"]{background:#0753d9;color:#fff;font-weight:700;}
+.month-control:disabled{opacity:.35;cursor:not-allowed;}
+@media (min-width:631px) {
+  .search-field--date:nth-of-type(3) .date-panel {left:auto;right:0;}
+}
+@media (max-width:630px) {
+  .search-field--date .date-panel,
+  .search-field--date:nth-of-type(3) .date-panel {
+     position:absolute;left:0;right:auto;top:calc(100% + 10px);
+     transform:none;width:min(305px,calc(100vw - 36px));
+  }
+  .search-field--date:nth-of-type(3) .date-panel {left:auto;right:0;}
+  .calendar-day {min-height:36px;height:36px;}
+}
+/* Text reflow and focus in all supported layouts. */
+.date-panel button:focus-visible {outline:2px solid #0753d9;outline-offset:2px;}
+/* Client requested centered navigation at desktop and laptop, including 920px.
+   Keeping it out of normal flex flow prevents logo/action widths shifting it. */
+@media (min-width:851px) and (max-width:1119px) {
+  .header-inner {position:relative;}
+  .main-navigation {position:absolute;left:50%;transform:translateX(-50%);margin:0;gap:clamp(13px,2.1vw,23px);}
+  .header-actions {margin-left:auto;}
+}
+/* V10 lower text had overflow onto the blue harbor ribbon at intermediate
+   desktop widths. Reserve enough vertical room while preserving the image. */
+@media (min-width:761px) and (max-width:1119px) {
+  .footer-hero{min-height:440px;}
+  .footer-top-links li{margin-bottom:5px;line-height:1.2;}
+  .footer-top-links a{line-height:1.2;}
+}

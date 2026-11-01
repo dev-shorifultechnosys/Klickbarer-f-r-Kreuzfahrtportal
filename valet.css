@@ -1,0 +1,150 @@
+/* ============================================================================
+   KreuzfahrtParkplatz.de / VALLET PARKING KIEL
+   Pixel-reference: client's 'Kiel Auswahl 02 von 02 Alternative Valet.png'
+   Architecture: semantic HTML5, component-scoped CSS, vanilla ES2022 JS,
+   no frameworks, no icon font, no CSS CDN, local compressed image assets.
+   Design rule: labels / icons are real HTML or inline-SVG, NOT a page screenshot.
+   ============================================================================ */
+:root {
+  --navy:#002d83;--royal:#0056d8;--cobalt:#0064ed;--sky:#edf8fd;
+  --line:#dcecf9;--surface:#f5faff;--yellow:#ffca02;--green:#069d4d;
+  --bodyfont:"Roboto Condensed","Arial Narrow",Arial,sans-serif;
+  font-family:var(--bodyfont);font-synthesis:none;-webkit-font-smoothing:antialiased;
+  color:var(--navy);background:#f5faff;scroll-behavior:smooth;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-width:320px;font-size:14px;line-height:1.36;background:linear-gradient(90deg,#f7fcff 0%,#eefaff 100%)}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #2d8cff;outline-offset:3px}a{color:inherit}img{max-width:100%;display:block}h1,h2,p{margin-top:0}.icon{width:22px;height:22px;display:inline-block;vertical-align:middle;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.svg-defs{position:absolute;width:0;height:0;overflow:hidden}.skip-link{position:absolute;left:10px;top:-60px;z-index:200;background:#fff;padding:8px 12px}.skip-link:focus{top:8px}.container{max-width:1440px;margin-inline:auto}
+/* 01  Navigation. Small logo uses the client's original icon and logotype. */
+.site-header{height:65px;position:relative;z-index:40;background:rgba(248,252,255,.97);border-bottom:1px solid #dfeaf7}
+.header-inner{height:100%;padding:0 clamp(24px,3.9vw,58px);max-width:1440px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{flex:0 0 auto;display:flex;align-items:center;max-width:230px}.brand img{width:225px;height:auto}
+.primary-nav{display:flex;gap:30px;align-items:center;justify-content:center;margin:0 auto}.primary-nav a{font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap}.primary-nav a:hover,.primary-nav a:focus-visible{color:var(--cobalt);text-decoration:underline;text-underline-offset:6px}.header-actions{display:flex;gap:13px;align-items:center}.header-pill{display:flex;align-items:center;gap:8px;border:1px solid #bddeff;background:#fff;border-radius:5px;padding:7px 12px;font-size:13px;white-space:nowrap;color:var(--navy);min-height:34px}.header-pill .icon{width:18px;height:18px;color:var(--navy)}.header-pill[aria-pressed="true"] .icon{fill:#dcecff;color:#0066d0}.header-pill:hover{background:#edf7ff}.menu-toggle{display:none;border:0;background:none;color:var(--navy);padding:8px}
+/* 02  Single hero photo. The heading and badges stay independent editable HTML. */
+.hero{position:relative;min-height:276px;background:#b8e4fa url('assets/valet/valet-hero-natural.webp') center right / cover no-repeat;isolation:isolate}
+.hero-content{padding:7px clamp(24px,3.9vw,58px) 15px;position:relative;z-index:2}.breadcrumbs{display:flex;gap:9px;align-items:center;font-size:12px;min-height:24px;white-space:nowrap}.breadcrumbs a{text-decoration:none}.breadcrumbs a:hover{text-decoration:underline}.breadcrumbs strong{font-weight:700}.hero-title{display:flex;align-items:center;gap:17px;flex-wrap:wrap;margin-top:9px}.hero-title h1{margin:0;font-family:var(--bodyfont);font-size:clamp(33px,3.7vw,52px);line-height:1.04;font-weight:800;letter-spacing:-.4px;color:#063585}.comfort-label{background:linear-gradient(180deg,#0a69f4,#0044bd);color:white;font-weight:700;letter-spacing:.12px;box-shadow:0 2px 3px rgba(5,35,122,.17);font-size:12px;padding:5px 9px;border-radius:3px}.hero-benefits{margin-top:7px}.hero-benefits p{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:14px;font-weight:400;line-height:1.14}.hero-benefits .icon{width:16px;height:16px;color:#073caa;stroke-width:2.7}
+/* 03  Reference proportions: image group is 707px, summary panel ~260px. */
+.content-layout{padding:0 clamp(14px,1.38vw,28px) 18px clamp(24px,3.35vw,52px);display:grid;grid-template-columns:minmax(0,1fr) clamp(254px,25.4vw,320px);gap:10px;align-items:start;margin-top:8px}
+.content-main{min-width:0}.gallery{height:172px;display:grid;grid-template-columns:62.5% 1fr;gap:3px;overflow:hidden;border-radius:6px}
+.gallery button{border:0;cursor:pointer;position:relative;overflow:hidden;background:#ddeef8;padding:0}.gallery button:hover img{transform:scale(1.035)}.gallery button:focus-visible{outline:3px solid var(--royal);outline-offset:-3px;z-index:3}.gallery button img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.gallery-main .gallery-open{position:absolute;bottom:13px;left:15px;background:#061523d9;color:#fff;border-radius:4px;padding:7px 11px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700}.gallery-open .icon{width:17px;height:17px;fill:#fff;stroke:#fff}.gallery-thumbs{display:grid;grid-template-columns:57% 43%;grid-template-rows:1fr 1fr;gap:3px;min-width:0;min-height:0}
+/* 04  Six equally spaced benefits — no invented features or wording. */
+.benefit-row{margin-top:7px;background:#fff;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid #e5f3ff;border-radius:8px;min-height:88px;padding:10px 0;align-items:center}
+.benefit{min-height:64px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:0 3px}.benefit:not(:last-child)::after{content:"";position:absolute;right:0;top:6px;bottom:6px;width:1px;background:#d9e9f8}.benefit-icon-img{display:block;width:auto;height:34px;object-fit:contain}.benefit strong{font-size:12px;font-weight:700;line-height:1.08}
+/* 05  Valet description and terminal route: two adjacent panels. */
+.info-grid{display:grid;grid-template-columns:minmax(0,1.58fr) minmax(0,.99fr);gap:8px;margin-top:9px}.info-card,.panel{background:#fff;border:1px solid #e2eef9;border-radius:10px;box-shadow:0 0 1px rgba(18,67,140,.04)}
+.info-card{padding:10px 14px}.info-card h2{font-size:18px;line-height:1.12;margin:0 0 13px;font-weight:800;color:#003ba1}.valet-copy p{font-size:12.6px;line-height:1.34;font-weight:400;margin:0 0 10px}.valet-copy p:last-child{margin-bottom:3px}.valet-copy strong{font-weight:800}
+.handover-card{padding:10px 8px}.handover-card h2{font-size:15px;white-space:nowrap;margin:0 0 6px}.mini-map{position:relative;min-height:177px;border-radius:7px;overflow:hidden;background:#e7f3fd}.mini-map-image{display:block;width:100%;height:100%;object-fit:cover}.map-cta{position:absolute;bottom:9px;left:17%;right:5%;height:34px;border:0;border-radius:5px;background:#0055c8;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:700;box-shadow:0 5px 14px rgba(0,52,145,.16)}.map-cta .icon{width:15px;height:15px}.map-cta:hover{background:#003992}
+/* 06  Right-hand offer: overlapping original visual hero, REAL HTML, not a raster panel. */
+.booking-sidebar{min-width:0;margin-top:-162px;position:relative;z-index:8;display:flex;flex-direction:column;gap:12px}.panel{padding:13px 16px}.booking-card h2,.insurance-card h2{color:#0043b7;font-size:20px;font-weight:800;line-height:1.2;margin:0 0 14px}.booking-dates{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:51px}.date-col{display:flex;gap:8px;min-width:0;padding:0 8px 0 0}.date-col+ .date-col{padding:0 0 0 8px;border-left:1px solid #e2edfa}.date-col .icon{color:#0046b9;width:20px;height:20px}.date-col span,.date-col strong,.date-col small{display:block;white-space:nowrap}.date-col span{font-size:10.5px;color:#6385ae}.date-col strong{font-size:13px}.date-col small{font-size:11px;color:#3365a5}.book-provider{margin:13px 0;border:1px solid #e4eff9;border-radius:6px;display:flex;align-items:center;gap:9px;padding:8px 5px}.book-provider img{width:30px;height:28px;object-fit:contain}.book-provider span{min-width:0}.book-provider strong,.book-provider small{display:block}.book-provider strong{font-size:13px}.book-provider small{font-size:11px;color:#416394;white-space:nowrap}
+.price-list{padding-bottom:8px}.price-line{display:flex;gap:5px;align-items:flex-start;justify-content:space-between;font-size:12px;margin-bottom:8px}.price-line b{white-space:nowrap;font-weight:700}.price-line span:first-child{display:flex;align-items:center;gap:8px}.tiny-parking{display:inline-grid;place-items:center;color:#fff;background:#083ca2;width:13px;height:13px;border-radius:2px;font:700 10px Arial}.price-line.indent{padding-left:25px}.price-line a{color:#005cff;text-decoration:none}.price-line a:hover{text-decoration:underline}.green{color:#069941}.mini-info{border:0;background:none;padding:0;display:inline-flex;color:#005ce7}.mini-info .icon{width:14px;height:14px}
+.total{background:#eaf6ff;padding:8px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;margin:4px 0 11px}.total>strong{font-size:16px}.total>span{text-align:right}.total b{display:block;font-size:22px;line-height:1.1}.total small{font-size:11px;display:block;color:#6583af}
+.book-button{width:100%;min-height:40px;border:0;background:var(--yellow);color:#003186;border-radius:5px;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .2s}.book-button .icon{width:18px;height:18px}.book-button:hover{background:#ffdd29}.booking-promises,.insurance-card ul{list-style:none;margin:10px 0 0;padding:0}.booking-promises li{font-size:12px;display:flex;gap:7px;align-items:flex-start;margin:5px 0;line-height:1.18}.booking-promises .icon{color:#009844;height:16px;width:16px;stroke-width:2.2}
+.insurance-card{padding:13px 16px}.insurance-heading{display:flex;align-items:center;gap:7px}.insurance-heading img{width:96px;flex:0 0 96px;height:26px;object-fit:contain;object-position:left center}.insurance-heading h2{font-size:12px;line-height:1.2;margin:0}.insurance-card ul{margin:11px 0 0}.insurance-card li{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:11.5px;line-height:1.26}.insurance-card li .icon{color:#009844;width:17px;height:17px}.text-link{display:inline-flex;gap:5px;align-items:center;color:#0061e9;font-size:12px;text-decoration:underline;border:0;background:none;padding:10px 0 0}.text-link .icon{width:15px;height:15px}.small-note{color:#446694;font-size:10px;margin:4px 0 0;line-height:1.35}
+/* 07  Interactive gallery, booking-preparation and insurance overlays. */
+dialog{border:0;padding:0;background:transparent;max-width:calc(100% - 24px);max-height:calc(100dvh - 24px);box-shadow:none}dialog::backdrop{background:#061c41c9}.lightbox{width:min(1000px,95vw)}.lightbox-inner{background:#07172e;border-radius:10px;padding:15px;position:relative}.lightbox-inner>img{max-height:75vh;width:100%;height:auto;object-fit:contain}.lightbox-close{position:absolute;z-index:2;top:18px;right:18px;border:0;border-radius:50%;width:36px;height:36px;background:#fffffff0;color:#063788;display:grid;place-items:center}.lightbox-toolbar{display:flex;align-items:center;justify-content:center;gap:25px;color:#fff;padding:8px}.lightbox-toolbar button{background:#e7f5ff;border:0;border-radius:50%;width:38px;height:38px;color:#0042ae;display:grid;place-items:center}.action-dialog{width:min(420px,92vw)}.action-dialog-box{position:relative;background:#fff;border-radius:12px;padding:24px;box-shadow:0 15px 55px #03205166}.action-dialog-box h2{margin:0 30px 12px 0;color:#003b9f;font-size:22px}.action-dialog-box p{font-size:14px}.action-dialog-box label{display:block;font-weight:700;margin:12px 0}.action-dialog-box input{width:100%;border:1px solid #b5d4ef;border-radius:5px;height:41px;padding:8px;margin:5px 0}.dialog-x{position:absolute;right:15px;top:9px;border:0;background:none;font-size:26px;color:#084490}.prototype-note{font-size:12px;color:#416488;margin:10px 0 0}.outline-button{padding:10px 25px;border-radius:5px;color:#004cc6;background:#fff;border:1px solid #aacfff}
+@media(min-width:1200px){.hero{min-height:350px}.booking-sidebar{margin-top:-190px}.gallery{height:230px}.benefit-row{min-height:102px}.benefit{gap:8px}.benefit-icon-img{height:38px}.benefit strong{font-size:15px}.gallery-main .gallery-open{font-size:14px}.content-layout{gap:16px}.info-card h2{font-size:21px}.handover-card h2{font-size:18px}.valet-copy p{font-size:15px}.mini-map{min-height:215px}.booking-card h2{font-size:24px}.date-col strong{font-size:15px}.booking-promises li{font-size:14px}.price-line{font-size:15px}.insurance-card li{font-size:13.5px}.insurance-heading img{width:115px;flex-basis:115px}.insurance-heading h2{font-size:14px}.hero-title h1{font-size:53px}}
+@media(min-width:1440px){.hero{min-height:394px}.booking-sidebar{margin-top:-216px}.gallery{height:267px}.info-grid{margin-top:12px}.content-layout{padding-bottom:35px}}
+/* Tablet: gallery stays as photographed; card drops below gallery at <=850. */
+@media(max-width:900px){.primary-nav{gap:15px}.header-inner{padding-inline:24px}.brand img{width:195px}.hero-content{padding-inline:24px}.content-layout{grid-template-columns:minmax(0,1fr) 245px;padding-left:24px;padding-right:14px;gap:8px}.booking-sidebar{margin-top:-145px}.panel{padding:12px}.book-provider small{white-space:normal}.benefit strong{font-size:11px}.info-card h2{font-size:16px}.valet-copy p{font-size:11px}.handover-card h2{font-size:13px}.mini-map{min-height:177px}.insurance-heading img{width:85px;flex-basis:85px}.insurance-heading h2{font-size:10px}}
+@media(max-width:760px){.site-header{height:60px}.header-inner{padding-inline:16px}.brand img{width:185px}.primary-nav{position:absolute;z-index:50;top:60px;left:0;right:0;display:none;background:#fff;box-shadow:0 15px 25px #062f6826;padding:16px 22px;flex-direction:column;gap:0;align-items:stretch}.primary-nav.is-open{display:flex}.primary-nav a{padding:12px 8px;border-bottom:1px solid #e1effb;font-size:15px}.menu-toggle{display:block}.header-actions{gap:5px}.header-pill{padding:7px;min-height:33px}.header-pill span{display:none}.header-pill .icon{width:20px;height:20px}.hero{min-height:348px;background-image:linear-gradient(90deg,#e7f6ffd9 0%,#e7f6ff60 45%,#e7f6ff00 85%),url('assets/valet/valet-hero-mobile.webp');background-position:center,right 45%;background-size:cover,cover}.hero-content{padding:11px 17px}.hero-title{margin-top:20px;gap:8px}.hero-title h1{font-size:clamp(30px,7.5vw,44px)}.comfort-label{font-size:10px}.hero-benefits p{font-weight:700;font-size:12px;max-width:300px;text-shadow:0 1px 5px #fff}.breadcrumbs{font-size:10.5px;gap:6px}.content-layout{display:flex;flex-direction:column;gap:12px;margin-top:0;padding:0 14px 24px}.booking-sidebar{order:0;margin-top:-85px;width:100%;flex-direction:column;gap:9px}.content-main{order:1;width:100%}.booking-card{position:relative}.booking-dates{grid-template-columns:1fr 1fr}.book-provider small{white-space:normal}.price-line{font-size:14px}.booking-promises{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px}.booking-promises li{font-size:12px}.insurance-heading img{width:112px;flex-basis:112px}.insurance-heading h2{font-size:14px}.gallery{height:clamp(185px,54vw,270px)}.benefit-row{grid-template-columns:repeat(3,minmax(0,1fr));min-height:170px}.benefit{min-height:72px}.benefit:nth-child(3)::after{display:none}.benefit:nth-child(n+4){border-top:1px solid #e3effa;padding-top:8px}.benefit strong{font-size:11.5px}.benefit-icon-img{height:34px}.info-grid{grid-template-columns:1fr}.info-card{padding:16px}.info-card h2{font-size:20px}.valet-copy p{font-size:14px}.handover-card h2{font-size:18px}.mini-map{min-height:255px}.map-cta{height:40px}.insurance-card{margin-bottom:4px}}
+@media(max-width:410px){.brand img{width:150px}.header-pill{padding:5px}.header-actions{gap:1px}.hero{min-height:330px}.hero-title{margin-top:15px}.hero-title h1{font-size:31px}.comfort-label{font-size:9px}.hero-benefits p{font-size:11.5px}.gallery{grid-template-columns:60% 40%}.gallery-open{font-size:9px!important;left:5px!important;padding:6px!important}.booking-promises{grid-template-columns:1fr}.benefit strong{font-size:10.7px}.info-card h2{font-size:18px}.handover-card h2{font-size:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+.nav-service{border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:13px;font-weight:500;padding:0}.nav-service:hover{text-decoration:underline;color:var(--cobalt)}@media(max-width:760px){.nav-service{text-align:left;font-size:15px;padding:12px 8px;border-bottom:1px solid #e1effb}}
+
+/* ============================================================================
+   V3 QA REFINEMENT / 2026-11-01
+   Preserve image aspect ratios, prevent clipped benefit icons, align sidebar.
+   Scoped overrides; previous component rules are retained for hand-off.
+   ============================================================================ */
+.hero {
+  background-image: url('assets/valet/valet-hero-natural.webp');
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* cover preserves natural proportions (no image stretching). */
+  background-size: cover;
+}
+.benefit-row { overflow: visible; }
+.benefit { overflow: visible; }
+.benefit-icon-img {
+  width: 43px;
+  height: 43px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  overflow: visible;
+  image-rendering: auto;
+}
+/* Right offer column drops slightly and extends down with measured rhythm,
+   matching the client's left-column terminal-map ending. */
+@media (min-width: 1200px) {
+  .booking-sidebar { margin-top: -170px; gap: 14px; }
+  .booking-card, .insurance-card { padding: 21px 18px; }
+  .booking-card h2 { margin-bottom: 18px; }
+  .booking-dates { min-height: 70px; }
+  .book-provider { margin: 17px 0; padding: 12px 8px; }
+  .price-line { margin-bottom: 12px; }
+  .price-list { padding-bottom: 13px; }
+  .total { padding: 13px 9px; margin: 8px 0 16px; }
+  .book-button { min-height: 48px; }
+  .booking-promises { margin-top: 17px; }
+  .booking-promises li { margin: 8px 0; line-height: 1.25; }
+  .insurance-card ul { margin-top: 16px; }
+  .insurance-card li { margin: 10px 0; line-height: 1.35; }
+  .insurance-card .text-link { padding-top: 14px; }
+  .insurance-card .small-note { margin-top: 10px; }
+}
+@media (min-width: 1440px) { .booking-sidebar { margin-top: -194px; } }
+/* Tablet/mobile: do not use a CSS gradient layered over the hero photograph;
+   it was creating the unwanted opaque white shade. The alternate portrait
+   keeps its own natural aspect ratio, with readable HTML on top. */
+@media (max-width: 760px) {
+  .hero {
+    background-image: url('assets/valet/valet-hero-mobile.webp');
+    background-size: cover;
+    background-position: 58% center;
+  }
+  .booking-sidebar { margin-top: -85px; }
+  .benefit-icon-img { width: 40px; height: 40px; }
+  .benefit { padding-inline: 7px; min-height: 82px; }
+  .benefit-row { padding-block: 10px; }
+}
+@media (max-width: 410px) {
+  .benefit-icon-img { width: 36px; height: 36px; }
+  .benefit { padding-inline: 4px; }
+}
+
+/* V3B visual QA adjustments (reviewed at desktop 1407px and mobile 390px). */
+@media (min-width: 1200px) {
+  .booking-card,.insurance-card { padding: 16px 18px; }
+  .booking-card h2 { margin-bottom: 13px; }
+  .booking-dates { min-height: 60px; }
+  .book-provider { margin: 12px 0; padding: 10px 8px; }
+  .price-line { margin-bottom: 10px; }
+  .price-list { padding-bottom: 10px; }
+  .total { padding: 11px 9px; margin: 7px 0 13px; }
+  .book-button { min-height: 44px; }
+  .booking-promises { margin-top: 12px; }
+  .booking-promises li { margin: 5px 0; line-height: 1.22; }
+  .insurance-card ul { margin-top: 12px; }
+  .insurance-card li { margin: 6px 0; line-height: 1.25; }
+  .insurance-card .text-link { padding-top: 10px; }
+  .insurance-card .small-note { margin-top: 6px; }
+  .benefit-icon-img { width: 56px; height: 50px; }
+  .benefit { gap: 3px; }
+}
+@media (max-width: 760px) {
+  .hero {
+    background-image:
+      linear-gradient(180deg,rgba(216,236,252,.88) 0%,rgba(216,236,252,.6) 35%,rgba(216,236,252,0) 65%),
+      url('assets/valet/valet-hero-mobile.webp');
+    background-size: cover, cover;
+    background-position: center,58% center;
+  }
+  .mini-map { min-height: 0; aspect-ratio: 920 / 420; }
+  .mini-map-image { height: auto; width: 100%; }
+  .map-cta { bottom: 5px; height: 37px; }
+}
+
+/* Final vertical alignment: end right Allianz panel at the same baseline as left content. */
+@media (min-width: 1200px) { .booking-sidebar { gap: 10px; } .insurance-card { padding-bottom: 12px; } }
